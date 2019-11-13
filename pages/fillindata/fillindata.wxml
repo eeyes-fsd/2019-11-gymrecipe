@@ -1,0 +1,3 @@
+<!--pages/fillindata/fillindata.wxml-->
+<view>填写个人信息数据</view>
+<view bindtap="gymnearby">到附近的健身房去测</view>

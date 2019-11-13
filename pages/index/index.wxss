@@ -1,21 +1,146 @@
 /**index.wxss**/
-.userinfo {
+.container{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items:center;
+  background-color:aliceblue;
+}
+.titlebox_1{
+  width:100%;
+  height:50px;
+}
+.titlebox_1_title{
+  width:100%;
+  height:30px;
+  line-height:40px;
+  text-align:left;
+  font-size:20px;
+  margin-left:15px;
+}
+.listcontainer{
+  height:350px;
+  display:flex;
+  flex-direction:row;
+  justify-content: flex-start;
+  margin-left:10px;
+}
+.titlebox_1_titlelow{
+  width:100%;
+  height:20px;
+  font-size:10px;
+  line-height:20px;
+  text-align:left;
+  margin-left:15px;
+  color:gray;
+}
+.photobox{
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items:center;
+  height:300px;
+  width:200px;
+}
+.photos{
+  height:290px;
+  width:180px;
+  background-color:rgb(247, 191, 228);
+  border-radius: 15px;
+}
+.titlebox_2{
+  width:100%;
+  height:45px;
+}
+.titlebox_2_title{
+  width:100%;
+  height:25px;
+  line-height:35px;
+  font-size:15px;
+  margin-left:15px;
+}
+.titlebox_2_titlelow{
+  width:100%;
+  height:20px;
+  font-size:10px;
+  line-height:20px;
+  margin-left:15px;
+  color:grey;
+}
+.needinfobox{
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items:center;
+  height:140px;
+  width:100%;
+}
+.needinfolist{
+  height:120px;
+  width:90%;
+  background-color:white;
+  border-radius:10px;
+}
+.jumpto_1{
+  width:100%;
+  color:red;
+  height:20px;
+  padding-left:18px;
+  font-size:12px;
+  line-height:20px;
+}
+.titlebox_3{
+  width:100%;
+  text-align:left;
+  height:25px;
+  font-size:15px;
+  margin-left:15px;
+  line-height:25px;
+}
+.jumpto_2{
+  width:100%;
+  color:red;
+  height:20px;
+  padding-left:18px;
+  font-size:12px;
+  line-height:20px;
+}
+.comlistcontainer{
+  display:flex;
+  height:140px;
+  flex-direction:row;
+  justify-content: flex-start;
+  margin-left:10px;
+}
+.comphotobox{
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
   align-items: center;
+  height:140px;
+  width:150px;
 }
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.comphotolittlebox{
+  height:130px;
+  width:140px;
+  border-radius:10px;
+  background-color:white;
 }
-
-.userinfo-nickname {
-  color: #aaa;
+.comphotos{
+  height:95px;
+  width:100%;
+  border-top-left-radius:10px;
+  border-top-right-radius:10px;
+  background-color:rgb(165, 203, 247);
 }
-
-.usermotto {
-  margin-top: 200px;
+.comnames{
+  background-color:white;
+  height:35px;
+  width:100%;
+  font-size:14px;
+  text-align: center;
+  line-height:35px;
+  border-bottom-left-radius:10px;
+  border-bottom-right-radius:10px;
 }

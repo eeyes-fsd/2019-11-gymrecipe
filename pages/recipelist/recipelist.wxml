@@ -1,0 +1,3 @@
+<!--pages/recipelist/recipelist.wxml-->
+<text>食谱列表</text>
+<view bindtap="fooddetail">这是某道菜</view>

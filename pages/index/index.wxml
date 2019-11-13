@@ -1,13 +1,39 @@
-<!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+  <view class="titlebox_1">
+    <view class="titlebox_1_title">新品推荐</view>
+    <view class="titlebox_1_titlelow">{{newrecom}}</view>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <scroll-view scroll-x="true" style="height:300px;width:100%;">
+    <view class="listcontainer" style="width:{{foodlist.length*200}}px">
+      <view class="photobox" wx:for="{{foodlist}}" wx:key>
+        <view class="photos" style="background-image:url();"></view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class="titlebox_2">
+    <view class="titlebox_2_title">每日所需营养素</view>
+    <view class="titlebox_2_titlelow">更新于{{updatetime}}</view>
   </view>
+  <view class="needinfobox">
+    <view class="needinfolist">
+    </view>
+  </view>
+  <view class="jumpto_1" wx:if="{{getinfo}}" bindtap="fillindata">更新身体数据-></view>
+  <view class="jumpto_1" wx:else bindtap="fillindata">立即免费测量-></view>
+  <view style="height:20px;"></view>
+  <view class="titlebox_3">
+    今日秤食食谱
+  </view>
+  <scroll-view scroll-x="true" style="height:140px;width:100%;">
+    <view class="comlistcontainer" style="width:{{todaylist.length*150}}px">
+      <view class="comphotobox" wx:for="{{todaylist}}" wx:key>
+        <view class="comphotolittlebox">
+          <view class="comphotos" style="background-image:url();"></view>
+          <view class="comnames">早餐</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class="jumpto_2" wx:if="{{setfood}}" bindtap="recipelist">吃腻了？获取更多食谱-></view>
+  <view class="jumpto_2" wx:else bindtap="recipelist">定制私人配餐-></view>
 </view>

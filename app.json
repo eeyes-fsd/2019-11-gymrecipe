@@ -1,13 +1,37 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/mine/mine",
+    "pages/market/market",
+    "pages/plusaddress/plusaddress",
+    "pages/changeaddress/changeaddress",
+    "pages/fooddetail/fooddetail",
+    "pages/fillindata/fillindata",
+    "pages/gymnearby/gymnearby",
+    "pages/recipelist/recipelist"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/market/market",
+        "text": "集市"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的"
+      }
+    ]
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
