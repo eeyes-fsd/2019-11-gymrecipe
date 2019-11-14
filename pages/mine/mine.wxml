@@ -1,20 +1,32 @@
-<view wx:if="{{stack==1}}">
+<view wx:if="{{stack==1}}" class='main'>
   <view class="userinfobox">
-    <view>张冠雄</view>
-    <view>12301230</view>
-    <view>头像</view>
+    <view>
+      <view id='nick-name'>张冠雄</view>
+      <view id='phone'>12301230</view>
+    </view>
+    <image class='head'></image>
   </view>
   <view>
-    <view bindtap="showmyaddress">收货地址</view>
-    <view>我的秤食配餐</view>
-    <view>订单</view>
-    <view>联系我们</view>
+    <view bindtap="showmyaddress" class='items'>收货地址</view>
+    <view class='items'>我的秤食配餐</view>
+    <view class='items'>订单</view>
+    <view bindtap="onTab" class='items'>联系我们</view>
   </view>
-  <view>推荐给好友</view>
+  <view class='recommand'>推荐给好友 →</view>
+</view>
+
+<view class="mask" wx:if="{{show}}" bindtap='close' catchtouchmove='maskTouchMove'></view>
+<view class="content-container" wx:if="{{ show}}" catchtouchmove='touchMove'>
+  <view>联系我们</view>
+  <view>
+    <view>联系电话：*********</view>
+    <view class="content">官方邮箱：***@qq.com</view>
+  </view>
+  <button bindtap='close'>确定</button>
 </view>
 
 <view wx:if="{{stack==2}}">
-<view>我的收货地址</view>
-<view bindtap="changeaddress">这是一大堆收货地址======</view>
-<view bindtap="plusaddress">新增收货地址</view>
+  <view>我的收货地址</view>
+  <view bindtap="changeaddress">这是一大堆收货地址======</view>
+  <view bindtap="plusaddress">新增收货地址</view>
 </view>
