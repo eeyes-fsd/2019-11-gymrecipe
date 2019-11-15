@@ -1,3 +1,42 @@
-<!--pages/recipelist/recipelist.wxml-->
-<text>食谱列表</text>
-<view bindtap="fooddetail">这是某道菜</view>
+<view class="container">
+  <view class="navbarbox">
+    <view class="navbar1" bindtap="nav" data-id="1" style="color:{{perchased==1?'#484848':'#D7D7D7'}}">已购买</view>
+    <view class="navbar2" bindtap="nav" data-id="0" style="color:{{perchased==0?'#484848':'#D7D7D7'}}">全部食谱</view>
+  </view>
+  <scroll-view scroll-x="true" style="height:1023rpx;width:100%;margin-top:50rpx;" wx:if="{{perchased==1}}">
+    <view class="listbox" style="width:{{recipelist.length*556}}rpx">
+      <view class="itembox" bindtap="fooddetail" wx:for="{{recipelist}}" wx:key>
+        <view class="itemphoto"></view>
+        <view class="itemtitle">奥尔良鸡胸肉套餐</view>
+        <view class="itemdetail1">包含早/中/晚三餐搭配</view>
+        <view class="itemdetail2">主要食材：鸡胸肉、西兰花、牛油果</view>
+        <view class="jumpbox">
+          <view class="jumptext">立即解锁配餐</view>
+          <view class="jumpicon"></view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <scroll-view scroll-x="true" style="height:1023rpx;width:100%;margin-top:50rpx;" wx:if="{{perchased==0}}">
+    <view class="listbox" style="width:{{recipelist.length*556}}rpx">
+      <view class="itembox" bindtap="fooddetail" wx:for="{{recipelist}}" wx:key>
+        <view class="itemphoto" style="background-color:green"></view>
+        <view class="itemtitle">奥尔良鸡胸肉套餐</view>
+        <view class="itemdetail1">包含早/中/晚三餐搭配</view>
+        <view class="itemdetail2">主要食材：鸡胸肉、西兰花、牛油果</view>
+        <view class="jumpbox">
+          <view class="jumptext">立即解锁配餐</view>
+          <view class="jumpicon"></view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class="bottom_line">
+    <view class="photogroup">
+      <view class="roundphoto" style="background-color:green;z-index:1"></view>
+      <view class="roundphoto" style="background-color:red;z-index:2;margin-left:-9.92rpx;"></view>
+      <view class="roundphoto" style="background-color:yellow;z-index:3;margin-left:-9.92rpx;"></view>
+    </view>
+    <view class="bottomtext">查看343条评价</view>
+  </view>
+</view>

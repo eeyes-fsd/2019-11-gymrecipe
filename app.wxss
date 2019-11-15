@@ -1,10 +1,54 @@
-/**app.wxss**/
-.container {
-  height: 100%;
+.needinfobox{
+  margin-top:26rpx;
   display: flex;
-  flex-direction: column;
+  flex-direction:column;
+  justify-content: center;
+  align-items:center;
+  height:224rpx;
+  width:100%;
+}
+.needinfolist{
+  height:224rpx;
+  width:640rpx;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  border: 1rpx solid #0000001A;
+  border-radius: 40rpx;
+}
+.needlinebox{
+  display:flex;
+  flex-direction: row;
+  height:40rpx;
+  width:100%;
+}
+.needicontextbox{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
-  box-sizing: border-box;
-} 
+  height:40rpx;
+  width:70%;
+}
+.needicon{
+  height:36rpx;
+  width:36rpx;
+  margin-left:41rpx;
+  background-color:red;
+}
+.needtitle{
+  margin-left:24rpx;
+  height:40rpx;
+  font-size:28rpx;
+  color:#4A4E63;
+  line-height:40rpx;
+  text-align:left;
+}
+.neednum{
+  width:30%;
+  float:right;
+  margin-right:41rpx;
+  height:40rpx;
+  font-size:28rpx;
+  color:#4A4E63;
+  line-height:40rpx;
+  text-align:right;
+}

@@ -1,1 +1,141 @@
 /* pages/recipelist/recipelist.wxss */
+.container{
+  display:flex;
+  flex-direction:column;
+  justify-content: flex-start;
+  align-items: center;
+  width:100%;
+}
+.navbarbox{
+  width:100%;
+  height:46rpx;
+  display:flex;
+  flex-direction: row;
+  justify-content:flex-start;
+  align-items:center;
+}
+.navbar1{
+  margin-left:64rpx;
+  height:46rpx;
+  width:99rpx;
+  font-size:32rpx;
+  color:#484848;
+}
+.navbar2{
+  margin-left:41.3rpx;
+  height:46rpx;
+  width:128rpx;
+  font-size:32rpx;
+  color:#484848;
+}
+.listbox{
+  height:1023rpx;
+  margin-left:54rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.itembox{
+  margin-right:48rpx;
+  height:1023rpx;
+  width:508rpx;
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.itemphoto{
+  width:100%;
+  height:762rpx;
+  background-color:rgb(252, 185, 237);
+  border-radius:40rpx;
+}
+.itemtitle{
+  margin-top:45rpx;
+  width:100%;
+  height:60rpx;
+  padding-left:10rpx;
+  font-size:42rpx;
+  line-height:60rpx;
+  text-align:left;
+  color:#484848;
+}
+.itemdetail1{
+  margin-top:16rpx;
+  width:100%;
+  height:40rpx;
+  padding-left:10rpx;
+  font-size:28rpx;
+  color:#484848;
+  line-height:40rpx;
+  text-align:left;
+}
+.itemdetail2{
+  margin-top:4rpx;
+  width:100%;
+  height:40rpx;
+  padding-left:10rpx;
+  font-size:28rpx;
+  color:#484848;
+  line-height:40rpx;
+  text-align:left;
+}
+.jumpbox{
+  width:100%;
+  margin-top:16rpx;
+  height:40rpx;
+  display:flex;
+  flex-direction:row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.jumptext{
+  width:168rpx;
+  height:40rpx;
+  font-size:28rpx;
+  color:#F83A51;
+  line-height:40rpx;
+  text-align:left;
+}
+.jumpicon{
+  margin-left:10rpx;
+  width:12.33rpx;
+  height:12.88rpx;
+  background-color:red;
+}
+.bottom_line{
+  width:100%;
+  height:125rpx;
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  box-shadow: 0px -4px 10px #00000008;
+  border-radius:60rpx 60rpx 0 0;
+  background-color:#FFFFFF;
+}
+.photogroup{
+  display:flex;
+  flex-direction:row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left:64.23rpx;
+  width:124.6rpx;
+  height:48rpx;
+}
+.roundphoto{
+  height:48rpx;
+  width:48rpx;
+  border-radius:48rpx;
+  box-shadow: 0px 3px 6px #00000029;
+  border: 1px solid #FFFFFF;
+}
+.bottomtext{
+  margin-left:24.2rpx;
+  width:188rpx;
+  height:40rpx;
+  font-size:28rpx;
+  color:#484848;
+  line-height:40rpx;
+}

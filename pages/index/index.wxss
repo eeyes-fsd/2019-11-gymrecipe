@@ -1,146 +1,155 @@
 /**index.wxss**/
-.container{
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items:center;
-  background-color:aliceblue;
-}
 .titlebox_1{
   width:100%;
-  height:50px;
+  height:119rpx;
 }
 .titlebox_1_title{
   width:100%;
-  height:30px;
-  line-height:40px;
+  height:79rpx;
+  line-height:79rpx;
   text-align:left;
-  font-size:20px;
-  margin-left:15px;
+  font-size:55rpx;
+  padding-left:55rpx;
+  color:#4A4E63;
+}
+.titlebox_1_titlelow{
+  width:100%;
+  height:40rpx;
+  font-size:28rpx;
+  line-height:40rpx;
+  text-align:left;
+  padding-left:55rpx;
+  color:#4A4E63;
 }
 .listcontainer{
   height:350px;
   display:flex;
   flex-direction:row;
   justify-content: flex-start;
-  margin-left:10px;
-}
-.titlebox_1_titlelow{
-  width:100%;
-  height:20px;
-  font-size:10px;
-  line-height:20px;
-  text-align:left;
-  margin-left:15px;
-  color:gray;
+  margin-left:55rpx;
 }
 .photobox{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items:center;
-  height:300px;
-  width:200px;
-}
-.photos{
-  height:290px;
-  width:180px;
+  height:600rpx;
+  width:400rpx;
+  border-radius:40rpx;
+  margin-right:36rpx;
   background-color:rgb(247, 191, 228);
-  border-radius: 15px;
 }
 .titlebox_2{
+  margin-top:64rpx;
   width:100%;
-  height:45px;
+  height:103rpx;
 }
 .titlebox_2_title{
   width:100%;
-  height:25px;
-  line-height:35px;
-  font-size:15px;
-  margin-left:15px;
+  height:60rpx;
+  line-height:60rpx;
+  font-size:42rpx;
+  padding-left:55rpx;
+  color:#4A4E63;
 }
 .titlebox_2_titlelow{
+  margin-top:3rpx;
   width:100%;
-  height:20px;
-  font-size:10px;
-  line-height:20px;
-  margin-left:15px;
-  color:grey;
+  height:40rpx;
+  font-size:28rpx;
+  line-height:40rpx;
+  padding-left:55rpx;
+  color:#4A4E63;
 }
-.needinfobox{
-  display: flex;
-  flex-direction:column;
-  justify-content: center;
+.jumpto_1box{
+  display:flex;
+  flex-direction:row;
+  justify-content: flex-start;
   align-items:center;
-  height:140px;
+  margin-top:22rpx;
   width:100%;
+  height:40rpx;
 }
-.needinfolist{
-  height:120px;
-  width:90%;
-  background-color:white;
-  border-radius:10px;
+.jumpto_1text{
+  margin-left:55rpx;
+  width:168rpx;
+  height:40rpx;
+  font-size:28rpx;
+  color:#F83A51;
 }
-.jumpto_1{
-  width:100%;
-  color:red;
-  height:20px;
-  padding-left:18px;
-  font-size:12px;
-  line-height:20px;
+.jumpto_1icon{
+  margin-left:4rpx;
+  width:24rpx;
+  height:24rpx;
+  background-color:red;
+  /* background-image: url(../images/images/falling.png); */
 }
 .titlebox_3{
+  margin-top:63rpx;
   width:100%;
   text-align:left;
-  height:25px;
-  font-size:15px;
-  margin-left:15px;
-  line-height:25px;
+  height:60rpx;
+  font-size:42rpx;
+  padding-left:55rpx;
+  line-height:60rpx;
 }
-.jumpto_2{
+.nametitle{
+  margin-top:4rpx;
   width:100%;
-  color:red;
-  height:20px;
-  padding-left:18px;
-  font-size:12px;
-  line-height:20px;
+  height:40rpx;
+  padding-left:55rpx;
+  font-size:28rpx;
+  color:#4A4E63;
+}
+.jumpto_2box{
+  display:flex;
+  flex-direction:row;
+  justify-content: flex-start;
+  align-items:center;
+  margin-top:22rpx;
+  width:100%;
+  height:40rpx;
+  margin-bottom:148rpx;
+}
+.jumpto_2text{
+  width:168rpx;
+  height:40rpx;
+  margin-left:55rpx;
+  font-size:28rpx;
+  color:#F83A51;
+}
+.jumpto_2icon{
+  width:24rpx;
+  height:24rpx;
+  margin-left:4rpx;
+  background-color:red;
 }
 .comlistcontainer{
   display:flex;
-  height:140px;
+  height:275rpx;
   flex-direction:row;
   justify-content: flex-start;
-  margin-left:10px;
-}
-.comphotobox{
-  display:flex;
-  flex-direction:column;
-  justify-content: center;
-  align-items: center;
-  height:140px;
-  width:150px;
+  margin-left:55rpx;
 }
 .comphotolittlebox{
+  margin-right:36rpx;
   height:130px;
   width:140px;
-  border-radius:10px;
+  border-radius:16rpx;
   background-color:white;
 }
 .comphotos{
-  height:95px;
+  height:195rpx;
   width:100%;
-  border-top-left-radius:10px;
-  border-top-right-radius:10px;
+  border-radius:16rpx 16rpx 0 0;
   background-color:rgb(165, 203, 247);
 }
 .comnames{
-  background-color:white;
-  height:35px;
+  background-color:#FFFFFF;
+  height:80rpx;
   width:100%;
-  font-size:14px;
+  font-size:28rpx;
   text-align: center;
-  line-height:35px;
-  border-bottom-left-radius:10px;
-  border-bottom-right-radius:10px;
+  line-height:80rpx;
+  border-radius:0 0 16rpx 16rpx;
 }

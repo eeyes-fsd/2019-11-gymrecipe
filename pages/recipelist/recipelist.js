@@ -5,7 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    perchased:1,
+    recipelist:[1,2,3,4,5]//食谱列表
+  },
+  nav:function(e){
+    var that = this
+    that.setData({
+      perchased:e.currentTarget.dataset.id
+    })
   },
   fooddetail:function(){
     var that = this

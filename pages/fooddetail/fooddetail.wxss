@@ -1,1 +1,24 @@
-/* pages/fooddetail/fooddetail.wxss */
+
+.container{
+  display:flex;
+  flex-direction:column;
+  justify-content: flex-start;
+  align-items: center;
+  width:100%;
+}
+.timemealbar{
+  width:100%;
+  height:46rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.bar{
+  height:46rpx;
+  width:64rpx;
+  font-size:32rpx;
+  color:#484848;
+  line-height:46rpx;
+  text-align:left;
+}

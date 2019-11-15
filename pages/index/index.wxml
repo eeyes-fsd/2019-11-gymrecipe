@@ -3,10 +3,9 @@
     <view class="titlebox_1_title">新品推荐</view>
     <view class="titlebox_1_titlelow">{{newrecom}}</view>
   </view>
-  <scroll-view scroll-x="true" style="height:300px;width:100%;">
-    <view class="listcontainer" style="width:{{foodlist.length*200}}px">
-      <view class="photobox" wx:for="{{foodlist}}" wx:key>
-        <view class="photos" style="background-image:url();"></view>
+  <scroll-view scroll-x="true" style="height:600rpx;width:100%;margin-top:26rpx;">
+    <view class="listcontainer" style="width:{{foodlist.length*436}}rpx">
+      <view class="photobox" wx:for="{{foodlist}}" style="background-image:url();" wx:key>
       </view>
     </view>
   </scroll-view>
@@ -16,24 +15,49 @@
   </view>
   <view class="needinfobox">
     <view class="needinfolist">
+      <view class="needlinebox" style="margin-top:34rpx;">
+        <view class="needicontextbox">
+          <view class="needicon"></view>
+          <view class="needtitle">碳水化合物</view>
+        </view>
+        <view class="neednum">1431克</view>
+      </view>
+      <view class="needlinebox" style="margin-top:16rpx;">
+        <view class="needicontextbox">
+          <view class="needicon"></view>
+          <view class="needtitle">蛋白质</view>
+        </view>
+        <view class="neednum">820克</view>
+      </view>
+      <view class="needlinebox" style="margin-top:16rpx;">
+        <view class="needicontextbox">
+          <view class="needicon"></view>
+          <view class="needtitle">脂肪</view>
+        </view>
+        <view class="neednum">75克</view>
+      </view>
     </view>
   </view>
-  <view class="jumpto_1" wx:if="{{getinfo}}" bindtap="fillindata">更新身体数据-></view>
-  <view class="jumpto_1" wx:else bindtap="fillindata">立即免费测量-></view>
-  <view style="height:20px;"></view>
+  <view class="jumpto_1box" wx:if="{{getinfo}}" bindtap="fillindata">更新身体数据-></view>
+  <view class="jumpto_1box" wx:else bindtap="fillindata">
+    <view class="jumpto_1text">立即免费测量</view>
+    <view class="jumpto_1icon" src="/images/falling.png"></view>
+  </view>
   <view class="titlebox_3">
     今日秤食食谱
   </view>
-  <scroll-view scroll-x="true" style="height:140px;width:100%;">
-    <view class="comlistcontainer" style="width:{{todaylist.length*150}}px">
-      <view class="comphotobox" wx:for="{{todaylist}}" wx:key>
-        <view class="comphotolittlebox">
-          <view class="comphotos" style="background-image:url();"></view>
-          <view class="comnames">早餐</view>
-        </view>
+  <view class="nametitle">这是一个名字套餐</view>
+  <scroll-view scroll-x="true" style="height:275rpx;width:100%;margin-top:26rpx;">
+    <view class="comlistcontainer" style="width:{{todaylist.length*296}}rpx">
+      <view class="comphotolittlebox" wx:for="{{todaylist}}" wx:key>
+        <view class="comphotos" style="background-image:url();"></view>
+        <view class="comnames">早餐-牛油果奶昔</view>
       </view>
     </view>
   </scroll-view>
   <view class="jumpto_2" wx:if="{{setfood}}" bindtap="recipelist">吃腻了？获取更多食谱-></view>
-  <view class="jumpto_2" wx:else bindtap="recipelist">定制私人配餐-></view>
+  <view class="jumpto_2box" wx:else bindtap="recipelist">
+    <view class="jumpto_2text">定制私人配餐</view>
+    <view class="jumpto_2icon"></view>
+  </view>
 </view>
