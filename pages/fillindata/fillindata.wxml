@@ -1,3 +1,44 @@
 <!--pages/fillindata/fillindata.wxml-->
-<view>填写个人信息数据</view>
-<view bindtap="gymnearby">到附近的健身房去测</view>
+<view class='body'>
+  <view class='title'>完善身体数据</view>
+  <view class='items'>
+    <view>性别</view>
+    <view>nan</view>
+  </view>
+  <view class='items'>
+    <view>出生日期</view>
+    <view>nan</view>
+  </view>
+  <view class='items'>
+    <view>身高</view>
+    <view>nan</view>
+  </view>
+  <view class='items'>
+    <view>体重</view>
+    <view>nan</view>
+  </view>
+  <view class='items'>
+    <view>运动量</view>
+    <view>nan</view>
+  </view>
+  <view class='items'>
+    <view>饮食控制目的</view>
+    <view>nan</view>
+  </view>
+  <view class='title' bindtap="gymnearby">选填项</view>
+  <view>完整填写获得更准确测量结果</view>
+  <view class='items'>
+    <view>体脂率</view>
+    <view>nan</view>
+  </view>
+  <view class='items'>
+    <view>骨盐量</view>
+    <view>nan</view>
+  </view>
+  <view class='items'>
+    <view>作息时间</view>
+    <view>nan</view>
+  </view>
+  <view class='tips'>不会填？免费到附近健身房测量</view>
+  <button class='button'>确定</button>
+</view>

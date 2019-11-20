@@ -1,1 +1,43 @@
 /* pages/fillindata/fillindata.wxss */
+
+.body {
+  margin: 0 55rpx;
+  font-size: 28rpx;
+}
+
+/* 标题 */
+
+.title {
+  /* font: Heavy 55rpx Source Han Serif CN; */
+  font-size: 55rpx;
+  font-weight: bold;
+  letter-spacing: -2.13rpx;
+  margin-top: 62rpx;
+  color: #484848;
+}
+
+.items {
+  padding: 42rpx 0;
+  border-bottom: solid 2px rgb(237, 237, 237);
+}
+
+/* 对主内容样式控制 */
+
+.items>view {
+  height: 40rpx;
+}
+
+.tips {
+  color: #f83a51;
+  margin: 63rpx 0 67rpx 0;
+}
+
+/* 按钮 */
+
+.button {
+  height: 94rpx;
+  margin-bottom: 70rpx;
+  color: #fff;
+  background-color: #f83a51;
+  border-radius: 0;
+}

@@ -40,7 +40,7 @@
   </view>
   <view class="jumpto_1box" wx:if="{{getinfo}}" bindtap="fillindata">更新身体数据-></view>
   <view class="jumpto_1box" wx:else bindtap="fillindata">
-    <view class="jumpto_1text">立即免费测量</view>
+    <view class="jumpto_1text" >立即免费测量</view>
     <view class="jumpto_1icon" src="/images/falling.png"></view>
   </view>
   <view class="titlebox_3">
