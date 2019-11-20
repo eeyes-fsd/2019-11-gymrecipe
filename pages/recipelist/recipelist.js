@@ -5,8 +5,21 @@ Page({
    * 页面的初始数据
    */
   data: {
+    showwindow:false,
     perchased:1,
     recipelist:[1,2,3,4,5]//食谱列表
+  },
+  closewindow:function(){
+    var that= this
+    that.setData({
+      showwindow:false
+    })
+  },
+  showwindow:function(){
+    var that = this
+    that.setData({
+      showwindow:true
+    })
   },
   nav:function(e){
     var that = this

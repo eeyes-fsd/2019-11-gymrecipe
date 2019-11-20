@@ -31,7 +31,7 @@
       </view>
     </view>
   </scroll-view>
-  <view class="bottom_line">
+  <view class="bottom_line" bindtap="showwindow">
     <view class="photogroup">
       <view class="roundphoto" style="background-color:green;z-index:1"></view>
       <view class="roundphoto" style="background-color:red;z-index:2;margin-left:-9.92rpx;"></view>
@@ -39,4 +39,34 @@
     </view>
     <view class="bottomtext">查看343条评价</view>
   </view>
+</view>
+
+
+
+
+<view class="floatwindow" style="z-index:4" wx:if="{{showwindow}}">
+  <view class="window_title">配餐定制方式</view>
+  <view class="methodlist">
+    <view class="methodbox">
+      <view class="methodtitle">秤食</view>
+      <view class="methodname">一日配餐</view>
+      <view class="methodprice">19.9</view>
+    </view>
+    <view class="methodbox">
+      <view class="methodtitle">秤食</view>
+      <view class="methodname">三日配餐</view>
+      <view class="methodprice">19.9</view>
+    </view>
+    <view class="methodbox">
+      <view class="methodtitle">秤食</view>
+      <view class="methodname">全部解锁</view>
+      <view class="methodprice">19.9</view>
+    </view>
+  </view>
+  <view class="windowdetailbox">
+    <view class="windowdetailtitle">购买详情</view>
+    <view class="windowdetailname">秤食配餐-奥尔良鸡胸肉套餐</view>
+    <view class="windowdetailcontent">这是一个食谱介绍这是一个食谱介绍这是一个食谱介绍这是一个食谱介绍这是一个食谱介绍这是一个食谱介绍这是一个食谱介绍这是一个食谱介绍这是一个食谱介绍</view>
+  </view>
+  <button class="button" bindtap="closewindow">立即购买</button>
 </view>

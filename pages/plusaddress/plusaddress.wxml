@@ -1,2 +1,24 @@
-<!--pages/plusaddress/plusaddress.wxml-->
-<text>添加地址</text>
+<view class="body">
+  <view class="title">新增收货地址</view>
+  <view class="inputbox">
+    <view class="textline" style="margin-top">联系人</view>
+    <input class="inputline" placeholder="请填写收货人姓名"></input>
+  </view>
+  <view class="inputbox">
+    <view class="textline">称呼</view>
+    <input class="inputline" placeholder="请填写收货人称呼"></input>
+  </view>
+  <view class="inputbox">
+    <view class="textline">手机号</view>
+    <input class="inputline" placeholder="请填写收货人手机号"></input>
+  </view>
+  <view class="inputbox">
+    <view class="textline">收货地址</view>
+    <input class="inputline" placeholder="收货地址"></input>
+  </view>
+  <view class="inputbox">
+    <view class="textline">门牌号</view>
+    <input class="inputline" placeholder="详细地址，例如16号楼4层402室"></input>
+  </view>
+  <button class="button">确定</button>
+</view>

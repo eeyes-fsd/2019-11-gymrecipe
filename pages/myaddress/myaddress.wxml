@@ -1,0 +1,23 @@
+<!--pages/myaddress/myaddress.wxml-->
+
+<view class="body">
+  <view class="title">我的收货地址</view>
+  <view class="addressbox" wx:for="{{addresslist}}" wx:key  bindtap="changeaddress">
+    <view class="addressnamebox">
+      <view class="addressname">林贤恒</view>
+      <view class="greyline"></view>
+    </view>
+    <view class="addressinfobox">
+      <view class="addressinfoicon"></view>
+      <view class="addressinfotext">南山区</view>
+    </view>
+    <view class="addressinfobox">
+      <view class="addressinfoicon"></view>
+      <view class="addressinfotext">1342143123</view>
+    </view>
+  </view>
+  <view class="jumptobox"  bindtap="plusaddress">
+    <view class="jumptext">新增收货地址</view>
+    <view class="jumpicon"></view>
+  </view>
+</view>

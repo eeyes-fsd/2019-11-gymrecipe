@@ -139,3 +139,113 @@
   color:#484848;
   line-height:40rpx;
 }
+
+.floatwindow{
+  position:fixed;
+  bottom:0px;
+  width:100%;
+  height:1140rpx;
+  background-color:#FFFFFF;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  align-items: center;
+  border-radius:60rpx 60rpx 0rpx 0rpx;
+}
+.window_title{
+  margin-top:44rpx;
+  height:69rpx;
+  width:100%;
+  padding-left:64rpx;
+  font-size:48rpx;
+  color:#4A4E63;
+  line-height:69rpx;
+  
+}
+.methodlist{
+  margin-top:39rpx;
+  height:241.23rpx;
+  width:100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.methodbox{
+  height:241.23rpx;
+  width:212rpx;
+  border: 3px solid #F83A51;
+  border-radius: 20px;
+  display:flex;
+  flex-direction:column;
+  justify-content: flex-start;
+  align-items: left;
+}
+.methodtitle{
+  margin-top:30rpx;
+  height:40rpx;
+  font-size:28rpx;
+  color:#4A4E63;
+  line-height:40rpx;
+  padding-left:24rpx;
+}
+.methodname{
+  margin-top:4rpx;
+  height:40rpx;
+  font-size:28rpx;
+  color:#4A4E63;
+  line-height:40rpx;
+  padding-left:24rpx;
+}
+.methodprice{
+  margin-top:48rpx;
+  height:40rpx;
+  font-size:28rpx;
+  color:#4A4E63;
+  line-height:40rpx;
+  padding-left:24rpx;
+}
+.windowdetailbox{
+  margin-top:46.77rpx;
+  height:558rpx;
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: left;
+}
+.windowdetailtitle{
+  height:40rpx;
+  width:100%;
+  padding-left:60rpx;
+  font-size:28rpx;
+  line-height:40rpx;
+  text-align:left;
+  color:#4A4E63;
+}
+.windowdetailname{
+  margin-top:8rpx;
+  height:40rpx;
+  width:100%;
+  padding-left:60rpx;
+  font-size:28rpx;
+  line-height:40rpx;
+  text-align:left;
+  color:#4A4E63;
+}
+.windowdetailcontent{
+  margin-top:6rpx;
+  height:464rpx;
+  padding-left:60rpx;
+  padding-right:36rpx;
+  font-size:28rpx;
+  line-height:40rpx;
+  color:#4A4E63;
+}
+.button {
+  height: 94rpx;
+  margin-bottom: 48rpx;
+  color: #fff;
+  background-color: #f83a51;
+  border-radius: 0;
+}

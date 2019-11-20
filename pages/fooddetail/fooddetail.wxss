@@ -5,6 +5,7 @@
   justify-content: flex-start;
   align-items: center;
   width:100%;
+  background-color:#FAFAFA;
 }
 .timemealbar{
   width:100%;
@@ -21,4 +22,53 @@
   color:#484848;
   line-height:46rpx;
   text-align:left;
+}
+.gradientbox{
+  margin-top:36rpx;
+  width:640rpx;
+  height:312rpx;
+  display:flex;
+  flex-direction:column;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 40rpx;
+  background-color:#FFFFFF;
+}
+.titlebox{
+  margin-top:34rpx;
+  height: 40rpx;
+  padding-left:32rpx;
+  font-size:28rpx;
+  color:#484848;
+  line-height:40rpx;
+}
+.border_box{
+  height:26rpx;
+  width:558rpx;
+  border-bottom:1px solid #498FE133;
+}
+.namebox{
+  height:40rpx;
+  width:100%;
+}
+.gradientname{
+  height:40rpx;
+  width:112rpx;
+  font-size:28rpx;
+  line-height:40rpx;
+  margin-left:33rpx;
+  float:left;
+}
+.gradientnum{
+  height:40rpx;
+  width:100rpx;
+  font-size:28rpx;
+  line-height:40rpx;
+  margin-right:50rpx;
+  text-align:right;
+  float:right;
+}
+.procedurebox{
+  width:640rpx;
+  height:
 }

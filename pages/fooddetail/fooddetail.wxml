@@ -5,28 +5,44 @@
     <view class="bar" bindtap="navbar" data-id="3" style="margin-left:48rpx;color:{{currenttab==3?'#484848':'#D7D7D7'}}">晚餐</view>
   </view>
   <view class="needinfobox">
-      <view class="needinfolist">
-        <view class="needlinebox" style="margin-top:34rpx;">
-          <view class="needicontextbox">
-            <view class="needicon"></view>
-            <view class="needtitle">碳水化合物</view>
-          </view>
-          <view class="neednum">1431克</view>
+    <view class="needinfolist">
+      <view class="needlinebox" style="margin-top:34rpx;">
+        <view class="needicontextbox">
+          <view class="needicon"></view>
+          <view class="needtitle">碳水化合物</view>
         </view>
-        <view class="needlinebox" style="margin-top:16rpx;">
-          <view class="needicontextbox">
-            <view class="needicon"></view>
-            <view class="needtitle">蛋白质</view>
-          </view>
-          <view class="neednum">820克</view>
+        <view class="neednum">1431克</view>
+      </view>
+      <view class="needlinebox" style="margin-top:16rpx;">
+        <view class="needicontextbox">
+          <view class="needicon"></view>
+          <view class="needtitle">蛋白质</view>
         </view>
-        <view class="needlinebox" style="margin-top:16rpx;">
-          <view class="needicontextbox">
-            <view class="needicon"></view>
-            <view class="needtitle">脂肪</view>
-          </view>
-          <view class="neednum">75克</view>
+        <view class="neednum">820克</view>
+      </view>
+      <view class="needlinebox" style="margin-top:16rpx;">
+        <view class="needicontextbox">
+          <view class="needicon"></view>
+          <view class="needtitle">脂肪</view>
         </view>
+        <view class="neednum">75克</view>
       </view>
     </view>
+  </view>
+  <view class="gradientbox">
+    <view class="titlebox">食材</view>
+    <view class="border_box"></view>
+    <view class="namebox" style="margin-top:22rpx">
+      <view class="gradientname">冻鸡胸肉</view>
+      <view class="gradientnum">1431克</view>
+    </view>
+    <view class="namebox" style="margin-top:16rpx">
+      <view class="gradientname">西兰花</view>
+      <view class="gradientnum">820克</view>
+    </view>
+    <view class="namebox" style="margin-top:16rpx">
+      <view class="gradientname">牛油果</view>
+      <view class="gradientnum">74克</view>
+    </view>
+  </view>
 </view>

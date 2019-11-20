@@ -1,4 +1,4 @@
-<view wx:if="{{stack==1}}" class='main'>
+<view class='main'>
   <view class="userinfobox">
     <view>
       <view id='nick-name'>张冠雄</view>
@@ -25,8 +25,3 @@
   <button bindtap='close'>确定</button>
 </view>
 
-<view wx:if="{{stack==2}}">
-  <view>我的收货地址</view>
-  <view bindtap="changeaddress">这是一大堆收货地址======</view>
-  <view bindtap="plusaddress">新增收货地址</view>
-</view>
