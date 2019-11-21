@@ -5,7 +5,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    user:['张冠雄'],
+    username:['先生'],
+    tele:['135006969280'],
+    address:['南山区海德'],
+    detailaddress:['16号楼4层402室']
   },
 
   /**

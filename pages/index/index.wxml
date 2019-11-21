@@ -5,8 +5,8 @@
   </view>
   <scroll-view scroll-x="true" style="height:600rpx;width:100%;margin-top:26rpx;">
     <view class="listcontainer" style="width:{{foodlist.length*436}}rpx">
-      <view class="photobox" wx:for="{{foodlist}}" style="background-image:url();" wx:key>
-      </view>
+      <image class="photobox" wx:for="{{foodlist}}" src="{{item.imagesrc}}" wx:key data-id="{{item.id}}" bindtap="recipelist">
+      </image>
     </view>
   </scroll-view>
   <view class="titlebox_2">
@@ -17,21 +17,21 @@
     <view class="needinfolist">
       <view class="needlinebox" style="margin-top:34rpx;">
         <view class="needicontextbox">
-          <view class="needicon"></view>
+          <image class="needicon" src="/images/gradient1.png"></image>
           <view class="needtitle">碳水化合物</view>
         </view>
         <view class="neednum">1431克</view>
       </view>
       <view class="needlinebox" style="margin-top:16rpx;">
         <view class="needicontextbox">
-          <view class="needicon"></view>
+          <image class="needicon" src="/images/gradient2.png"></image>
           <view class="needtitle">蛋白质</view>
         </view>
         <view class="neednum">820克</view>
       </view>
       <view class="needlinebox" style="margin-top:16rpx;">
         <view class="needicontextbox">
-          <view class="needicon"></view>
+          <image class="needicon" src="/images/gradient3.png"></image>
           <view class="needtitle">脂肪</view>
         </view>
         <view class="neednum">75克</view>
@@ -41,7 +41,7 @@
   <view class="jumpto_1box" wx:if="{{getinfo}}" bindtap="fillindata">更新身体数据-></view>
   <view class="jumpto_1box" wx:else bindtap="fillindata">
     <view class="jumpto_1text" >立即免费测量</view>
-    <view class="jumpto_1icon" src="/images/falling.png"></view>
+    <image class="jumpto_1icon" src="/images/falling.png"></image>
   </view>
   <view class="titlebox_3">
     今日秤食食谱
@@ -58,6 +58,6 @@
   <view class="jumpto_2" wx:if="{{setfood}}" bindtap="recipelist">吃腻了？获取更多食谱-></view>
   <view class="jumpto_2box" wx:else bindtap="recipelist">
     <view class="jumpto_2text">定制私人配餐</view>
-    <view class="jumpto_2icon"></view>
+    <image class="jumpto_2icon" src="/images/falling.png"></image>
   </view>
 </view>

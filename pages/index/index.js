@@ -8,7 +8,7 @@ Page({
     setfood:false,//是否定制过套餐
     todaylist:[1,2,3],//今日食谱
     updatetime:'11/8',
-    foodlist:[1,2,3,4,5],//首页推荐套餐图
+    foodlist: [{id:1,imagesrc:"/images/meat1.png"}, {id:2,imagesrc:"/images/meat.png"}],//首页推荐套餐图
     newrecom:'奥尔良鸡胸肉套餐',
     windowWitdh:[],
     windowHeight:[]

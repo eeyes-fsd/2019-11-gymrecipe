@@ -1,2 +1,24 @@
-<!--pages/changeaddress/changeaddress.wxml-->
-<text>修改地址</text>
+<form class="body" bindsubmit="formsubmit">
+  <view class="title">修改收货地址</view>
+  <view class="inputbox">
+    <view class="textline" style="margin-top">联系人</view>
+    <input class="inputline" value="{{user}}" placeholder="请填写收货人姓名" name="user"></input>
+  </view>
+  <view class="inputbox">
+    <view class="textline">称呼</view>
+    <input class="inputline" value="{{username}}" placeholder="请填写收货人称呼" name="username"></input>
+  </view>
+  <view class="inputbox">
+    <view class="textline">手机号</view>
+    <input class="inputline" value="{{tele}}" placeholder="请填写收货人手机号" name="tele"></input>
+  </view>
+  <view class="inputbox">
+    <view class="textline">收货地址</view>
+    <input class="inputline" value="{{address}}" placeholder="收货地址" name="address"></input>
+  </view>
+  <view class="inputbox">
+    <view class="textline">门牌号</view>
+    <input class="inputline" value="{{detailaddress}}" placeholder="详细地址，例如16号楼4层402室" name="detailaddress"></input>
+  </view>
+  <button class="button" style="width:640rpx" form-type="submit">确定</button>
+</form>

@@ -1,1 +1,60 @@
-/* pages/changeaddress/changeaddress.wxss */
+/* pages/plusaddress/plusaddress.wxss */
+.body{
+  display:flex;
+  flex-direction:column;
+  justify-content: flex-start;
+  align-items: center;
+  padding:0 55rpx;
+  background-color:#FAFAFA;
+}
+.title{
+  margin-top:10rpx;
+  height:79rpx;
+  width:100%;
+  font-size:55rpx;
+  text-align:left;
+  line-height:79rpx;
+  color:#4A4E63;
+}
+.textline{
+  height:40rpx;
+  width:100%;
+  color:#484848;
+  font-size:28rpx;
+  line-height:40rpx;
+  text-align:left;
+}
+.inputline{
+  margin-top:12rpx;
+  height:40rpx;
+  width:100%;
+  color:#484848;
+  font-size:28rpx;
+  line-height:40rpx;
+  text-align:left;
+}
+.inputbox{
+  margin-top:40rpx;
+  height:136rpx;
+  width:100%;
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: left;
+  border-bottom:1rpx solid #D7D7D7;
+}
+.greyline{
+  margin-top:42rpx;
+  height:4rpx;
+  width:100%;
+  background-color:#D7D7D7;
+}
+.button {
+  margin-top:274rpx;
+  height: 94rpx;
+  margin-bottom: 70rpx;
+  color: #fff;
+  width:640rpx;
+  background-color: #f83a51;
+  border-radius: 0;
+}

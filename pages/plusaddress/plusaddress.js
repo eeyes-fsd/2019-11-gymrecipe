@@ -7,7 +7,16 @@ Page({
   data: {
 
   },
-
+  formsubmit:function(e){
+    var that = this
+    console.log(e.detail.value.user)
+    console.log(e.detail.value.username)
+    console.log(e.detail.value.tele)
+    console.log(e.detail.value.address)
+    console.log(e.detail.value.detailaddress)
+    wx.request({
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

@@ -15,13 +15,23 @@
   <view class='recommand'>推荐给好友 →</view>
 </view>
 
-<view class="mask" wx:if="{{show}}" bindtap='close' catchtouchmove='maskTouchMove'></view>
+<view class="mask"  wx:if="{{show}}" bindtap='close' catchtouchmove='maskTouchMove'></view>
 <view class="content-container" wx:if="{{ show}}" catchtouchmove='touchMove'>
-  <view>联系我们</view>
-  <view>
-    <view>联系电话：*********</view>
-    <view class="content">官方邮箱：***@qq.com</view>
+  <view class="content-title">联系我们</view>
+  <view class="content-content" style="margin-top:59rpx;">联系电话：*********</view>
+  <view class="content-content" style="margin-top:12rpx;">官方邮箱：***@qq.com</view>
+  <view class="border-bottom"></view>
+  <view class="sure" bindtap='close'>确定</view>
+</view>
+
+<view class="content-container" wx:if="{{ show}}" catchtouchmove='touchMove'>
+  <view class="content-title">微信授权</view>
+  <view class="content-content" style="margin-top:59rpx;">微信授权成功\/</view>
+  <view class="content-content" style="margin-top:12rpx;">授权绑定你的手机号</view>
+  <view class="border-bottom"></view>
+  <view class="btnbox">
+    <view class="btn" bindtap='close'>拒绝</view>
+    <view class="btn" bindtap='close'>确定</view>
   </view>
-  <button bindtap='close'>确定</button>
 </view>
 

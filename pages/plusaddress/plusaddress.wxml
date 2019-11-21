@@ -1,24 +1,24 @@
-<view class="body">
+<form class="body" bindsubmit="formsubmit">
   <view class="title">新增收货地址</view>
   <view class="inputbox">
     <view class="textline" style="margin-top">联系人</view>
-    <input class="inputline" placeholder="请填写收货人姓名"></input>
+    <input class="inputline" placeholder="请填写收货人姓名" name="user"></input>
   </view>
   <view class="inputbox">
     <view class="textline">称呼</view>
-    <input class="inputline" placeholder="请填写收货人称呼"></input>
+    <input class="inputline" placeholder="请填写收货人称呼" name="username"></input>
   </view>
   <view class="inputbox">
     <view class="textline">手机号</view>
-    <input class="inputline" placeholder="请填写收货人手机号"></input>
+    <input class="inputline" placeholder="请填写收货人手机号" name="tele"></input>
   </view>
   <view class="inputbox">
     <view class="textline">收货地址</view>
-    <input class="inputline" placeholder="收货地址"></input>
+    <input class="inputline" placeholder="收货地址" name="address"></input>
   </view>
   <view class="inputbox">
     <view class="textline">门牌号</view>
-    <input class="inputline" placeholder="详细地址，例如16号楼4层402室"></input>
+    <input class="inputline" placeholder="详细地址，例如16号楼4层402室" name="detailaddress"></input>
   </view>
-  <button class="button">确定</button>
-</view>
+  <button class="button" style="width:640rpx" form-type="submit">确定</button>
+</form>

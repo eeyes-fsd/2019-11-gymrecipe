@@ -54,6 +54,7 @@
   height: 94rpx;
   margin-bottom: 70rpx;
   color: #fff;
+  width:640rpx;
   background-color: #f83a51;
   border-radius: 0;
 }
