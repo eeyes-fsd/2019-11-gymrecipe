@@ -6,7 +6,7 @@
   </view>
   <view class="inputbox">
     <view class="textline">称呼</view>
-    <input class="inputline" placeholder="请填写收货人称呼" name="username"></input>
+    <input class="inputline" placeholder="请填写收货人称呼" name="gender"></input>
   </view>
   <view class="inputbox">
     <view class="textline">手机号</view>

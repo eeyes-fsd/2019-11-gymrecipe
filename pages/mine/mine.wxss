@@ -29,73 +29,89 @@
   margin: 60rpx 0;
   color: rgb(248, 67, 89);
 }
-.mask{
+
+.mask {
   position: fixed;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: rgba(0,0,0,0.3)
+  background-color: rgba(0, 0, 0, 0.3);
 }
-.content-container{
+
+.content-container {
   position: fixed;
   top: 484rpx;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   width: 640rpx;
   border-radius: 40rpx;
   height: 510rpx;
   background-color: white;
-  display:flex;
-  flex-direction:column;
+  display: flex;
+  flex-direction: column;
   justify-content: flex-start;
-  align-items:center;
+  align-items: center;
 }
-.content-title{
-  margin-top:64rpx;
-  height:79rpx;
-  width:570rpx;
-  padding-left:70rpx;
-  font-size:55rpx;
-  line-height:79rpx;
-  color: #4A4E63;
+
+.content-title {
+  margin-top: 64rpx;
+  height: 79rpx;
+  width: 570rpx;
+  padding-left: 70rpx;
+  font-size: 55rpx;
+  line-height: 79rpx;
+  color: #4a4e63;
 }
-.content-content{
-  height:46rpx;
-  width:570rpx;
-  padding-left:70rpx;
-  font-size:32rpx;
-  line-height:46rpx;
-  color:#4A4E63;
+
+.content-content {
+  height: 46rpx;
+  width: 570rpx;
+  padding-left: 70rpx;
+  font-size: 32rpx;
+  line-height: 46rpx;
+  color: #4a4e63;
 }
-.border-bottom{
-  height:60rpx;
-  border-bottom:1rpx solid #D7D7D7;
-  width:500rpx;
+
+.content-content:nth-child(3) {
+  margin-bottom: 60rpx;
 }
-.sure{
-  margin-top:42rpx;
-  height:46rpx;
-  width:64rpx;
-  font-size:32rpx;
-  line-height:46rpx;
-  text-align:center;
-  color:#F83A51;
+
+.sure {
+  margin-top: 42rpx;
+  height: 46rpx;
+  width: 64rpx;
+  font-size: 32rpx;
+  line-height: 46rpx;
+  text-align: center;
+  color: #f83a51;
 }
-.btnbox{
-  height:144rpx;
-  width:100%;
-  display:flex;
-  flex-direction:row;
+
+.btnbox {
+  border-top: 1rpx solid #d7d7d7;
+  height: 144rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
   justify-content: flex-start;
-  align-items:center;
+  align-items: center;
 }
-.btn{
-  height:144rpx;
-  width:50%;
-  font-size:32rpx;
-  line-height:144rpx;
-  text-align:center;
-  color:#F83A51;
-  border-left:1px solid #D7D7D7;
+
+.btn {
+  height: 144rpx;
+  width: 50%;
+  font-size: 32rpx;
+  line-height: 144rpx;
+  text-align: center;
+  color: #f83a51;
+  background-color: white;
+  border-left: 1px solid #d7d7d7;
+}
+
+.btn:nth-child(odd) {
+  border-radius: 0 0 0 40rpx;
+}
+
+.btn:nth-child(even) {
+  border-radius: 0 0 40rpx 0;
 }
