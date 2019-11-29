@@ -1,5 +1,5 @@
 // 地址
-const host = 'https://app0.eeyes.xyz/api'
+const host = 'https://127.0.0.1/api'
 
 // 封装requests
 const requestPromise = (method, url, data = "", token = "") => {
@@ -81,13 +81,25 @@ const upDateUser = async(phone, captcha) => {
     "phone": phone,
     "captcha": captcha
   }
-  let token = getToken()
+  let token = await getToken()
   let response = await requestPromise("DELETE", "/user", data, token)
   return response
 }
-
+// 获取地址
+const getAddress = async() => {
+  let token = await getToken()
+  let response = await requestPromise("GET", "/address", "", token)
+  return response
+}
+const plusAddress = async(data) => {
+  let token = await getToken()
+  let response = await requestPromise("POST", "/address", data, token)
+  return response
+}
 module.exports = {
   requestPromise,
   login,
-  getToken
+  getToken,
+  getAddress,
+  plusAddress
 }

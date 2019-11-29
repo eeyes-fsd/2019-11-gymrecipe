@@ -1,7 +1,7 @@
 <view class='main'>
   <view class="userinfobox">
     <view>
-      <view id='nick-name'>张冠雄</view>
+      <view id='nick-name'>{{userInfo.nickName}}</view>
       <view id='phone'>12301230</view>
     </view>
     <image class='head'></image>
@@ -13,25 +13,29 @@
     <view bindtap="onTab" class='items'>联系我们</view>
   </view>
   <view class='recommand'>推荐给好友 →</view>
-</view>
 
-<view class="mask"  wx:if="{{show}}" bindtap='close' catchtouchmove='maskTouchMove'></view>
-<view class="content-container" wx:if="{{ show}}" catchtouchmove='touchMove'>
+</view>
+<!-- 遮罩 -->
+<view class="mask" wx:if="{{showContact || isShow}}" bindtap='close' catchtouchmove='maskTouchMove'></view>
+<!-- 联系 -->
+<view class="content-container" wx:if="{{showContact}}" catchtouchmove='touchMove'>
   <view class="content-title">联系我们</view>
   <view class="content-content" style="margin-top:59rpx;">联系电话：*********</view>
   <view class="content-content" style="margin-top:12rpx;">官方邮箱：***@qq.com</view>
   <view class="border-bottom"></view>
   <view class="sure" bindtap='close'>确定</view>
 </view>
+<!-- 登录 -->
+<view class="content-container" wx:if="{{isShow}}" catchtouchmove='touchMove'>
+  <view wx:if="{{canIUse}}">
+    <view class="content-title">微信授权</view>
+    <view class="content-content" style="margin-top:59rpx;">微信授权成功\/</view>
+    <view class="content-content" style="margin-top:12rpx;">授权绑定你的手机号</view>
 
-<view class="content-container" wx:if="{{ show}}" catchtouchmove='touchMove'>
-  <view class="content-title">微信授权</view>
-  <view class="content-content" style="margin-top:59rpx;">微信授权成功\/</view>
-  <view class="content-content" style="margin-top:12rpx;">授权绑定你的手机号</view>
-  <view class="border-bottom"></view>
-  <view class="btnbox">
-    <view class="btn" bindtap='close'>拒绝</view>
-    <view class="btn" bindtap='close'>确定</view>
+    <view class="btnbox">
+      <button class="btn">拒绝</button>
+      <button class="btn" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">确定</button>
+    </view>
   </view>
+  <view wx:else>请升级微信版本</view>
 </view>
-

@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
-const app = getApp()
 import api from "../../utils/util.js"
+const app = getApp()
 Page({
   data: {
     getinfo:false,//是否测量过身体数据
