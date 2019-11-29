@@ -1,4 +1,5 @@
 /**index.wxss**/
+@import '../../style/stylesheet.wxss';
 .titlebox_1{
   width:100%;
   height:119rpx;
@@ -14,6 +15,7 @@
   font-size:55rpx;
   padding-left:55rpx;
   color:#4A4E63;
+  font-family: 'SourceHanSerifCN-Heavy-Alphabetic';
 }
 .titlebox_1_titlelow{
   width:100%;
@@ -153,3 +155,4 @@
   line-height:80rpx;
   border-radius:0 0 16rpx 16rpx;
 }
+

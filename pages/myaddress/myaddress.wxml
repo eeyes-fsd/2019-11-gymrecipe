@@ -18,6 +18,6 @@
   </view>
   <view class="jumptobox"  bindtap="plusaddress">
     <view class="jumptext">新增收货地址</view>
-    <view class="jumpicon"></view>
+    <image class="jumpicon" src="/images/falling.png"></image>
   </view>
 </view>

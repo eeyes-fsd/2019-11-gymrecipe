@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/mine/mine",
     "pages/index/index",
+    "pages/mine/mine",
     "pages/logs/logs",
     "pages/market/market",
     "pages/plusaddress/plusaddress",
@@ -40,9 +40,13 @@
       }
     ]
   },
+<<<<<<< HEAD
   "style": "v2",
   "sitemapLocation": "sitemap.json",
   "functionalPages": {
     "independent": true
   }
+=======
+  "sitemapLocation": "sitemap.json"
+>>>>>>> 4b47c5b62f79b873684963ce64cf4693d94ad87f
 }

@@ -7,7 +7,7 @@ Page({
   data: {
     showwindow:false,
     perchased:1,
-    recipelist:[1,2,3,4,5]//食谱列表
+    recipelist:[{id:1,imagesrc:"/images/reone.png"},{id:2,imagesrc:"/images/retwo.png"}]//食谱列表
   },
   closewindow:function(){
     var that= this

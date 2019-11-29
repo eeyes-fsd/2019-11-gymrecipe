@@ -50,8 +50,8 @@
   <scroll-view scroll-x="true" style="height:275rpx;width:100%;margin-top:26rpx;">
     <view class="comlistcontainer" style="width:{{todaylist.length*296}}rpx">
       <view class="comphotolittlebox" wx:for="{{todaylist}}" wx:key>
-        <view class="comphotos" style="background-image:url();"></view>
-        <view class="comnames">早餐-牛油果奶昔</view>
+        <image class="comphotos" src="{{item.imagesrc}}"></image>
+        <view class="comnames">{{item.content}}</view>
       </view>
     </view>
   </scroll-view>
