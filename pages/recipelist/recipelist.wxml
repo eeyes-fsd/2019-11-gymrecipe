@@ -63,6 +63,7 @@
       <view class="methodprice">19.9</view>
     </view>
   </view>
+  <view class="chooseradio">100</view>
   <view class="windowdetailbox">
     <view class="windowdetailtitle">购买详情</view>
     <view class="windowdetailname">秤食配餐-奥尔良鸡胸肉套餐</view>
