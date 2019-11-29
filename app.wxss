@@ -1,15 +1,12 @@
-<<<<<<< HEAD
 page {
   height: 100%;
 }
 
 .needinfobox {
   margin-top: 26rpx;
-=======
-
+}
 .needinfobox{
   margin-top:26rpx;
->>>>>>> 4b47c5b62f79b873684963ce64cf4693d94ad87f
   display: flex;
   flex-direction: column;
   justify-content: center;
