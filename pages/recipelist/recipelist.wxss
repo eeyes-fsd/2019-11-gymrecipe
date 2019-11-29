@@ -48,7 +48,6 @@
 .itemphoto{
   width:100%;
   height:762rpx;
-  background-color:rgb(252, 185, 237);
   border-radius:40rpx;
 }
 .itemtitle{

@@ -6,7 +6,7 @@
   <scroll-view scroll-x="true" style="height:1023rpx;width:100%;margin-top:50rpx;" wx:if="{{perchased==1}}">
     <view class="listbox" style="width:{{recipelist.length*556}}rpx">
       <view class="itembox" bindtap="fooddetail" wx:for="{{recipelist}}" wx:key>
-        <view class="itemphoto"></view>
+        <image class="itemphoto" src="{{item.imagesrc}}"></image>
         <view class="itemtitle">奥尔良鸡胸肉套餐</view>
         <view class="itemdetail1">包含早/中/晚三餐搭配</view>
         <view class="itemdetail2">主要食材：鸡胸肉、西兰花、牛油果</view>
