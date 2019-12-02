@@ -2,7 +2,8 @@
   <view class="userinfobox">
     <view>
       <view id='nick-name'>{{userInfo.nickName}}</view>
-      <view id='phone'>12301230</view>
+      <button class='phone' wx:if="{{phone===''}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">暂未绑定手机号</button>
+      <view class='phone' wx:else>{{phone}}</view>
     </view>
     <image class='head'></image>
   </view>
@@ -16,7 +17,7 @@
 
 </view>
 <!-- 遮罩 -->
-<view class="mask" wx:if="{{showContact || isShow}}" bindtap='close' catchtouchmove='maskTouchMove'></view>
+<view class="mask" wx:if="{{showContact || isShow || phone===''}}" bindtap='close' catchtouchmove='maskTouchMove'></view>
 <!-- 联系 -->
 <view class="content-container" wx:if="{{showContact}}" catchtouchmove='touchMove'>
   <view class="content-title">联系我们</view>
@@ -25,11 +26,25 @@
   <view class="border-bottom"></view>
   <view class="sure" bindtap='close'>确定</view>
 </view>
+<!-- 手机号 -->
+<view class="content-container" wx:if="{{phone===''}}" catchtouchmove='touchMove'>
+  <view wx:if="{{canIUse}}">
+    <view class="content-title">微信授权</view>
+    <view class="content-content" style="margin-top:59rpx;">微信授权成功</view>
+    <view class="content-content" style="margin-top:12rpx;">授权绑定你的手机号</view>
+
+    <view class="btnbox">
+      <button class="btn">拒绝</button>
+      <button class="btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">确定</button>
+    </view>
+  </view>
+  <view wx:else>请升级微信版本</view>
+</view>
 <!-- 登录 -->
 <view class="content-container" wx:if="{{isShow}}" catchtouchmove='touchMove'>
   <view wx:if="{{canIUse}}">
     <view class="content-title">微信授权</view>
-    <view class="content-content" style="margin-top:59rpx;">微信授权成功\/</view>
+    <view class="content-content" style="margin-top:59rpx;">微信授权</view>
     <view class="content-content" style="margin-top:12rpx;">授权绑定你的手机号</view>
 
     <view class="btnbox">
