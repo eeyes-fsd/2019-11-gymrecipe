@@ -1,5 +1,5 @@
 // 地址
-const host = 'https://127.0.0.1/api'
+const host = 'http://test.eeyes.xyz/api'
 
 // 封装requests
 const requestPromise = (method, url, data = "", token = "") => {
@@ -85,15 +85,66 @@ const upDateUser = async(phone, captcha) => {
   let response = await requestPromise("DELETE", "/user", data, token)
   return response
 }
+
+// 地址
 // 获取地址
 const getAddress = async() => {
   let token = await getToken()
   let response = await requestPromise("GET", "/address", "", token)
   return response
 }
+// 增加地址
 const plusAddress = async(data) => {
   let token = await getToken()
   let response = await requestPromise("POST", "/address", data, token)
+  return response
+}
+// 修改地址
+const modifyAddress = async(data) => {
+  let token = await getToken()
+  let response = await requestPromise("PUT", "/address", data, token)
+  return response
+}
+// 删除地址
+const delAddress = async(id) => {
+  let token = await getToken()
+  let response = await requestPromise("DELETE", `/address/${id}`, '', token)
+  return response
+}
+// 地址详情
+const detailAddress = async(id) => {
+  let token = await getToken()
+  let response = await requestPromise("GET", `/address/${id}`, '', token)
+  return response
+}
+
+// 获取手机验证码
+const verifyPhone = async(number) => {
+  let token = await getToken()
+  let data = {
+    "phone": number
+  }
+  let response = await requestPromise("GET", `/phone_verify`, data, token)
+  return response
+}
+
+// 用户个人数据
+// 上传个人健康数据
+const sendHealth = async(data) => {
+  let token = await getToken()
+  let response = await requestPromise("POST", `/health`, data, token)
+  return response
+}
+// 获取个人健康数据
+const sendHealth = async() => {
+  let token = await getToken()
+  let response = await requestPromise("GET", `/health`, '', token)
+  return response
+}
+// 修改个人健康数据
+const sendHealth = async (data) => {
+  let token = await getToken()
+  let response = await requestPromise("PUT", `/health`, data, token)
   return response
 }
 module.exports = {
@@ -101,5 +152,8 @@ module.exports = {
   login,
   getToken,
   getAddress,
-  plusAddress
+  plusAddress,
+  delAddress,
+  detailAddress,
+  verifyPhone
 }

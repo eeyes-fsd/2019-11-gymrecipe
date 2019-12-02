@@ -3,15 +3,18 @@
 .main {
   margin: 40rpx;
 }
-button::after{
+
+button::after {
   border: none;
 }
-button{
+
+button {
   padding: 0;
 }
+
 .phone {
   outline: none;
-  background-color: #fff
+  background-color: #fff;
 }
 
 .userinfobox {
