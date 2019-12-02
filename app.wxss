@@ -5,8 +5,9 @@ page {
 .needinfobox {
   margin-top: 26rpx;
 }
-.needinfobox{
-  margin-top:26rpx;
+
+.needinfobox {
+  margin-top: 26rpx;
   display: flex;
   flex-direction: column;
   justify-content: center;

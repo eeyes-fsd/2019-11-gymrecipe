@@ -5,12 +5,21 @@ Page({
     showContact: false,
     isShow: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    userInfo: []
+    userInfo: [],
+    phone:""
   },
   onTab: function() {
     this.setData({
       showContact: true
     })
+  },
+  getPhoneNumber:function(e) {
+    this.setData({
+      phone:e
+    })
+    console.log(e)
+    console.log(e.detail.iv)
+    console.log(e.detail.encryptedData)
   },
   close: function() {
     this.setData({

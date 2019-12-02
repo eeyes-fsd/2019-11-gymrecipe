@@ -3,6 +3,16 @@
 .main {
   margin: 40rpx;
 }
+button::after{
+  border: none;
+}
+button{
+  padding: 0;
+}
+.phone {
+  outline: none;
+  background-color: #fff
+}
 
 .userinfobox {
   display: flex;
