@@ -3,27 +3,27 @@
   <view class='title'>完善身体数据</view>
   <view class='items'>
     <view>性别</view>
-    <view>nan</view>
+    <picker value="{{index}}" range="{{gender}}" name="gender">请选择你的性别</picker>
   </view>
   <view class='items'>
     <view>出生日期</view>
-    <view>nan</view>
+    <picker mode="date" start="1900-1-1" name="date">请选择日期</picker>
   </view>
   <view class='items'>
     <view>身高</view>
-    <view>nan</view>
+    <picker name="height" placeholder="请输入你的身高" range="{{height}}">asd</picker>
   </view>
   <view class='items'>
     <view>体重</view>
-    <view>nan</view>
+    <picker name="weight" placeholder="请输入你的体重" range="{{weight}}" start="100" end="180">adsas</picker>
   </view>
   <view class='items'>
     <view>运动量</view>
-    <view>nan</view>
+    <picker range="{{exe}}">请选择你的运动量</picker>
   </view>
   <view class='items'>
     <view>饮食控制目的</view>
-    <view>nan</view>
+    <picker range="{{purpose}}"></picker>
   </view>
   <view class='title' bindtap="gymnearby">选填项</view>
   <view>完整填写获得更准确测量结果</view>

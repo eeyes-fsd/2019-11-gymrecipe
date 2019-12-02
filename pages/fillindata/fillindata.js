@@ -5,7 +5,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    gender:["男","女"],
+    exe: ["每周运动<2次", "每周运动<3次", "每周运动<4次", "每周运动<5次", "每周运动>5次"],
+    purpose:["降低体重","破世界记录"],
+    height:[100,230],
+    weight:10,
   },
   gymnearby:function(){
     var that = this
@@ -17,7 +21,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this
+    console.log(that.data.height)
   },
 
   /**
