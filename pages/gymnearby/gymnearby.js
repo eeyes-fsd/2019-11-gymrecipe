@@ -5,7 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    gymlist: [
+    { name: 'Fitness Zone', distance:'13',position: '火星', phone: '1234332445' }, 
+    { name: 'Fitness Zone',distance:'35', position: '火星', phone: '1234332445' }],
   },
 
   /**

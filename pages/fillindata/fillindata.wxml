@@ -1,82 +1,84 @@
 <!--pages/fillindata/fillindata.wxml-->
 <form bindsubmit="formsubmit">
-  <view class='body'>
-    <view class='title'>完善身体数据</view>
-    <view class='items'>
-      <view>性别</view>
-      <picker value="{{index}}" range="{{gender}}" value="index"  name="gender" bindchange="bindPickerChange" data-hi="1">
-        <view wx:if="{{fgender}}">{{dgender}}</view>
-        <view wx:else>
-          <view wx:if="{{flag}}">{{info.gender}}</view>
-          <view wx:else style="color:grey">请选择您的性别</view>
-        </view>
-      </picker>
+  <scroll-view scroll-y="true" style="height:{{windowHeight}}px;width:{{windowWidth}}px;"  scroll-into-view="{{toView}}">
+    <view class='body'>
+      <view class='title'>完善身体数据</view>
+      <view id="i1" class='items'>
+        <view>性别</view>
+        <picker value="{{index}}" range="{{gender}}" value="index"  name="gender" bindchange="bindPickerChange" data-hi="1">
+          <view wx:if="{{fgender}}">{{dgender}}</view>
+          <view wx:else>
+            <view wx:if="{{flag}}">{{info.gender}}</view>
+            <view wx:else style="color:grey">请选择您的性别</view>
+          </view>
+        </picker>
+      </view>
+      <view id="i2" class='items'>
+        <view>出生日期</view>
+        <picker mode="date" start="1900-1-1" name="date"  value="index"  bindchange="bindPickerChange" data-hi="2">
+          <view wx:if="{{fbirthdate}}">{{dbirthdate}}</view>
+          <view wx:else>
+            <view wx:if="{{flag}}">{{info.birthdate}}</view>
+            <view wx:else style="color:grey">请选择您的出生日期</view>
+          </view>
+        </picker>
+      </view>
+      <view id="i3" class='items'>
+        <view>身高</view>
+        <picker name="height" range="{{height}}"  value="{{index}}"  bindchange="bindPickerChange" data-hi="3">
+          <view wx:if="{{fheight}}">{{dheight}}cm</view>
+          <view wx:else>
+            <view wx:if="{{flag}}">{{info.height}}cm</view>
+            <view wx:else style="color:grey">请选择您的身高</view>
+          </view>
+        </picker>
+      </view>
+      <view id="i4" class='items'>
+        <view>体重</view>
+        <picker name="weight" range="{{weight}}" value="index"  bindchange="bindPickerChange" data-hi="4">
+          <view wx:if="{{fweight}}">{{dweight}}</view>
+          <view wx:else>
+            <view wx:if="{{flag}}">{{info.weight}}kg</view>
+            <view wx:else style="color:grey">请选择您的体重</view>
+          </view>
+        </picker>
+      </view>
+      <view id="i5" class='items'>
+        <view>运动量</view>
+        <picker range="{{exe}}" name="exe"  value="index" bindchange="bindPickerChange" data-hi="5">
+          <view wx:if="{{fexe}}">{{dexe}}</view>
+          <view wx:else>
+            <view wx:if="{{flag}}">{{info.exe}}</view>
+            <view wx:else style="color:grey">请选择您的运动量</view>
+          </view>
+        </picker>
+      </view>
+      <view id="i6" class='items'>
+        <view>饮食控制目的</view>
+        <picker range="{{purpose}}" name="purpose"   value="index" bindchange="bindPickerChange" data-hi="6">
+          <view wx:if="{{fpurpose}}">{{dpurpose}}</view>
+          <view wx:else>
+            <view wx:if="{{flag}}">{{info.purpose}}</view>
+            <view wx:else style="color:grey">请选择您的饮食控制目的</view>
+          </view>
+        </picker>
+      </view>
+      <view class='title' bindtap="gymnearby">选填项</view>
+      <view>完整填写获得更准确测量结果</view>
+      <view class='items'>
+        <view>体脂率</view>
+        <view>nan</view>
+      </view>
+      <view class='items'>
+        <view>骨盐量</view>
+        <view>nan</view>
+      </view>
+      <view class='items'>
+        <view>作息时间</view>
+        <picker mode="time">请选择睡眠时间</picker>
+      </view>
+      <view class='tips' bindtap="gymnearby">不会填？免费到附近健身房测量</view>
+      <button class='button' form-type="submit">确定</button>
     </view>
-    <view class='items'>
-      <view>出生日期</view>
-      <picker mode="date" start="1900-1-1" name="date"  value="index"  bindchange="bindPickerChange" data-hi="2">
-        <view wx:if="{{fbirthdate}}">{{dbirthdate}}</view>
-        <view wx:else>
-          <view wx:if="{{flag}}">{{info.birthdate}}</view>
-          <view wx:else style="color:grey">请选择您的出生日期</view>
-        </view>
-      </picker>
-    </view>
-    <view class='items'>
-      <view>身高</view>
-      <picker name="height" range="{{height}}"  value="{{index}}"  bindchange="bindPickerChange" data-hi="3">
-        <view wx:if="{{fheight}}">{{dheight}}cm</view>
-        <view wx:else>
-          <view wx:if="{{flag}}">{{info.height}}cm</view>
-          <view wx:else style="color:grey">请选择您的身高</view>
-        </view>
-      </picker>
-    </view>
-    <view class='items'>
-      <view>体重</view>
-      <picker name="weight" range="{{weight}}" value="index"  bindchange="bindPickerChange" data-hi="4">
-        <view wx:if="{{fweight}}">{{dweight}}</view>
-        <view wx:else>
-          <view wx:if="{{flag}}">{{info.weight}}kg</view>
-          <view wx:else style="color:grey">请选择您的体重</view>
-        </view>
-      </picker>
-    </view>
-    <view class='items'>
-      <view>运动量</view>
-      <picker range="{{exe}}" name="exe"  value="index" bindchange="bindPickerChange" data-hi="5">
-        <view wx:if="{{fexe}}">{{dexe}}</view>
-        <view wx:else>
-          <view wx:if="{{flag}}">{{info.exe}}</view>
-          <view wx:else style="color:grey">请选择您的运动量</view>
-        </view>
-      </picker>
-    </view>
-    <view class='items'>
-      <view>饮食控制目的</view>
-      <picker range="{{purpose}}" name="purpose"   value="index" bindchange="bindPickerChange" data-hi="6">
-        <view wx:if="{{fpurpose}}">{{dpurpose}}</view>
-        <view wx:else>
-          <view wx:if="{{flag}}">{{info.purpose}}</view>
-          <view wx:else style="color:grey">请选择您的饮食控制目的</view>
-        </view>
-      </picker>
-    </view>
-    <view class='title' bindtap="gymnearby">选填项</view>
-    <view>完整填写获得更准确测量结果</view>
-    <view class='items'>
-      <view>体脂率</view>
-      <view>nan</view>
-    </view>
-    <view class='items'>
-      <view>骨盐量</view>
-      <view>nan</view>
-    </view>
-    <view class='items'>
-      <view>作息时间</view>
-      <picker mode="time">请选择睡眠时间</picker>
-    </view>
-    <view class='tips'>不会填？免费到附近健身房测量</view>
-    <button class='button' form-type="submit">确定</button>
-  </view>
+  </scroll-view>
 </form>

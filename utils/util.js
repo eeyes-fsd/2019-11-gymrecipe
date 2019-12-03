@@ -129,24 +129,24 @@ const verifyPhone = async(number) => {
 }
 
 // 用户个人数据
-// 上传个人健康数据
-const sendHealth = async(data) => {
-  let token = await getToken()
-  let response = await requestPromise("POST", `/health`, data, token)
-  return response
-}
-// 获取个人健康数据
-const sendHealth = async() => {
-  let token = await getToken()
-  let response = await requestPromise("GET", `/health`, '', token)
-  return response
-}
-// 修改个人健康数据
-const sendHealth = async (data) => {
-  let token = await getToken()
-  let response = await requestPromise("PUT", `/health`, data, token)
-  return response
-}
+// // 上传个人健康数据
+// const sendHealth = async(data) => {
+//   let token = await getToken()
+//   let response = await requestPromise("POST", `/health`, data, token)
+//   return response
+// }
+// // 获取个人健康数据
+// const sendHealth = async() => {
+//   let token = await getToken()
+//   let response = await requestPromise("GET", `/health`, '', token)
+//   return response
+// }
+// // 修改个人健康数据
+// const sendHealth = async (data) => {
+//   let token = await getToken()
+//   let response = await requestPromise("PUT", `/health`, data, token)
+//   return response
+// }
 module.exports = {
   requestPromise,
   login,

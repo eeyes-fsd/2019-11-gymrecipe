@@ -1,2 +1,20 @@
-<!--pages/gymnearby/gymnearby.wxml-->
-<text>附近的健身房</text>
+<view class="body">
+  <view class="title">附近的健身房</view>
+  <view class="addressbox" wx:for="{{gymlist}}" wx:key="{{item.id}}"  bindtap="changeaddress">
+    <view class="addressnamebox">
+      <view class="addressnamebox2">
+        <view class="addressname">{{item.name}}</view>
+        <view class="addressdistance">{{item.distance}}</view>
+      </view>
+      <view class="greyline"></view>
+    </view>
+    <view class="addressinfobox">
+      <view class="addressinfoicon"></view>
+      <view class="addressinfotext">{{item.position}}km</view>
+    </view>
+    <view class="addressinfobox">
+      <view class="addressinfoicon"></view>
+      <view class="addressinfotext">{{item.phone}}</view>
+    </view>
+  </view>
+</view>
