@@ -1,4 +1,5 @@
 // pages/fillindata/fillindata.js
+import api from '../../utils/util.js'
 Page({
 
   /**
@@ -73,24 +74,20 @@ Page({
   },
   formsubmit: async function (e) {
     var that = this
-    that.setData({
-      toView:'i4'
-    })
-    console.log(that.data.toView)
-    if (that.data.flag == false && (e.detail.value.gender == 'index' || e.detail.value.birthdate == 'index' || e.detail.value.height == 'index' || e.detail.value.weight == 'index' || e.detail.value.exe == 'index' || e.detail.value.purpose == 'index')){
-      if(e.detail.value.gender==='index'){
+    if (that.data.flag == false && !(that.data.fgender&&that.data.fbirthdate&&that.data.fheight&&that.data.fweight&& that.data.fexe&& that.data.purpose)){
+      if(!that.data.fgender){
         that.setData({toView:'i1'})
       }else{
-        if(e.detail.value.birthdate == 'index'){
+        if(!that.data.fbirthdate){
           that.setData({toView:'i2'})
         }else{
-          if(e.detail.value.height == 'index'){
+          if(!that.data.fheight){
             that.setData({toView:'i3'})
           }else{
-            if(e.detail.value.weight == 'index'){
+            if(!that.data.fweight){
               that.setData({toView:'i4'})
             }else{
-              if(e.detail.value.exe == 'index'){
+              if(!that.data.fexe){
                 that.setData({toView:'i5'})
               }else{
                 that.setData({toView:'i6'})
@@ -115,10 +112,12 @@ Page({
       }
       console.log(data)
     }
-    //await api.plusAddress(data)
+    await api.sendHealth(data)
     that.setData({//恢复表单未编辑状态
       edit:false
     })
+    let cacheinfo = {"edit":false}
+    wx.setStorageSync('cacheinfo', cacheinfo)
   },
   gymnearby:function(){
     var that = this
@@ -151,7 +150,7 @@ Page({
       if (cacheinfo.edit) {
         if (cacheinfo.gender != 'null') { that.setData({ fgender: true, dgender: cacheinfo.gender }) }
         if (cacheinfo.birthdate != 'null') { that.setData({ fbirthdate: true, dbirthdate: cacheinfo.birthdate }) }
-        if (cacheinfo.height != 'null') { console.log("??"); that.setData({ fheight: true, dheight: cacheinfo.height }) }
+        if (cacheinfo.height != 'null') { that.setData({ fheight: true, dheight: cacheinfo.height }) }
         if (cacheinfo.weight != 'null') { that.setData({ fweight: true, dweight: cacheinfo.weight }) }
         if (cacheinfo.exe != 'null') { that.setData({ fexe: true, dexe: cacheinfo.exe }) }
         if (cacheinfo.purpose != 'null') { that.setData({ fpurpose: true, dpurpose: cacheinfo.purpose }) }
@@ -166,6 +165,9 @@ Page({
         })
       },
     })
+
+    var info = api.getHealth()
+    console.log("info=",info)
   },
   //页面卸载时
   onUnload: function () {

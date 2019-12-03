@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    methodid:1,//配餐
     showwindow:false,
     perchased:1,
     recipelist:[{id:1,imagesrc:"/images/reone.png"},{id:2,imagesrc:"/images/retwo.png"}]//食谱列表
@@ -13,6 +14,12 @@ Page({
     var that= this
     that.setData({
       showwindow:false
+    })
+  },
+  methodbar:function(e){
+    var that = this
+    that.setData({
+      methodid:e.currentTarget.dataset.id
     })
   },
   showwindow:function(){

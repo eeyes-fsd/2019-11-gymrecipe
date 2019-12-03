@@ -38,7 +38,10 @@
       </view>
     </view>
   </view>
-  <view class="jumpto_1box" wx:if="{{getinfo}}" bindtap="fillindata">更新身体数据-></view>
+  <view class="jumpto_1box" wx:if="{{getinfo}}" bindtap="fillindata">
+    <view class="jumpto_1text" >更新身体数据</view>
+    <image class="jumpto_1icon" src="/images/falling.png"></image>
+  </view>
   <view class="jumpto_1box" wx:else bindtap="fillindata">
     <view class="jumpto_1text" >立即免费测量</view>
     <image class="jumpto_1icon" src="/images/falling.png"></image>
@@ -55,7 +58,10 @@
       </view>
     </view>
   </scroll-view>
-  <view class="jumpto_2" wx:if="{{setfood}}" bindtap="recipelist">吃腻了？获取更多食谱-></view>
+  <view class="jumpto_2box" wx:if="{{setfood}}" bindtap="recipelist">
+    <view class="jumpto_2text">吃腻了？获取更多食谱</view>
+    <image class="jumpto_2icon" src="/images/falling.png"></image>
+  </view>
   <view class="jumpto_2box" wx:else bindtap="recipelist">
     <view class="jumpto_2text">定制私人配餐</view>
     <image class="jumpto_2icon" src="/images/falling.png"></image>

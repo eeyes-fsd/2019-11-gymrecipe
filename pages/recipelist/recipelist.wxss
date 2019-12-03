@@ -173,7 +173,6 @@
 .methodbox{
   height:241.23rpx;
   width:212rpx;
-  border: 3px solid #F83A51;
   border-radius: 20px;
   display:flex;
   flex-direction:column;
@@ -203,6 +202,46 @@
   color:#4A4E63;
   line-height:40rpx;
   padding-left:24rpx;
+}
+.chooseradiobox{
+  margin-top:46.77rpx;
+  height:201rpx;
+  width:100%;
+  display:flex;
+  flex-direction: column;
+  justify-content:flex-start;
+}
+.choosetitle{
+  height:40rpx;
+  width:100%;
+  padding-left:64rpx;
+  line-height:40rpx;
+  font-size:28rpx;
+  color:#4A4E63;
+}
+.choosebox{
+  align-content: space-between;
+  padding-left:40rpx;
+  padding-right:102rpx;
+  margin-top:29rpx;
+  height:132rpx;
+  width:100%;
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap:wrap;
+}
+.chooseitem{
+  margin-left:24rpx;
+  padding-left:28rpx;
+  padding-right:28rpx;
+  height:60rpx;
+  font-size:28rpx;
+  line-height:60rpx;
+  text-align:center;
+  border: 2rpx solid #D7D7D7;
+  border-radius: 100rpx;
+  
 }
 .windowdetailbox{
   margin-top:46.77rpx;
@@ -243,8 +282,11 @@
 }
 .button {
   height: 94rpx;
+  width:640rpx;
   margin-bottom: 48rpx;
-  color: #fff;
   background-color: #f83a51;
   border-radius: 0;
+  line-height:94rpx;
+  font-size:28rpx;
+  color: #fff;
 }

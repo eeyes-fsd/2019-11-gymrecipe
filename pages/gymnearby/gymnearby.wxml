@@ -4,13 +4,13 @@
     <view class="addressnamebox">
       <view class="addressnamebox2">
         <view class="addressname">{{item.name}}</view>
-        <view class="addressdistance">{{item.distance}}</view>
+        <view class="addressdistance">{{item.distance}}km</view>
       </view>
       <view class="greyline"></view>
     </view>
     <view class="addressinfobox">
       <view class="addressinfoicon"></view>
-      <view class="addressinfotext">{{item.position}}km</view>
+      <view class="addressinfotext">{{item.position}}</view>
     </view>
     <view class="addressinfobox">
       <view class="addressinfoicon"></view>
