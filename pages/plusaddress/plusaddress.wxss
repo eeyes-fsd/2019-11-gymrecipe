@@ -59,9 +59,11 @@
 .button {
   margin-top: 274rpx;
   height: 94rpx;
-  margin-bottom: 70rpx;
-  color: #fff;
-  width: 640rpx;
+  width:640rpx;
+  margin-bottom: 48rpx;
   background-color: #f83a51;
   border-radius: 0;
+  line-height:94rpx;
+  font-size:28rpx;
+  color: #fff;
 }

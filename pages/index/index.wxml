@@ -1,11 +1,11 @@
-<view class="container">
+<view class="contain">
   <view class="titlebox_1">
     <view class="titlebox_1_title">新品推荐</view>
     <view class="titlebox_1_titlelow">{{newrecom}}</view>
   </view>
   <scroll-view scroll-x="true" style="height:600rpx;width:100%;margin-top:26rpx;">
     <view class="listcontainer" style="width:{{foodlist.length*436}}rpx">
-      <image class="photobox" wx:for="{{foodlist}}" src="{{item.imagesrc}}" wx:key data-id="{{item.id}}" bindtap="recipelist">
+      <image class="photobox" wx:for="{{foodlist}}" style="background-color:{{item.imagesrc}}" wx:key data-id="{{item.id}}" data-perchased="0" bindtap="recipelist">
       </image>
     </view>
   </scroll-view>
@@ -52,7 +52,7 @@
   <view class="nametitle">这是一个名字套餐</view>
   <scroll-view scroll-x="true" style="height:275rpx;width:100%;margin-top:26rpx;">
     <view class="comlistcontainer" style="width:{{todaylist.length*296}}rpx">
-      <view class="comphotolittlebox" wx:for="{{todaylist}}" wx:key>
+      <view class="comphotolittlebox" wx:for="{{todaylist}}" wx:key data-id="{{item.id}}" data-perchased="1" bindtap="recipelist">
         <image class="comphotos" src="{{item.imagesrc}}"></image>
         <view class="comnames">{{item.content}}</view>
       </view>
