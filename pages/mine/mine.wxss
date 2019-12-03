@@ -1,7 +1,7 @@
 /* pages/mine/mine.wxss */
 
 .main {
-  margin: 40rpx;
+  margin: 0 55rpx;
 }
 
 button::after {
@@ -12,35 +12,54 @@ button {
   padding: 0;
 }
 
-.phone {
-  outline: none;
-  background-color: #fff;
-}
-
 .userinfobox {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 50rpx 0;
+  margin: 38rpx 0;
+}
+
+#nick-name {
+  height: 79rpx;
+  line-height: 79rpx;
+  font-size: 55rpx;
+}
+
+.phone {
+  margin: 4rpx 0;
+  outline: none;
+  font-size: 28rpx;
+  background-color: #fff;
 }
 
 .head {
-  width: 100rpx;
-  height: 100rpx;
+  float: right;
+  width: 88rpx;
+  height: 88rpx;
   border-radius: 50%;
   background-color: black;
 }
 
 .items {
-  height: 150rpx;
-  line-height: 150rpx;
-  /* font-size: 70rpx; */
+  padding: 42rpx 0;
+  height: 40rpx;
+  font-size: 28rpx;
   border-bottom: 2rpx solid rgb(222, 222, 222);
 }
 
 .recommand {
-  margin: 60rpx 0;
-  color: rgb(248, 67, 89);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 64rpx 0;
+  height: 40rpx;
+  font-size: 28rpx;
+  color: #f83a51;
+}
+
+.recommand>image {
+  height: 24rpx;
+  width: 24rpx;
 }
 
 .mask {

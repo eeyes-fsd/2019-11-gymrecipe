@@ -13,7 +13,10 @@
     <view class='items'>订单</view>
     <view bindtap="onTab" class='items'>联系我们</view>
   </view>
-  <view class='recommand'>推荐给好友 →</view>
+  <view class='recommand'>
+    <view>推荐给好友</view>
+    <image src='../../images/falling.png'></image>
+  </view>
 
 </view>
 <!-- 遮罩 -->

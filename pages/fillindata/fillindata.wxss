@@ -5,11 +5,13 @@
   font-size: 28rpx;
 }
 
-::-webkit-scrollbar {/*隐藏滚动条*/
- width: 0;
- height: 0;
- color: transparent;
+::-webkit-scrollbar {
+  /*隐藏滚动条*/
+  width: 0;
+  height: 0;
+  color: transparent;
 }
+
 /* 标题 */
 
 .title {
@@ -24,6 +26,10 @@
 .items {
   padding: 42rpx 0;
   border-bottom: solid 2px rgb(237, 237, 237);
+}
+
+.items>view:nth-child(1) {
+  padding-bottom: 19rpx;
 }
 
 /* 对主内容样式控制 */

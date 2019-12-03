@@ -1,11 +1,11 @@
 <!--pages/fillindata/fillindata.wxml-->
 <form bindsubmit="formsubmit">
-  <scroll-view scroll-y="true" style="height:{{windowHeight}}px;width:{{windowWidth}}px;"  scroll-into-view="{{toView}}">
+  <scroll-view scroll-y="true" style="height:{{windowHeight}}px;width:{{windowWidth}}px;" scroll-into-view="{{toView}}">
     <view class='body'>
       <view class='title'>完善身体数据</view>
       <view id="i1" class='items'>
         <view>性别</view>
-        <picker value="{{index}}" range="{{gender}}" value="index"  name="gender" bindchange="bindPickerChange" data-hi="1">
+        <picker value="0" range="{{gender}}" name="gender" bindchange="bindPickerChange" data-hi="1">
           <view wx:if="{{fgender}}">{{dgender}}</view>
           <view wx:else>
             <view wx:if="{{flag}}">{{info.gender}}</view>
@@ -15,7 +15,7 @@
       </view>
       <view id="i2" class='items'>
         <view>出生日期</view>
-        <picker mode="date" start="1900-1-1" name="date"  value="index"  bindchange="bindPickerChange" data-hi="2">
+        <picker mode="date" start="1900-1-1" name="date" value="1995-1-1" bindchange="bindPickerChange" data-hi="2">
           <view wx:if="{{fbirthdate}}">{{dbirthdate}}</view>
           <view wx:else>
             <view wx:if="{{flag}}">{{info.birthdate}}</view>
@@ -25,7 +25,7 @@
       </view>
       <view id="i3" class='items'>
         <view>身高</view>
-        <picker name="height" range="{{height}}"  value="{{index}}"  bindchange="bindPickerChange" data-hi="3">
+        <picker name="height" range="{{height}}" value="70" bindchange="bindPickerChange" data-hi="3">
           <view wx:if="{{fheight}}">{{dheight}}cm</view>
           <view wx:else>
             <view wx:if="{{flag}}">{{info.height}}cm</view>
@@ -35,7 +35,7 @@
       </view>
       <view id="i4" class='items'>
         <view>体重</view>
-        <picker name="weight" range="{{weight}}" value="index"  bindchange="bindPickerChange" data-hi="4">
+        <picker name="weight" range="{{weight}}" value="300" bindchange="bindPickerChange" data-hi="4">
           <view wx:if="{{fweight}}">{{dweight}}</view>
           <view wx:else>
             <view wx:if="{{flag}}">{{info.weight}}kg</view>
@@ -45,7 +45,7 @@
       </view>
       <view id="i5" class='items'>
         <view>运动量</view>
-        <picker range="{{exe}}" name="exe"  value="index" bindchange="bindPickerChange" data-hi="5">
+        <picker range="{{exe}}" name="exe" value="index" bindchange="bindPickerChange" data-hi="5">
           <view wx:if="{{fexe}}">{{dexe}}</view>
           <view wx:else>
             <view wx:if="{{flag}}">{{info.exe}}</view>
@@ -55,7 +55,7 @@
       </view>
       <view id="i6" class='items'>
         <view>饮食控制目的</view>
-        <picker range="{{purpose}}" name="purpose"   value="index" bindchange="bindPickerChange" data-hi="6">
+        <picker range="{{purpose}}" name="purpose" value="index" bindchange="bindPickerChange" data-hi="6">
           <view wx:if="{{fpurpose}}">{{dpurpose}}</view>
           <view wx:else>
             <view wx:if="{{flag}}">{{info.purpose}}</view>
