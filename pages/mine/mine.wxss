@@ -57,29 +57,30 @@ button {
   top: 484rpx;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 640rpx;
-  border-radius: 40rpx;
-  height: 510rpx;
-  background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  width: 640rpx;
+  height: 510rpx;
+  border-radius: 40rpx;
+  background-color: white;
 }
 
 .content-title {
-  margin-top: 64rpx;
   height: 79rpx;
   width: 570rpx;
+  margin: 64rpx 0 59rpx 0;
   padding-left: 70rpx;
-  font-size: 55rpx;
   line-height: 79rpx;
+  font-size: 55rpx;
   color: #4a4e63;
 }
 
 .content-content {
   height: 46rpx;
   width: 570rpx;
+  margin: 12rpx 0;
   padding-left: 70rpx;
   font-size: 32rpx;
   line-height: 46rpx;
@@ -91,13 +92,14 @@ button {
 }
 
 .sure {
-  margin-top: 42rpx;
-  height: 46rpx;
-  width: 64rpx;
+  padding-top: 42rpx;
+  height: 88rpx;
+  width: 513rpx;
   font-size: 32rpx;
   line-height: 46rpx;
   text-align: center;
   color: #f83a51;
+  border-top: 2px solid #d7d7d7;
 }
 
 .btnbox {
