@@ -6,16 +6,16 @@ Page({
     isShow: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     userInfo: [],
-    phone:""
+    phone: ""
   },
   onTab: function() {
     this.setData({
       showContact: true
     })
   },
-  getPhoneNumber:function(e) {
+  getPhoneNumber: function(e) {
     this.setData({
-      phone:e
+      phone: e
     })
     console.log(e)
     console.log(e.detail.iv)
@@ -24,6 +24,14 @@ Page({
   close: function() {
     this.setData({
       showContact: false,
+    })
+  },
+  // 拒绝权限
+  close: function() {
+    wx.showToast({
+      title: '您拒绝了授权！',
+      icon: 'none',
+      duration: 2000
     })
   },
   touchMove: function() {},
