@@ -70,7 +70,6 @@ Page({
         break;
       }
     }
-    console.log()
   },
   formsubmit: async function (e) {
     var that = this
@@ -110,7 +109,6 @@ Page({
         "exe": that.data.exe[parseInt(e.detail.value.exe)],
         "purpose": that.data.purpose[parseInt(e.detail.value.purpose)],
       }
-      console.log(data)
     }
     await api.sendHealth(data)
     that.setData({//恢复表单未编辑状态
@@ -167,14 +165,11 @@ Page({
     })
 
     var info = api.getHealth()
-    console.log("info=",info)
   },
   //页面卸载时
   onUnload: function () {
     var that = this
-    console.log("ads")
     if(that.data.edit){
-      console.log("uoudidi")
       let data = {
         "edit":true,
         "gender": that.data.fgender==true?that.data.dgender:'null',

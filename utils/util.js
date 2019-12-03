@@ -1,5 +1,5 @@
 // 地址
-const host = 'http://test.eeyes.xyz/api'
+const host = 'http://gym.eeyes.xyz/api'
 
 // 封装requests
 const requestPromise = (method, url, data = "", token = "") => {

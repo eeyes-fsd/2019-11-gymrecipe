@@ -4,8 +4,14 @@
   width:100%;
   height:119rpx;
 }
-.container{
+.contain{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: center;
   background-color:#FAFAFA;
+  width:100%;
+  overflow: hidden;
 }
 .titlebox_1_title{
   width:100%;
@@ -13,7 +19,7 @@
   line-height:79rpx;
   text-align:left;
   font-size:55rpx;
-  padding-left:55rpx;
+  margin-left:55rpx;
   color:#4A4E63;
   font-family: 'SourceHanSerifCN-Heavy-Alphabetic';
 }

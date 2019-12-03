@@ -8,7 +8,7 @@ Page({
     methodid:1,//配餐
     showwindow:false,
     perchased:1,
-    recipelist:[{id:1,imagesrc:"/images/reone.png"},{id:2,imagesrc:"/images/retwo.png"}]//食谱列表
+    recipelist:[{id:1,imagesrc:"red"},{id:2,imagesrc:"yellow"}]//食谱列表
   },
   closewindow:function(){
     var that= this
@@ -44,7 +44,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this
+    try{
+      var toViewid = "r" +wx.getStorageSync("recipeid")//食谱id锚点
+      that.setData({
+        toView: toViewid
+      })
+    }catch{}
+    try{
+      var perchased = wx.getStorageSync("perchased")
+      that.setData({perchased:perchased})
+    }catch{}
   },
 
   /**
