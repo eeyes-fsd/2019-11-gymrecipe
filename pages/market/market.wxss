@@ -1,1 +1,200 @@
 /* pages/market/market.wxss */
+/* 悬浮的购物按钮 */
+.shopcarbtn{
+  position: fixed;
+  top:100vw;
+  right:24rpx;
+  height:90rpx;
+  width:90rpx;
+  border-radius:90rpx;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 10px #0000001A;
+}
+.shopcarnum{
+  position: fixed;
+  top:101vw;
+  right:24rpx;
+  height:25rpx;
+  background-color:red;
+  line-height:25rpx;
+  text-align: center;
+  font-size: 16rpx;
+  color:#FFFFFF;
+  border-radius: 25rpx;
+}
+.shopcarimage{
+  margin-top:24rpx;
+  height:42rpx;
+  width:42rpx;
+}
+/* 顶部图片 */
+.topview{
+  box-sizing: border-box;
+  width:100%;
+  height:380rpx;
+  padding-left:55rpx;
+  padding-right: 55rpx;
+}
+/* 顶部图片文字 */
+.toptitle{
+  margin-top:200rpx;
+  height:40rpx;
+  width:100%;
+  text-align:left;
+  line-height:40rpx;
+}
+.topcontent{
+  height:60rpx;
+  width:100%;
+}
+/* 搜索框 */
+.searchbox{
+  height:100rpx;
+  width:640rpx;
+  background:#FFFFFF;
+  margin-top:-50rpx;
+  border: 1px solid #0000001A;
+  border-radius: 40rpx;
+}
+.searchicon{
+  height:32rpx;
+  width:32rpx;
+  margin-left:40rpx;
+}
+.searchinput{
+  height:100rpx;
+  width:400rpx;
+  line-height:100rpx;
+  margin-left:16rpx;
+}
+
+/* 购物主体 */
+.shopbody{
+  height:100rpx;
+  width:100%;
+}
+
+/* 导航 */
+.navbarbox{
+  margin-top:48rpx;
+  width:100%;
+  height:46rpx;
+  display:flex;
+  flex-direction: row;
+  justify-content:flex-start;
+  align-items:center;
+}
+.navbar1{
+  margin-left:44rpx;
+  height:46rpx;
+  width:99rpx;
+  font-size:32rpx;
+  color:#484848;
+}
+.navbar2{
+  margin-left:41.3rpx;
+  height:46rpx;
+  width:128rpx;
+  font-size:32rpx;
+  color:#484848;
+}
+/* 介绍 */
+.introduce{
+  box-sizing: border-box;
+  height:215rpx;
+  width:100%;
+  padding:36rpx 44rpx;
+  line-height: 48rpx;
+}
+.itemlist{
+  box-sizing: border-box;
+  padding:0 2.9333vw;
+  width:100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap:wrap;
+  align-content: flex-start;
+}
+.item{
+  margin-left: 2.9333vw;
+  box-sizing: border-box;
+  width:42.667vw;
+  height:464rpx;
+}
+.item_image{
+  height:210rpx;
+  width:100%;
+  background: rgb(245, 207, 220);
+  border: 1px solid #0000001A;
+  border-radius: 4px;
+}
+.item_name{
+  margin-top:16rpx;
+  box-sizing: border-box;
+  width:100%;
+  text-align: left;
+  padding-right:19rpx;
+  line-height:37rpx;
+}
+.item_infobox{
+  height:36rpx;
+  width:100%;
+}
+.item_price{
+  height:36rpx;
+  font-size:24rpx;
+}
+.item_status{
+  height:36rpx;
+  font-size:24rpx;
+}
+.item_starbox{
+  height: 37rpx;
+  width:100%;
+}
+.item_star{
+  height:18rpx;
+  width:18rpx;
+}
+.item_starnum{
+  margin-left:4rpx;
+  height:37rpx;
+  line-height:37rpx;
+  font-size: 16rpx;
+}
+.item_addbox{
+  margin-top:18rpx;
+  height:24rpx;
+  width:100%;
+}
+.item_add{
+  height:24rpx;
+  width:24rpx;
+  border-radius:24rpx;
+  background: #F83A51;
+  color:#FFFFFF;
+  font-size:24rpx;
+  line-height:24rpx;
+  text-align:center;
+}
+
+/* 购物浮窗 */
+
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.shopwindow{
+  position:fixed;
+  bottom:0;
+  height:672rpx;
+  width:100%;
+  background: #FFFFFF;
+  box-shadow: 0px -4px 10px #0000001A;
+  border-radius: 60rpx 60rpx 0px 0px;
+}

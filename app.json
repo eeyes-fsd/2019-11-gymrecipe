@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/market/market",
     "pages/index/index",
     "pages/mine/mine",
     "pages/logs/logs",
-    "pages/market/market",
     "pages/plusaddress/plusaddress",
     "pages/changeaddress/changeaddress",
     "pages/fooddetail/fooddetail",
