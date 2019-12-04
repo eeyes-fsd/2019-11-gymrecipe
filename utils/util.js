@@ -34,10 +34,11 @@ const requestPromise = (method, url, data = "", token = "") => {
 }
 
 // 登录
-const login = async(codes, phone) => {
+const login = async(codes, iv, encrypted_data) => {
   let data = {
     "code": codes, //code
-    "phone": phone //手机号码
+    "iv": iv, //加密初始向量
+    "encrypted_data": encrypted_data //加密数据
   }
   let response = await requestPromise("POST", "/authorizations/weapp", data)
   return response;
@@ -142,21 +143,61 @@ const getHealth = async() => {
   return response
 }
 // 修改个人健康数据
-const changeHealth = async (data) => {
+const changeHealth = async(data) => {
   let token = await getToken()
   let response = await requestPromise("PUT", `/health`, data, token)
   return response
 }
+//获取上新推荐
+const newRecipes = async(count, page) => {
+  let data = {
+    "count": count,
+    "page": page
+  }
+  let response = await requestPromise("GET", '/recipes/new', data, '')
+  return response
+}
+//获取套餐详情
+const recipesDetails = async(id) => {
+  let token = getToken()
+  let response = await requestPromise("GET", `/recipes/${id}/details`, data, token)
+  return response
+}
+//获取已购套餐
+const boughtRecipes = async(id) => {
+  let token = getToken()
+  let response = await requestPromise("GET", `/recipes/bought`, data, token)
+  return response
+}
+//获取全部套餐
+const allRecipes = async() => {
+  let response = await requestPromise("GET", `/recipes`, '', "")
+  return response
+}
+//获取今日推荐
+const todayRecipes = async(id) => {
+  let token = getToken()
+  let response = await requestPromise("GET", `/recipes/today`, "", "")
+  return response
+}
 module.exports = {
-  requestPromise,
   login,
   getToken,
+  //address
   getAddress,
   plusAddress,
   delAddress,
   detailAddress,
+  //phone
   verifyPhone,
+  // health
   getHealth,
   sendHealth,
-  changeHealth
+  changeHealth,
+  // recipes
+  todayRecipes,
+  allRecipes,
+  boughtRecipes,
+  recipesDetails,
+  newRecipes
 }
