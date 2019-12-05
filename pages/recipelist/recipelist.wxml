@@ -5,11 +5,11 @@
     <view class="navbar2" bindtap="nav" data-id="0" style="color:{{perchased==0?'#484848':'#D7D7D7'}}">全部食谱</view>
   </view>
   <!-- 已购买 -->
-  <scroll-view scroll-x="true" style="height:1023rpx;width:100%;margin-top:50rpx;" bindscroll="getposition" wx:if="{{perchased==1}}"  scroll-into-view="{{toView}}">
-    <view class="listbox" style="width:{{recipelist.length*556}}rpx;">
+  <scroll-view bindscroll="myscrolling" scroll-x="true" style="height:1023rpx;width:100%;margin-top:50rpx;" bindscroll="getposition" wx:if="{{perchased==1}}" scroll-into-view="{{toView}}">
+    <view class="listbox" style="width:{{myrecipelist.length*556}}rpx;">
       <view id="r{{index+1}}" class="itembox" data-id="{{item.id}}" bindtap="fooddetail" wx:for="{{myrecipelist}}" wx:key>
         <image class="itemphoto" src="{{item.imagesrc}}" lazy-load='{{true}}'></image>
-        <view class="itemtitle">奥尔良鸡胸肉套餐</view>
+        <view class="itemtitle">{{item.name}}</view>
         <view class="itemdetail1">包含早/中/晚三餐搭配</view>
         <view class="itemdetail2">主要食材：鸡胸肉、西兰花、牛油果</view>
         <view class="jumpbox">
@@ -20,11 +20,11 @@
     </view>
   </scroll-view>
   <!-- 全部食谱 -->
-  <scroll-view  scroll-into-view="{{toView}}" scroll-x="true" style="height:1023rpx;width:100%;margin-top:50rpx;" wx:if="{{perchased==0}}">
+  <scroll-view bindscroll="scrolling" scroll-into-view="{{toView}}" scroll-x="true" style="height:1023rpx;width:100%;margin-top:50rpx;" wx:if="{{perchased==0}}">
     <view class="listbox" style="width:{{recipelist.length*556}}rpx">
       <view id="r{{index+1}}" class="itembox" data-id="{{item.id}}" bindtap="fooddetail" wx:for="{{recipelist}}" wx:key>
         <image class="itemphoto" style="background-color:{{item.imagesrc}}" lazy-load='{{true}}'></image>
-        <view class="itemtitle">奥尔良鸡胸肉套餐</view>
+        <view class="itemtitle">{{item.name}}</view>
         <view class="itemdetail1">包含早/中/晚三餐搭配</view>
         <view class="itemdetail2">主要食材：鸡胸肉、西兰花、牛油果</view>
         <view class="jumpbox">
@@ -72,7 +72,7 @@
       <view class="chooseitem" style="color:#F83A51;border-color:#F83A51">奥尔良鸡胸肉套餐</view>
       <view class="chooseitem">匈牙利烤鸡腿套餐</view>
       <view class="chooseitem">香烤培根套餐</view>
-      <view class="chooseitem"style="color:#F83A51;border-color:#F83A51">不知道怎么起名字的套餐</view>
+      <view class="chooseitem" style="color:#F83A51;border-color:#F83A51">不知道怎么起名字的套餐</view>
     </view>
   </view>
   <view class="windowdetailbox" style="height:{{methodid!=2?558:311}}rpx;margin-top:{{methodid!=2?46.77:46}}rpx;">
@@ -90,9 +90,9 @@
     奥尔良鸡胸肉套餐
   </view>
   <view class="timemealbar">
-    <view class="bar" bindtap="navbar" data-id="1" style="margin-left:56rpx;color:{{currenttab==1?'#484848':'#D7D7D7'}}">早餐</view>
-    <view class="bar" bindtap="navbar" data-id="2" style="margin-left:48.3rpx;color:{{currenttab==2?'#484848':'#D7D7D7'}}">午餐</view>
-    <view class="bar" bindtap="navbar" data-id="3" style="margin-left:48rpx;color:{{currenttab==3?'#484848':'#D7D7D7'}}">晚餐</view>
+    <view class="bar" bindtap="navbar" data-id="breakfast" style="margin-left:56rpx;color:{{currenttab=='breakfast'?'#484848':'#D7D7D7'}}">早餐</view>
+    <view class="bar" bindtap="navbar" data-id="lunch" style="margin-left:48.3rpx;color:{{currenttab=='lunch'?'#484848':'#D7D7D7'}}">午餐</view>
+    <view class="bar" bindtap="navbar" data-id="dinner" style="margin-left:48rpx;color:{{currenttab=='dinner'?'#484848':'#D7D7D7'}}">晚餐</view>
   </view>
   <view class="needinfobox">
     <view class="needinfolist">
@@ -101,7 +101,7 @@
           <image class="needicon" src="/images/gradient1.png"></image>
           <view class="needtitle">碳水化合物</view>
         </view>
-        <view class="neednum">1431克</view>
+        <view class="neednum">{{}}克</view>
       </view>
       <view class="needlinebox" style="margin-top:16rpx;">
         <view class="needicontextbox">
@@ -136,4 +136,3 @@
     </view>
   </view>
 </view>
-
