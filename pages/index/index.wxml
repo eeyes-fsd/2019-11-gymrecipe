@@ -5,7 +5,7 @@
   </view>
   <scroll-view scroll-x="true" style="height:600rpx;width:100%;margin-top:26rpx;">
     <view class="listcontainer" style="width:{{foodlist.length*436}}rpx">
-      <image class="photobox" wx:for="{{foodlist}}" style="background-color:{{item.imagesrc}}" wx:key data-id="{{item.id}}" data-perchased="0" bindtap="recipelist">
+      <image class="photobox" wx:for="{{foodlist}}" style="background:{{item.cover}}" wx:key data-id="{{item.id}}" data-perchased="0" bindtap="recipelist" lazy-load='{{true}}'>
       </image>
     </view>
   </scroll-view>
@@ -39,22 +39,22 @@
     </view>
   </view>
   <view class="jumpto_1box" wx:if="{{getinfo}}" bindtap="fillindata">
-    <view class="jumpto_1text" >更新身体数据</view>
+    <view class="jumpto_1text">更新身体数据</view>
     <image class="jumpto_1icon" src="/images/falling.png"></image>
   </view>
   <view class="jumpto_1box" wx:else bindtap="fillindata">
-    <view class="jumpto_1text" >立即免费测量</view>
+    <view class="jumpto_1text">立即免费测量</view>
     <image class="jumpto_1icon" src="/images/falling.png"></image>
   </view>
   <view class="titlebox_3">
     今日秤食食谱
   </view>
-  <view class="nametitle">这是一个名字套餐</view>
+  <view class="nametitle">{{todaylist.name}}</view>
   <scroll-view scroll-x="true" style="height:275rpx;width:100%;margin-top:26rpx;">
     <view class="comlistcontainer" style="width:{{todaylist.length*296}}rpx">
       <view class="comphotolittlebox" wx:for="{{todaylist}}" wx:key data-id="{{item.id}}" data-perchased="1" bindtap="recipelist">
-        <image class="comphotos" src="{{item.imagesrc}}"></image>
-        <view class="comnames">{{item.content}}</view>
+        <image class="comphotos" src="{{item.cover}}" lazy-load='{{true}}'></image>
+        <view class="comnames">{{item.name}}</view>
       </view>
     </view>
   </scroll-view>

@@ -6,20 +6,30 @@ Page({
     isShow: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     userInfo: [],
-    phone: ""
+    phone: "",
+    code: ""
   },
   onTab: function() {
     this.setData({
       showContact: true
     })
   },
-  getPhoneNumber: function(e) {
+  getPhoneNumber: async function (e) {
+    let response = await api.login(this.data.code, e.detail.iv, e.detail.encryptedData)
+    console.log("成功获取手机号")
     this.setData({
-      phone: e
+      // 测试
+      phone: " response.data.phone"
     })
-    console.log(e)
-    console.log(e.detail.iv)
-    console.log(e.detail.encryptedData)
+    // 测试
+    wx.setStorage({
+      key: 'access_token',
+      data: "123"
+    })
+    wx.setStorage({
+      key: 'expires_in',
+      data: 12345
+    })
   },
   close: function() {
     this.setData({
@@ -37,7 +47,6 @@ Page({
   touchMove: function() {},
   maskTouchMove: function() {},
   showmyaddress: function() {
-    var that = this
     wx.navigateTo({
       url: '../myaddress/myaddress',
     })
@@ -52,7 +61,9 @@ Page({
       })
       wx.login({
         success: (res) => {
-          api.login(res.code, 123)
+          that.setData({
+            code: res.code
+          })
         }
       })
     } else {
@@ -79,6 +90,9 @@ Page({
               wx.login({
                 success: res => {
                   // 获取到用户的 code 之后：res.code
+                  that.setData({
+                    code: res.code
+                  })
                   console.log("用户的code:" + res.code);
                 }
               });
