@@ -19,8 +19,8 @@ Page({
 
     //recipelist
     fooddetail: false, //是否显示图片详情
-    methodid: 1, //配餐
-    showwindow: false,
+    methodid: 1, //配餐定制方式
+    showwindow: false,//是否显示配置订餐窗口
     perchased: 1,
     //全部套餐
     recipelist: [{
@@ -130,7 +130,7 @@ Page({
   },
 
   //recepelist
-  getposition: function(e) {
+  getposition: function(e) {//获取当前sroll滚动位置
     var that = this
     that.setData({
       testx: (e.detail.scrollLeft) * that.data.trans
