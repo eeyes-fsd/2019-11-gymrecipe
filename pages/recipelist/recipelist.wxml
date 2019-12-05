@@ -7,7 +7,7 @@
   <!-- 已购买 -->
   <scroll-view scroll-x="true" style="height:1023rpx;width:100%;margin-top:50rpx;" bindscroll="getposition" wx:if="{{perchased==1}}"  scroll-into-view="{{toView}}">
     <view class="listbox" style="width:{{recipelist.length*556}}rpx;">
-      <view id="r{{index+1}}" class="itembox" data-id="{{item.id}}" bindtap="fooddetail" wx:for="{{recipelist}}" wx:key>
+      <view id="r{{index+1}}" class="itembox" data-id="{{item.id}}" bindtap="fooddetail" wx:for="{{myrecipelist}}" wx:key>
         <image class="itemphoto" src="{{item.imagesrc}}" lazy-load='{{true}}'></image>
         <view class="itemtitle">奥尔良鸡胸肉套餐</view>
         <view class="itemdetail1">包含早/中/晚三餐搭配</view>
@@ -46,7 +46,7 @@
 
 
 
-
+<!-- 购买悬浮窗 -->
 <view class="floatwindow" style="z-index:4" wx:if="{{showwindow&&!fooddetail}}">
   <view class="window_title">配餐定制方式</view>
   <view class="methodlist">
@@ -84,7 +84,7 @@
 </view>
 
 <!--食品详情!-->
-<view class="container">
+<view class="container" wx:if="{{fooddetail}}">
   <image class="fooddetailphoto" src="/images/retwo.png"></image>
   <view class="todaytitle">
     奥尔良鸡胸肉套餐

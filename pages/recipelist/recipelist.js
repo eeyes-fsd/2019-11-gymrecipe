@@ -21,7 +21,10 @@ Page({
     methodid:1,//配餐
     showwindow:false,
     perchased:1,
-    recipelist: [{ id: 1, imagesrc: "/images/retwo.png" }, { id: 2, imagesrc:"/images/retwo.png"}]//食谱列表
+    //全部套餐
+    recipelist: [{ id: 1, imagesrc: "/images/retwo.png" }, { id: 2, imagesrc:"/images/retwo.png"}],//食谱列表
+    //已购套餐
+    myrecipelist: [{ id: 1, imagesrc: "/images/retwo.png" }, { id: 2, imagesrc: "/images/retwo.png" }]
   },
 
 
