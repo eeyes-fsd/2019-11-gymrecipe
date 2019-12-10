@@ -15,6 +15,7 @@ Page({
     })
   },
   getPhoneNumber: async function (e) {
+    console.log("这是e",e)
     let response = await api.login(this.data.code, e.detail.iv, e.detail.encryptedData)
     console.log("成功获取手机号")
     this.setData({
@@ -24,11 +25,11 @@ Page({
     // 测试
     wx.setStorage({
       key: 'access_token',
-      data: "123"
+      data: response.data.access_token
     })
     wx.setStorage({
       key: 'expires_in',
-      data: 12345
+      data: response.data.expires_in
     })
   },
   close: function() {
@@ -53,6 +54,7 @@ Page({
   },
   // 获取个人数据
   async getUserInfo(e) {
+    var that = this
     if (e.detail.userInfo) {
       console.log(e.detail.userInfo);
       this.setData({

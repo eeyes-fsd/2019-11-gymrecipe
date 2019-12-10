@@ -47,7 +47,7 @@ const login = async(codes, iv, encrypted_data) => {
 // 刷新token
 const refreshToken = async() => {
   let token = wx.getStorageSync("access_token")
-  let response = await requestPromise("PUT", "/authorizations/current")
+  let response = await requestPromise("PUT", "/authorizations/current", token=token)
   wx.setStorageSync("access_token", response.data.access_token)
   wx.setStorageSync("expires_in", response.data.expires_in)
   return response.data.access_token
@@ -56,7 +56,7 @@ const refreshToken = async() => {
 //获取token
 const getToken = async() => {
   let response = wx.getStorageSync("access_token")
-  if (response) {
+  if (!response) {
     response = await refreshToken()
   }
   return response
@@ -64,14 +64,14 @@ const getToken = async() => {
 
 //获取用户数据
 const getUser = async() => {
-  let token = getToken()
+  let token = await getToken()
   let response = await requestPromise("GET", "/user", "", token)
   return response
 }
 
 //删除用户
 const delUser = async() => {
-  let token = getToken()
+  let token = await getToken()
   let response = await requestPromise("DELETE", "/user", "", token)
   return response
 }
@@ -91,31 +91,31 @@ const upDateUser = async(phone, captcha) => {
 // 获取地址
 const getAddress = async() => {
   let token = await getToken()
-  let response = await requestPromise("GET", "/address", "", token)
+  let response = await requestPromise("GET", "/addresses", "", token)
   return response
 }
 // 增加地址
 const plusAddress = async(data) => {
   let token = await getToken()
-  let response = await requestPromise("POST", "/address", data, token)
+  let response = await requestPromise("POST", "/addresses", data, token)
   return response
 }
 // 修改地址
 const modifyAddress = async(data) => {
   let token = await getToken()
-  let response = await requestPromise("PUT", "/address", data, token)
+  let response = await requestPromise("PUT", "/addresses", data, token)
   return response
 }
 // 删除地址
 const delAddress = async(id) => {
   let token = await getToken()
-  let response = await requestPromise("DELETE", `/address/${id}`, '', token)
+  let response = await requestPromise("DELETE", `/addresses/${id}`, '', token)
   return response
 }
 // 地址详情
 const detailAddress = async(id) => {
   let token = await getToken()
-  let response = await requestPromise("GET", `/address/${id}`, '', token)
+  let response = await requestPromise("GET", `/addresses/${id}`, '', token)
   return response
 }
 
@@ -159,13 +159,13 @@ const newRecipes = async(count, page) => {
 }
 //获取套餐详情
 const recipesDetails = async(id) => {
-  let token = getToken()
+  let token = await getToken()
   let response = await requestPromise("GET", `/recipes/${id}/details`, data, token)
   return response
 }
 //获取已购套餐
 const boughtRecipes = async(id) => {
-  let token = getToken()
+  let token = await getToken()
   let response = await requestPromise("GET", `/recipes/bought`, data, token)
   return response
 }
@@ -176,7 +176,7 @@ const allRecipes = async() => {
 }
 //获取今日推荐
 const todayRecipes = async(id) => {
-  let token = getToken()
+  let token = await getToken()
   let response = await requestPromise("GET", `/recipes/today`, "", token)
   return response
 }

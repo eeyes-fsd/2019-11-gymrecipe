@@ -3,6 +3,7 @@
 .titlebox_1{
   width:100%;
   height:119rpx;
+  font-family:'Noto Sans SC';
 }
 .contain{
   display: flex;
@@ -21,7 +22,7 @@
   font-size:55rpx;
   margin-left:55rpx;
   color:#4A4E63;
-  font-family: 'SourceHanSerifCN-Heavy-Alphabetic';
+  font-family: 'Noto Sans SC';
 }
 .titlebox_1_titlelow{
   width:100%;

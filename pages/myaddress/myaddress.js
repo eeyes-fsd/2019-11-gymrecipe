@@ -29,7 +29,7 @@ Page({
     let lists = await api.getAddress()
     if (lists.data) {
       that.setData({
-        addresslist: lists.data
+        addresslist: lists.data.data
       })
     }
   },

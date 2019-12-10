@@ -19,10 +19,10 @@
   color:#4A4E63;
 }
 .addressbox{
+  box-sizing:border-box;
+  padding-bottom: 38rpx;
   margin-top:48rpx;
-  height:256rpx;
   width:100%;
-  background-color:#FFFFFF;
   border-radius:40rpx;
 }
 .addressnamebox{
@@ -50,27 +50,37 @@
 }
 .addressinfobox{
   margin-top:16rpx;
-  height:40rpx;
   width:100%;
   display: flex;
   flex-direction:row;
   justify-content: flex-start;
   align-items:center;
 }
+.addressiconbox{
+  margin-left:32rpx;
+  height:100%;
+  width:36rpx;
+  display: flex;
+  flex-direction:column;
+  justify-content: flex-start;
+}
+.addressinfoicon1{
+  height:36rpx;
+  width:36rpx;
+}
 .addressinfoicon{
   margin-left:32rpx;
   height:36rpx;
   width:36rpx;
-  background-color:red;
 }
 .addressinfotext{
   margin-left:24rpx;
-  height:40rpx;
-  width:396rpx;
+  width:75%;
   font-size:28rpx;
   color:#4A4E63;
   text-align:left;
   line-height:40rpx;
+  word-break:break-all;
 }
 .jumptobox{
   margin-top:64rpx;

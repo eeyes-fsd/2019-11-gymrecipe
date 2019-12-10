@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/market/market",
+    "pages/myaddress/myaddress",
     "pages/index/index",
+    "pages/market/market",
     "pages/mine/mine",
     "pages/logs/logs",
     "pages/plusaddress/plusaddress",
@@ -9,8 +10,8 @@
     "pages/fooddetail/fooddetail",
     "pages/fillindata/fillindata",
     "pages/gymnearby/gymnearby",
-    "pages/recipelist/recipelist",
-    "pages/myaddress/myaddress"
+    "pages/recipelist/recipelist"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",
