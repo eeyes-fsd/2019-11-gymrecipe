@@ -21,13 +21,7 @@ Page({
       name: "晚餐-牛油果沙拉"
     }], //今日食谱
     updatetime: '11/8',
-    foodlist: [{
-      id: 1,
-      cover: "red"
-    }, {
-      id: 2,
-      cover: "yellow"
-    }], //首页推荐套餐图
+    foodlist: [], //首页推荐套餐图
     newrecom: '奥尔良鸡胸肉套餐',
     windowWitdh: [],
     windowHeight: []
@@ -60,11 +54,18 @@ Page({
     // 测试
     // 新品推荐需要修改
     let newRecipes = await api.newRecipes(20,1)
-    let response = await api.todayRecipes()
-    let r = await api.recipesDetails(response.data.data[0].id)
+    console.log("its",newRecipes)
     this.setData({
       foodlist: newRecipes.data.data,
-      todaylist: r.data.data
+      
     })
+    try{
+      let response = await api.todayRecipes()
+      let r = await api.recipesDetails(response.data.data[0].id)
+      that.setData({
+        todaylist: r.data.data
+      })
+    }catch{
+    }
   },
 })

@@ -132,7 +132,7 @@
 }
 .bottomtext{
   margin-left:24.2rpx;
-  width:188rpx;
+  width:200rpx;
   height:40rpx;
   font-size:28rpx;
   color:#484848;

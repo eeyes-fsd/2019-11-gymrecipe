@@ -11,9 +11,10 @@ Page({
     let data = {
       "name": e.detail.value.name,
       "phone": e.detail.value.phone,
-      "gender": e.detail.value.gender,
+      "gender": 'm',
       "details": e.detail.value.detailaddress
     }
+    console.log(data)
     await api.plusAddress(data)
   },
   /**

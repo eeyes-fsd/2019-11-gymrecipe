@@ -2,7 +2,7 @@
 
 <!--主页面-->
 <view class="container display-flex-column">
-  <view class="topview display-flex-column" style="background:url(/images/topview.png);background-size:cover;background-repeat:no-repeat;">
+  <view class="topview display-flex-column" style="background:url(http://gym.eeyes.xyz/static/topview.png);background-size:cover;background-repeat:no-repeat;">
     <view class="toptitle t-s t-color-white">秤食堂/秤商店</view>
     <view class="topcontent t-b t-color-white">定制您的私人膳食</view>
   </view>

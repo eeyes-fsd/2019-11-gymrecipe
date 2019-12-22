@@ -1,10 +1,9 @@
 {
   "pages": [
-    
+    "pages/mine/mine",
     "pages/index/index",
     "pages/myaddress/myaddress",
     "pages/market/market",
-    "pages/mine/mine",
     "pages/logs/logs",
     "pages/plusaddress/plusaddress",
     "pages/changeaddress/changeaddress",
