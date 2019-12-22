@@ -1,4 +1,3 @@
-// pages/myaddress/myaddress.js
 import api from '../../utils/util.js'
 Page({
 
@@ -14,11 +13,10 @@ Page({
       url: '../plusaddress/plusaddress',
     })
   },
-  changeaddress: function() {
-    console.log('hahah')
-    var that = this
+  changeaddress: function(e) {
+    console.log(e)
     wx.navigateTo({
-      url: '../changeaddress/changeaddress',
+      url: `../changeaddress/changeaddress?id=${e.currentTarget.dataset.id}`,
     })
   },
   /**

@@ -5,17 +5,52 @@ Page({
   /**
    * 页面的初始数据
    */
-  data: {},
+  data: {
+    array: ['先生', '女士'],
+    index: 0
+  },
+  bindPickerChange: function(e) {
+    this.setData({
+      index: e.detail.value
+    })
+  },
   formsubmit: async function(e) {
+    if (!e.detail.value.user || !e.detail.value.tele || !e.detail.value.address || !e.detail.value.detailaddress) {
+      wx.showToast({
+        title: '请完善信息',
+        icon: none,
+        duration: 2000
+      })
+      return
+    }
+    if (!(/^1[3456789]\d{9}$/.test(e.detail.value.tele))) {
+      wx.showToast({
+        title: '手机号码有误，请重填',
+        icon: none,
+        duration: 2000
+      })
+      return;
+    }
     console.log(e)
     let data = {
+<<<<<<< HEAD
       "name": e.detail.value.name,
       "phone": e.detail.value.phone,
       "gender": 'm',
       "details": e.detail.value.detailaddress
+=======
+      "name": e.detail.value.user,
+      "phone": e.detail.value.tele,
+      "gender": (this.index === 0) ? 'm' : 'f',
+      "details": `${e.detail.value.address}${e.detail.value.detailaddress}`
+>>>>>>> 9b41507c49c11af9aa359e57c5ac52dbb81849ce
     }
     console.log(data)
     await api.plusAddress(data)
+    wx.showToast({
+      title: '添加地址成功',
+      duration: 2000
+    })
   },
   /**
    * 生命周期函数--监听页面加载

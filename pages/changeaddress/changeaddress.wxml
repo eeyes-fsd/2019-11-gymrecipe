@@ -6,7 +6,11 @@
   </view>
   <view class="inputbox">
     <view class="textline">称呼</view>
-    <input class="inputline" value="{{username}}" placeholder="请填写收货人称呼" name="username"></input>
+    <picker bindchange="bindPickerChange" value="{{gender}}" range="{{array}}">
+      <view class="picker">
+        {{array[gender]}}
+      </view>
+    </picker>
   </view>
   <view class="inputbox">
     <view class="textline">手机号</view>

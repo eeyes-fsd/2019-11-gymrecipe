@@ -2,7 +2,7 @@
 
 <view class="body">
   <view class="title">我的收货地址</view>
-  <view class="addressbox" wx:for="{{addresslist}}" wx:key="{{item.id}}"  bindtap="changeaddress">
+  <view class="addressbox" wx:for="{{addresslist}}" wx:key="{{item.id}}" data-id="{{item.id}}"  bindtap="changeaddress">
     <view class="addressnamebox">
       <view class="addressname">{{item.name}} {{item.gender}}</view>
       <view class="greyline"></view>

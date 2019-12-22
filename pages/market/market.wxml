@@ -1,5 +1,3 @@
-
-
 <!--主页面-->
 <view class="container display-flex-column">
   <view class="topview display-flex-column" style="background:url(http://gym.eeyes.xyz/static/topview.png);background-size:cover;background-repeat:no-repeat;">
@@ -11,10 +9,10 @@
     <input class="searchinput t-s" placeholder="输入食谱、食材或其他商品"></input>
   </view>
   <view class="shopbody">
-  <view class="navbarbox">
-    <view class="navbar1" bindtap="nav" data-id="0" style="color:{{currenttab==0?'#484848':'#D7D7D7'}}">秤食堂</view>
-    <view class="navbar2" bindtap="nav" data-id="1" style="color:{{currenttab==1?'#484848':'#D7D7D7'}}">秤商店</view>
-  </view>
+    <view class="navbarbox">
+      <view class="navbar1" bindtap="nav" data-id="0" style="color:{{currenttab==0?'#484848':'#D7D7D7'}}">秤食堂</view>
+      <view class="navbar2" bindtap="nav" data-id="1" style="color:{{currenttab==1?'#484848':'#D7D7D7'}}">秤商店</view>
+    </view>
   </view>
   <view class="introduce t-m t-color-black">这是一段秤食堂的简介，减肥健身，掌控人生专业的在线体重管理平台强大的食品营养数据库，立即定制您的私人饮食</view>
   <view class="itemlist">
@@ -46,4 +44,35 @@
 
 <!-- 购物车页面 -->
 <view class="mask" style="z-index:2" wx:if="{{showshopwindow}}" bindtap="hideshopwindow"></view>
-<view class="shopwindow" style="z-index:3" wx:if="{{showshopwindow}}"></view>
+<view class="shopwindow" style="z-index:3" wx:if="{{showshopwindow}}">
+  <view class='title'>所有商品</view>
+  <view wx:for="{{goods}}">
+    <view wx:if="{{item.takeout || item.material || item.recipes }}" class='choose_box'>
+      <view class='box_title'>{{item.name}}</view>
+      <view wx:if="{{item.takeout}}">
+        <view class='box_name'>成餐外卖</view>
+        <view class='box_choose'>
+          <view class='box_decrease'>-</view>
+          <view>{{item.takeout}}</view>
+          <view class='box_increase'>+</view>
+        </view>
+      </view>
+      <view wx:if="{{item.material}}">
+        <view class='box_title'>新鲜食材速递</view>
+        <view class='box_choose'>
+          <view>-</view>
+          <view>{{item.material}}</view>
+          <view>+</view>
+        </view>
+      </view>
+      <view wx:if="{{item.recipes}}">
+        <view class='box_title'>食谱</view>
+        <view class='box_choose'>
+          <view>-</view>
+          <view>{{item.recipes}}</view>
+          <view>+</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
