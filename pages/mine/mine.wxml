@@ -20,13 +20,13 @@
 
 </view>
 <!-- 遮罩 -->
-<view class="mask" wx:if="{{showContact || isShow || phone===''}}" bindtap='close' catchtouchmove='maskTouchMove'></view>
+<view class="mask" wx:if="{{showContact || isShow || phone===''}}" bindtap='closecontact' catchtouchmove='maskTouchMove'></view>
 <!-- 联系 -->
 <view class="content-container" wx:if="{{showContact}}" catchtouchmove='touchMove'>
   <view class="content-title">联系我们</view>
   <view class="content-content">联系电话：*********</view>
   <view class="content-content">官方邮箱：***@qq.com</view>
-  <view class="sure" bindtap='close'>确定</view>
+  <view class="sure" bindtap='closecontact'>确定</view>
 </view>
 <!-- 手机号 -->
 <view class="content-container" wx:if="{{phone===''}}" catchtouchmove='touchMove'>

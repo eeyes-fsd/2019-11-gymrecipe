@@ -32,7 +32,8 @@ Page({
       data: response.data.expires_in
     })
   },
-  close: function() {
+  //关闭联系我们窗口
+  closecontact:function(){
     this.setData({
       showContact: false,
     })
