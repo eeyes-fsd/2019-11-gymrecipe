@@ -2,24 +2,7 @@
 
 <view class="body">
   <view class="title">我的收货地址</view>
-  <view class="addressbox"  bindtap="changeaddress">
-    <view class="addressnamebox">
-      <view class="addressname">asdas</view>
-      <view class="greyline"></view>
-    </view>
-    <view class="addressinfobox">
-      <view class="addressiconbox">
-        <image class="addressinfoicon1" src="/images/address.png"></image>
-      </view>
-      <view class="addressinfotext">sdassdasadsasssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-      sssssssssssssssssssssssssssssssssssssssssssssssssssssssadssdafggfssssssssssssss</view>
-    </view>
-    <view class="addressinfobox">
-      <image src="/images/phone.png" class="addressinfoicon"></image>
-      <view class="addressinfotext">123213421214</view>
-    </view>
-  </view>
-  <view class="addressbox" wx:for="{{addresslist}}" wx:key="{{item.id}}"  bindtap="changeaddress">
+  <view class="addressbox" wx:for="{{addresslist}}" wx:key="{{item.id}}" data-id="{{item.id}}"  bindtap="changeaddress">
     <view class="addressnamebox">
       <view class="addressname">{{item.name}} {{item.gender}}</view>
       <view class="greyline"></view>

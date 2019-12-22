@@ -6,7 +6,12 @@
   </view>
   <view class="inputbox">
     <view class="textline">称呼</view>
-    <input class="inputline" placeholder="请填写收货人称呼" name="gender"></input>
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+      <view class="picker">
+        {{array[index]}}
+      </view>
+    </picker>
+    <!-- <input class="inputline" placeholder="请填写收货人称呼" name="gender"></input> -->
   </view>
   <view class="inputbox">
     <view class="textline">手机号</view>
