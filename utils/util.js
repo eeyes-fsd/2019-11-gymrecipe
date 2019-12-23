@@ -47,19 +47,21 @@ const login = async(codes, iv, encrypted_data) => {
 // 刷新token
 const refreshToken = async() => {
   let token = wx.getStorageSync("access_token")
-  let response = await requestPromise("PUT", "/authorizations/current", token = token)
+  let response = await requestPromise("PUT", "/authorizations/current", '', token)
   wx.setStorageSync("access_token", response.data.access_token)
-  wx.setStorageSync("expires_in", response.data.expires_in)
+  wx.setStorageSync("expires_in", new Date().getTime() + response.data.expires_in)
   return response.data.access_token
 }
 
 //获取token
 const getToken = async() => {
-  let response = wx.getStorageSync("access_token")
-  if (!response) {
-    response = await refreshToken()
+  let access_token = wx.getStorageSync("access_token")
+  let expires_in = wx.getStorageSync("expires_in")
+  if (new Date().getTime() > expires_in) {
+    access_token = await refreshToken()
+    console.log("reset token")
   }
-  return response
+  return access_token
 }
 
 //获取用户数据
