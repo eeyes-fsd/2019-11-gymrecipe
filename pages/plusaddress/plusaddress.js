@@ -18,7 +18,7 @@ Page({
     if (!e.detail.value.user || !e.detail.value.tele || !e.detail.value.address || !e.detail.value.detailaddress) {
       wx.showToast({
         title: '请完善信息',
-        //icon: none,
+        icon: none,
         duration: 2000
       })
       return
@@ -26,7 +26,7 @@ Page({
     if (!(/^1[3456789]\d{9}$/.test(e.detail.value.tele))) {
       wx.showToast({
         title: '手机号码有误，请重填',
-        //icon: none,
+        icon: none,
         duration: 2000
       })
       return;

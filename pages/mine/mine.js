@@ -7,32 +7,36 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     userInfo: [],
     phone: "",
-    code: ""
+    code: "",
+    share_id: ""
   },
   onTab: function() {
     this.setData({
       showContact: true
     })
   },
-  getPhoneNumber: async function (e) {
+  getPhoneNumber: async function(e) {
     let response = await api.login(this.data.code, e.detail.iv, e.detail.encryptedData)
     console.log("成功获取手机号")
+    let userInfo = await api.getUser()
     this.setData({
-      // 测试
-      phone: " response.data.phone"
+      phone: userInfo.data.data.phone
+    })
+    this.setData({
+      share_id: userInfo.data.data.share_id
     })
     // 测试
-    wx.setStorage({
+    wx.setStorageSync({
       key: 'access_token',
       data: response.data.access_token
     })
-    wx.setStorage({
+    wx.setStorageSync({
       key: 'expires_in',
       data: response.data.expires_in
     })
   },
   //关闭联系我们窗口
-  closecontact:function(){
+  closecontact: function() {
     this.setData({
       showContact: false,
     })
