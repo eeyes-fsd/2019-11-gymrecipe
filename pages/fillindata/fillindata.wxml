@@ -46,7 +46,7 @@
       <view wx:if="{{BMI!=''}}" class='items' style="height:30rpx;">
         <view>BMI值为{{BMI}}</view>
       </view>
-       <view wx:if="{{Base!=''}}" class='items' style="height:30rpx;">
+      <view wx:if="{{Base!=''}}" class='items' style="height:30rpx;">
         <view>基础代谢值为{{Base}}</view>
       </view>
       <view id="i5" class='items'>
@@ -88,3 +88,12 @@
     </view>
   </scroll-view>
 </form>
+<view class="mask" wx:if="{{alertShow}}" bindtap='close' catchtouchmove='maskTouchMove'></view>
+<view class="content-container" catchtouchmove='touchMove' wx-if="{{alertShow}}">
+  <view class="content-content">
+    {{alertContent}}
+  </view>
+  <view class="btnbox">
+    <button class="btn" bindtap='close'>确定</button>
+  </view>
+</view>

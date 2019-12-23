@@ -1,0 +1,11 @@
+<!--components/alertBox.wxml-->
+<view class="content-container" catchtouchmove='touchMove' wx-if="{{show}}">
+  <view class="mask" wx:if="{{show}}" bindtap='close' catchtouchmove='maskTouchMove'></view>
+
+  <view class="content-content">
+    <slot></slot>
+  </view>
+  <view class="btnbox">
+    <button class="btn" bindtap='close'>确定</button>
+  </view>
+</view>

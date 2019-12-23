@@ -41,6 +41,22 @@ Page({
     dweight: [],
     dexe: [],
     dpurpose: [],
+    alertShow: false,
+    alertContent: "123"
+  },
+  //关闭窗口
+  close: function() {
+    this.setData({
+      alertShow: false
+    })
+  },
+  // 显示窗口
+  AlertShow: function(content) {
+    console.log("asdsa")
+    this.setData({
+      alertShow: true,
+      alertContent: content
+    })
   },
   gymnearby: function() {
     var that = this
@@ -94,15 +110,13 @@ Page({
           })
           switch (parseInt(e.detail.value)) {
             case 0:
-              wx.showToast({
-                title: '非运动人群',
-              })
+              var message = "非运动人群"
+              that.AlertShow(message)
               break;
             case 1:
             case 2:
-              wx.showToast({
-                title: '建议填写体脂率',
-              })
+              var message = "建议填写体脂率"
+              that.AlertShow(message)
               break;
           }
           break;
@@ -129,7 +143,7 @@ Page({
     if (that.data.fweight && that.data.fheight && that.data.fbirthdate && that.data.fgender) {
       var dbirthdate = new Date().getFullYear() - that.data.dbirthdate.split('-')[0] + ((that.data.dbirthdate.split('-')[1] < new Date().getMonth()) ? 0 : -1)
       that.setData({
-        Base: (13.88 * dweight + 4.16 * dheight - 3.43 * dbirthdate - (dgender==="男"?0:112.4) + 54.34).toFixed(2)
+        Base: (13.88 * dweight + 4.16 * dheight - 3.43 * dbirthdate - (dgender === "男" ? 0 : 112.4) + 54.34).toFixed(2)
       })
     }
   },
@@ -177,7 +191,8 @@ Page({
     } else {
       //判断问题
       if (parseInt(e.detail.value.exe) == 0 && (parseInt(e.detail.value.purpose)) == 1) { //低非运动人群不可快速降脂
-
+        var message = "低非运动人群不可快速降脂"
+        that.AlertShow(message)
       }
       let data = {
         "gender": (parseInt(e.detail.value.gender) === 0) ? 'm' : 'f',

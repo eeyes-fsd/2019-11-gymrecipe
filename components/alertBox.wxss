@@ -1,0 +1,35 @@
+/* components/alertBox.wxss */
+
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.content-container {
+  position: fixed;
+  top: 484rpx;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 640rpx;
+  height: 510rpx;
+  border-radius: 40rpx;
+  background-color: white;
+}
+
+.content-content {
+  height: 46rpx;
+  width: 100%;
+  margin: 12rpx 0;
+  padding-left: 70rpx;
+  font-size: 32rpx;
+  line-height: 46rpx;
+  color: #4a4e63;
+}
