@@ -4,23 +4,12 @@ import api from "../../utils/util.js"
 const app = getApp()
 Page({
   data: {
+    showtoday:false,
     currentIntake:[],
     toView: [], //用于锚点跳转
     getinfo: false, //是否测量过身体数据
     setfood: false, //是否定制过套餐
-    todaylist: [{
-      id: 1,
-      cover: "red",
-      name: "早餐-牛油果奶昔"
-    }, {
-      id: 2,
-      cover: "yellow",
-      name: "午餐-牛油果意面"
-    }, {
-      id: 3,
-      cover: "green",
-      name: "晚餐-牛油果沙拉"
-    }], //今日食谱
+    todaylist: [], //今日食谱
     updatetime: '11/8',
     foodlist: [], //首页推荐套餐图
     newrecom: '奥尔良鸡胸肉套餐',
@@ -58,26 +47,41 @@ Page({
     this.setData({
       foodlist: newRecipes.data.data,
     })
-    try{
-      let response = await api.todayRecipes()
-      let r = await api.recipesDetails(response.data.data[0].id)
+    let response = await api.todayRecipes()
+    if(response.data.data!=""){
       that.setData({
-        todaylist: r.data.data
+        showtoday:true,
+        todaylist: response.data.data
       })
-    }catch{
+    }else{
+      that.setData({
+        showtoday: false,
+        todaylist: ""
+      })
     }
+    //let r = await api.recipesDetails(response.data.data[0].id)
+    
     let Response = await api.currentIntake()
     let currentIntake = Response.data
-    let radioarray = currentIntake.ratio.split(":")
-    let radiosum = radioarray[0]+radioarray[1]+radioarray[2]
-    let Intakedata = {
-      'date':currentIntake.updated_at,
-      'carbohydrate':(currentIntake.energy*radioarray[0]/radiosum).toFixed(2),
-      'protein': (currentIntake.energy * radioarray[1] / radiosum).toFixed(2),
-      'fat': (currentIntake.energy * radioarray[2] / radiosum).toFixed(2)
+    if(currentIntake!=""){
+      let radioarray = currentIntake.ratio.split(":")
+      let radiosum = radioarray[0] + radioarray[1] + radioarray[2]
+      let Intakedata = {
+        'date': currentIntake.updated_at,
+        'carbohydrate': (currentIntake.energy * radioarray[0] / radiosum).toFixed(2),
+        'protein': (currentIntake.energy * radioarray[1] / radiosum).toFixed(2),
+        'fat': (currentIntake.energy * radioarray[2] / radiosum).toFixed(2)
+      }
+      that.setData({
+        currentIntake: Intakedata,
+        getinfo:true
+      })
+    }else{
+      that.setData({
+        currentIntake:"",
+        getinfo:false
+      })
     }
-    that.setData({
-      currentIntake:Intakedata
-    })
+    
   },
 })

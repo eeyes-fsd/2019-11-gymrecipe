@@ -173,9 +173,9 @@ const recipesDetails = async(id) => {
   return response
 }
 //获取已购套餐
-const boughtRecipes = async(id) => {
+const boughtRecipes = async() => {
   let token = await getToken()
-  let response = await requestPromise("GET", `/recipes/bought`, data, token)
+  let response = await requestPromise("GET", `/recipes/bought`,'' ,token)
   return response
 }
 //获取全部套餐

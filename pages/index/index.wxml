@@ -9,32 +9,34 @@
       </image>
     </view>
   </scroll-view>
-  <view class="titlebox_2">
-    <view class="titlebox_2_title">每日所需营养素</view>
-    <view class="titlebox_2_titlelow">更新于{{currentIntake.date}}</view>
-  </view>
-  <view class="needinfobox">
-    <view class="needinfolist">
-      <view class="needlinebox" style="margin-top:34rpx;">
-        <view class="needicontextbox">
-          <image class="needicon" src="/images/gradient1.png"></image>
-          <view class="needtitle">碳水化合物</view>
+  <view wx:if="{{getinfo}}">
+    <view class="titlebox_2">
+      <view class="titlebox_2_title">每日所需营养素</view>
+      <view class="titlebox_2_titlelow">更新于{{currentIntake.date}}</view>
+    </view>
+    <view class="needinfobox">
+      <view class="needinfolist">
+        <view class="needlinebox" style="margin-top:34rpx;">
+          <view class="needicontextbox">
+            <image class="needicon" src="/images/gradient1.png"></image>
+            <view class="needtitle">碳水化合物</view>
+          </view>
+          <view class="neednum">{{currentIntake.carbohydrate}}克</view>
         </view>
-        <view class="neednum">{{currentIntake.carbohydrate}}克</view>
-      </view>
-      <view class="needlinebox" style="margin-top:16rpx;">
-        <view class="needicontextbox">
-          <image class="needicon" src="/images/gradient2.png"></image>
-          <view class="needtitle">蛋白质</view>
+        <view class="needlinebox" style="margin-top:16rpx;">
+          <view class="needicontextbox">
+            <image class="needicon" src="/images/gradient2.png"></image>
+            <view class="needtitle">蛋白质</view>
+          </view>
+          <view class="neednum">{{currentIntake.protein}}克</view>
         </view>
-        <view class="neednum">{{currentIntake.protein}}克</view>
-      </view>
-      <view class="needlinebox" style="margin-top:16rpx;">
-        <view class="needicontextbox">
-          <image class="needicon" src="/images/gradient3.png"></image>
-          <view class="needtitle">脂肪</view>
+        <view class="needlinebox" style="margin-top:16rpx;">
+          <view class="needicontextbox">
+            <image class="needicon" src="/images/gradient3.png"></image>
+            <view class="needtitle">脂肪</view>
+          </view>
+          <view class="neednum">{{currentIntake.fat}}克</view>
         </view>
-        <view class="neednum">{{currentIntake.fat}}克</view>
       </view>
     </view>
   </view>
@@ -46,18 +48,20 @@
     <view class="jumpto_1text">立即免费测量</view>
     <image class="jumpto_1icon" src="/images/falling.png"></image>
   </view>
-  <view class="titlebox_3">
+  <view class="titlebox_3" wx:if="{{showtoday}}">
     今日秤食食谱
   </view>
-  <view class="nametitle">{{todaylist.name}}</view>
-  <scroll-view scroll-x="true" style="height:275rpx;width:100%;margin-top:26rpx;">
-    <view class="comlistcontainer" style="width:{{todaylist.length*296}}rpx">
-      <view class="comphotolittlebox" wx:for="{{todaylist}}" wx:key data-id="{{item.id}}" data-perchased="1" bindtap="recipelist">
-        <image class="comphotos" src="{{item.cover}}" lazy-load='{{true}}'></image>
-        <view class="comnames">{{item.name}}</view>
+  <view wx:if="{{showtoday}}">
+    <view class="nametitle">{{todaylist.name}}</view>
+    <scroll-view scroll-x="true" style="height:275rpx;width:100%;margin-top:26rpx;">
+      <view class="comlistcontainer" style="width:{{todaylist.length*296}}rpx">
+        <view class="comphotolittlebox" wx:for="{{todaylist}}" wx:key data-id="{{item.id}}" data-perchased="1" bindtap="recipelist">
+          <image class="comphotos" src="{{item.cover}}" lazy-load='{{true}}'></image>
+          <view class="comnames">{{item.name}}</view>
+        </view>
       </view>
-    </view>
-  </scroll-view>
+    </scroll-view>
+  </view>
   <view class="jumpto_2box" wx:if="{{setfood}}" bindtap="recipelist">
     <view class="jumpto_2text">吃腻了？获取更多食谱</view>
     <image class="jumpto_2icon" src="/images/falling.png"></image>

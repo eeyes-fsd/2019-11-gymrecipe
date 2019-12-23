@@ -160,17 +160,13 @@ Page({
   onLoad: async function(options) {
     var that = this
     let response = await api.allRecipes()
-    console.log(response)
     that.setData({
       recipelist: response.data.data
     })
-    try {
-      response = await api.boughtRecipes()
-      this.data.myrecipelist = response.data.data || []
-    } catch {
-
-    }
-
+    let response2 = await api.boughtRecipes()
+    that.setData({
+      myrecipelist: response2.data.data
+    })
     try {
       var toViewid = "r" + wx.getStorageSync("recipeid") //食谱id锚点
       that.setData({
