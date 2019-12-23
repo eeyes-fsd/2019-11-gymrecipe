@@ -11,7 +11,7 @@
   </scroll-view>
   <view class="titlebox_2">
     <view class="titlebox_2_title">每日所需营养素</view>
-    <view class="titlebox_2_titlelow">更新于{{updatetime}}</view>
+    <view class="titlebox_2_titlelow">更新于{{currentIntake.date}}</view>
   </view>
   <view class="needinfobox">
     <view class="needinfolist">
@@ -20,21 +20,21 @@
           <image class="needicon" src="/images/gradient1.png"></image>
           <view class="needtitle">碳水化合物</view>
         </view>
-        <view class="neednum">1431克</view>
+        <view class="neednum">{{currentIntake.carbohydrate}}克</view>
       </view>
       <view class="needlinebox" style="margin-top:16rpx;">
         <view class="needicontextbox">
           <image class="needicon" src="/images/gradient2.png"></image>
           <view class="needtitle">蛋白质</view>
         </view>
-        <view class="neednum">820克</view>
+        <view class="neednum">{{currentIntake.protein}}克</view>
       </view>
       <view class="needlinebox" style="margin-top:16rpx;">
         <view class="needicontextbox">
           <image class="needicon" src="/images/gradient3.png"></image>
           <view class="needtitle">脂肪</view>
         </view>
-        <view class="neednum">75克</view>
+        <view class="neednum">{{currentIntake.fat}}克</view>
       </view>
     </view>
   </view>

@@ -29,7 +29,7 @@
         <view class="itemdetail2">主要食材：鸡胸肉、西兰花、牛油果</view>
         <view class="jumpbox">
           <view class="jumptext">立即解锁配餐</view>
-          <view class="jumpicon"></view>
+          <image class="jumpicon" src="/images/falling.png"></image>
         </view>
       </view>
     </view>

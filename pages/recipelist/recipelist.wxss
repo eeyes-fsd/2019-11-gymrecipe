@@ -101,7 +101,6 @@
   margin-left:10rpx;
   width:12.33rpx;
   height:12.88rpx;
-  background-color:red;
 }
 .bottom_line{
   width:100%;

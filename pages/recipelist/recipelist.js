@@ -156,6 +156,7 @@ Page({
   onLoad: async function(options) {
     var that = this
     let response = await api.allRecipes()
+    console.log(response)
     that.setData({
       recipelist: response.data.data
     })

@@ -153,7 +153,9 @@ Page({
         "purpose": parseInt(e.detail.value.purpose)+1,
       }
       console.log(data)
-      await api.sendHealth(data)
+      //表单提交后返回的新摄入数据，存入缓存
+      let currentIntake = await api.sendHealth(data)
+      wx.setStorageSync('currentIntake', currentIntake)
       that.setData({ //恢复表单未编辑状态
         edit: false
       })
@@ -192,6 +194,7 @@ Page({
     })
     try {
       var cacheinfo = wx.getStorageSync('cacheinfo')
+      //若之前存在修改的数据未提交
       if (cacheinfo.edit) {
         if (cacheinfo.gender != 'null') {
           that.setData({
@@ -242,6 +245,7 @@ Page({
     })
 
     var info = await api.getHealth()
+    console.log(info)
   },
   //页面卸载时
   onUnload: function() {

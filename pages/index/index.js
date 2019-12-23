@@ -55,10 +55,8 @@ Page({
     // 测试
     // 新品推荐需要修改
     let newRecipes = await api.newRecipes(20,1)
-    console.log("its",newRecipes)
     this.setData({
       foodlist: newRecipes.data.data,
-      
     })
     try{
       let response = await api.todayRecipes()
@@ -68,10 +66,18 @@ Page({
       })
     }catch{
     }
-    let currentIntake = await api.currentIntake()
+    let Response = await api.currentIntake()
+    let currentIntake = Response.data
+    let radioarray = currentIntake.ratio.split(":")
+    let radiosum = radioarray[0]+radioarray[1]+radioarray[2]
+    let Intakedata = {
+      'date':currentIntake.updated_at,
+      'carbohydrate':(currentIntake.energy*radioarray[0]/radiosum).toFixed(2),
+      'protein': (currentIntake.energy * radioarray[1] / radiosum).toFixed(2),
+      'fat': (currentIntake.energy * radioarray[2] / radiosum).toFixed(2)
+    }
     that.setData({
-      currentIntake:currentIntake
+      currentIntake:Intakedata
     })
-    console.log(currentIntake)
   },
 })

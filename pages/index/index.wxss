@@ -142,8 +142,8 @@
 }
 .comphotolittlebox{
   margin-right:36rpx;
-  height:130px;
-  width:140px;
+  height:275rpx;
+  width:296rpx;
   border-radius:16rpx;
   background-color:white;
 }
@@ -154,7 +154,7 @@
   background-color:rgb(165, 203, 247);
 }
 .comnames{
-  background-color:#FFFFFF;
+  margin-top:-10rpx;
   height:80rpx;
   width:100%;
   font-size:28rpx;
