@@ -49,7 +49,7 @@ const refreshToken = async() => {
   let token = wx.getStorageSync("access_token")
   let response = await requestPromise("PUT", "/authorizations/current", '', token)
   wx.setStorageSync("access_token", response.data.access_token)
-  wx.setStorageSync("expires_in", new Date().getTime() + response.data.expires_in)
+  wx.setStorageSync("expires_in", new Date().getTime() + response.data.expires_in * 1000)
   return response.data.access_token
 }
 
@@ -227,6 +227,8 @@ const orderDetail = async(id) => {
 module.exports = {
   login,
   getToken,
+  //User
+  getUser,
   //address
   getAddress,
   plusAddress,
