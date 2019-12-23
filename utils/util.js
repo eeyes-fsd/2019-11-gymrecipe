@@ -160,7 +160,7 @@ const newRecipes = async(count, page) => {
 //获取套餐详情
 const recipesDetails = async(id) => {
   let token = await getToken()
-  let response = await requestPromise("GET", `/recipes/${id}/details`, data, token)
+  let response = await requestPromise("GET", `/recipes/${id}/details`, token)
   return response
 }
 //获取已购套餐
@@ -199,6 +199,13 @@ const orders = async() => {
 const orderDetail = async(id) => {
   let token = await getToken()
   let response = await requestPromise("GET", `/orders/${id}`, '', token)
+  return response
+}
+
+//获取当前健康数据
+const currentIntake = async() => {
+  let token = await getToken()
+  let response = await requestPromise("GET", "/health/intake", "", token)
   return response
 }
 

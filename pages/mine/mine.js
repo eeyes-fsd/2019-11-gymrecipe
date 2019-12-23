@@ -15,7 +15,6 @@ Page({
     })
   },
   getPhoneNumber: async function (e) {
-    console.log("这是e",e)
     let response = await api.login(this.data.code, e.detail.iv, e.detail.encryptedData)
     console.log("成功获取手机号")
     this.setData({

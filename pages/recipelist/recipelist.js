@@ -7,6 +7,9 @@ Page({
    */
   data: {
     //test
+    detailcurrentdata:[],//用于切换早午晚餐详情的
+    currentimage:[],
+    currentdata:[],//当前显示的食谱详情
     testx: 100,
     showStyle: [], //显示动画
     windowWidth: [], //屏幕数据
@@ -23,109 +26,33 @@ Page({
     showwindow: false,//是否显示配置订餐窗口
     perchased: 1,
     //全部套餐
-    recipelist: [{
-        "id": 1,
-        "name": "奥尔良鸡胸肉套餐",
-        "cover": "http://gym.eeyes.xyz/storage/public/cover_123.png",
-        "description": null
-      },
-      {
-        "id": 2,
-        "name": "奥尔良鸡肉套餐",
-        "cover": "http://gym.eeyes.xyz/storage/public/cover_123.png",
-        "description": null,
-        "breakfast": {
-          "ingredients": [{
-              "name": "牛肉",
-              "amount": 200
-            },
-            {
-              "name": "鸡肉",
-              "amount": 300
-            },
-            {
-              "name": "西兰花",
-              "amount": 500
-            }
-          ],
-          "nutrient": {
-            "fat": 20,
-            "protein": 30,
-            "carbohydrate": 10
-          },
-          "step": "<html></html>"
-        },
-        "lunch": {
-          "ingredients": [{
-              "name": "牛肉",
-              "amount": 200
-            },
-            {
-              "name": "鸡肉",
-              "amount": 300
-            },
-            {
-              "name": "西兰花",
-              "amount": 500
-            }
-          ],
-          "nutrient": {
-            "fat": 20,
-            "protein": 30,
-            "carbohydrate": 10
-          },
-          "step": "<html></html>"
-        },
-        "dinner": {
-          "ingredients": [{
-              "name": "牛肉",
-              "amount": 200
-            },
-            {
-              "name": "鸡肉",
-              "amount": 300
-            },
-            {
-              "name": "西兰花",
-              "amount": 500
-            }
-          ],
-          "nutrient": {
-            "fat": 20,
-            "protein": 30,
-            "carbohydrate": 10
-          },
-          "step": "<html></html>"
-        }
-      },
-      {
-        "id": 3,
-        "name": "鸡肉套餐",
-        "cover": "http://gym.eeyes.xyz/storage/public/cover_123.png",
-        "description": null
-      },
-    ],
+    recipelist: [],
     //已购套餐
-    myrecipelist: [{
-        "id": 1,
-        "name": "奥尔良鸡胸肉套餐",
-        "cover": "http://gym.eeyes.xyz/storage/public/cover_123.png",
-        "description": null
-      },
-      {
-        "id": 3,
-        "name": "鸡肉套餐",
-        "cover": "http://gym.eeyes.xyz/storage/public/cover_123.png",
-        "description": null
-      },
-    ],
+    myrecipelist: [],
   },
 
   //早餐午餐晚餐切换
   navbar: function(e) {
     var that = this
+    switch( e.currentTarget.dataset.id){
+      case 'breakfast':
+      that.setData({
+        detailcurrentdata:that.data.currentdata.breakfast
+      })
+      break;
+      case 'lunch':
+        that.setData({
+          detailcurrentdata: that.data.currentdata.lunch
+        })
+      break;
+      case 'dinner':
+        that.setData({
+          detailcurrentdata: that.data.currentdata.dinner
+        })
+      break;
+    }
     that.setData({
-      currenttab: e.currentTarget.dataset.id
+      currenttab: e.currentTarget.dataset.id,
     })
   },
 
@@ -164,12 +91,15 @@ Page({
     })
   },
   //跳转食品详情
-  fooddetail: function(e) {
-    console.log(e.detail.deltaX)
+  fooddetail: async function(e) {
     var that = this
+    let recipedetail = await api.recipesDetails(parseInt(e.currentTarget.dataset.id))
     that.setData({
       showanimation: true,
-      testx: that.data.testx - (parseInt(e.currentTarget.dataset.id) - 1) * 556
+      testx: that.data.testx - (parseInt(e.currentTarget.dataset.id) - 1) * 556,
+      currentdata: recipedetail.data.data,
+      currentimage: that.data.recipelist[parseInt(e.currentTarget.dataset.id) - 1].cover,
+      detailcurrentdata: recipedetail.data.data.breakfast
     })
     that.setData({
       showStyle: '-webkit-animation: show 0.5s linear;animation:show 0.5s linear'
@@ -178,28 +108,32 @@ Page({
       that.setData({
         showStyle: ''
       })
-    }, 600)
+    }, 1000)
+    setTimeout(function () {
+      that.setData({
+        fooddetail: true
+      })
+    }, 100)
     setTimeout(function() {
       that.setData({
         showanimation: false,
-        fooddetail: true
       })
-    }, 500)
+    }, 490)
   },
   scrolling: async function(e) {
-    let that = this
-    let r;
-    console.log(e.detail.scrollLeft)
-    let a = ~~(e.detail.scrollLeft / 278)
-    // 检测当前视窗下的view-scroll是否完全加载数据
-    for (let i = ((a - 1) < 0 ? 0 : (a - 1)); i < a + 2; i++) {
-      if (that.recipelist[i].breakfast === undefined) {
-        r = await api.recipesDetails(i)
-        that.setData({
-          'recipelist[i]': r.data.data
-        })
-      }
-    }
+    // let that = this
+    // let r;
+    // console.log(e.detail.scrollLeft)
+    // let a = ~~(e.detail.scrollLeft / 278)
+    // // 检测当前视窗下的view-scroll是否完全加载数据
+    // for (let i = ((a - 1) < 0 ? 0 : (a - 1)); i < a + 2; i++) {
+    //   if (that.recipelist[i].breakfast === undefined) {
+    //     r = await api.recipesDetails(i)
+    //     that.setData({
+    //       'recipelist[i]': r.data.data
+    //     })
+    //   }
+    // }
   },
   myscrolling: async function(e) {
     let that = this
@@ -222,9 +156,16 @@ Page({
   onLoad: async function(options) {
     var that = this
     let response = await api.allRecipes()
-    this.data.fooddetail = response.data.data || []
-    response = await api.boughtRecipes()
+    that.setData({
+      recipelist: response.data.data
+    })
+    try{
+      response = await api.boughtRecipes()
     this.data.myrecipelist = response.data.data || []
+    }catch{
+      
+    }
+    
     try {
       var toViewid = "r" + wx.getStorageSync("recipeid") //食谱id锚点
       that.setData({

@@ -145,22 +145,23 @@ Page({
       })
     } else {
       let data = {
-        "gender": that.data.gender[parseInt(e.detail.value.gender)],
-        "birthdate": e.detail.value.gender,
+        "gender": (parseInt(e.detail.value.gender)===0)?'m':'f',
+        "birthday": e.detail.value.date,
         "height": that.data.height[parseInt(e.detail.value.height)],
         "weight": that.data.weight[parseInt(e.detail.value.weight)],
-        "exe": that.data.exe[parseInt(e.detail.value.exe)],
-        "purpose": that.data.purpose[parseInt(e.detail.value.purpose)],
+        "exercise": parseInt(e.detail.value.exe)+1,
+        "purpose": parseInt(e.detail.value.purpose)+1,
       }
+      console.log(data)
+      await api.sendHealth(data)
+      that.setData({ //恢复表单未编辑状态
+        edit: false
+      })
+      let cacheinfo = {
+        "edit": false
+      }
+      wx.setStorageSync('cacheinfo', cacheinfo)
     }
-    await api.sendHealth(data)
-    that.setData({ //恢复表单未编辑状态
-      edit: false
-    })
-    let cacheinfo = {
-      "edit": false
-    }
-    wx.setStorageSync('cacheinfo', cacheinfo)
   },
   gymnearby: function() {
     var that = this
