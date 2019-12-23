@@ -47,7 +47,7 @@ const login = async(codes, iv, encrypted_data) => {
 // 刷新token
 const refreshToken = async() => {
   let token = wx.getStorageSync("access_token")
-  let response = await requestPromise("PUT", "/authorizations/current", token=token)
+  let response = await requestPromise("PUT", "/authorizations/current", token = token)
   wx.setStorageSync("access_token", response.data.access_token)
   wx.setStorageSync("expires_in", response.data.expires_in)
   return response.data.access_token
@@ -180,6 +180,28 @@ const todayRecipes = async(id) => {
   let response = await requestPromise("GET", `/recipes/today`, "", token)
   return response
 }
+
+//other
+//支付
+//idList 需要是列表
+const pay = async(idList) => {
+  let token = await getToken()
+  let response = await requestPromise("POST", `/orders`, idList, token)
+  return response
+}
+//获取订单列表
+const orders = async() => {
+  let token = await getToken()
+  let response = await requestPromise("GET", `/orders`, '', token)
+  return response
+}
+//获取订单详情
+const orderDetail = async(id) => {
+  let token = await getToken()
+  let response = await requestPromise("GET", `/orders/${id}`, '', token)
+  return response
+}
+
 module.exports = {
   login,
   getToken,
@@ -199,5 +221,9 @@ module.exports = {
   allRecipes,
   boughtRecipes,
   recipesDetails,
-  newRecipes
+  newRecipes,
+  //pay
+  pay,
+  orders,
+  orderDetail
 }
