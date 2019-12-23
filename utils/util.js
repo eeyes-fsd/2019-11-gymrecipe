@@ -180,6 +180,23 @@ const todayRecipes = async(id) => {
   let response = await requestPromise("GET", `/recipes/today`, "", token)
   return response
 }
+//获取当前健康数据
+const currentIntake = async () => {
+  let token = await getToken()
+  let response = await requestPromise("GET", "/health/intake", "", token)
+  return response
+}
+
+
+const exercisesList = async() => {
+  let response = await requestPromise("GET", `/exercies`)
+  return response
+}
+
+const purposesLisr = async() => {
+  let response = await requestPromise("GET", `/purposes`)
+  return response
+}
 module.exports = {
   login,
   getToken,
@@ -199,5 +216,9 @@ module.exports = {
   allRecipes,
   boughtRecipes,
   recipesDetails,
-  newRecipes
+  newRecipes,
+  exercisesList,
+  purposesLisr,
+  //
+  currentIntake,
 }

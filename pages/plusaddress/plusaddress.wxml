@@ -2,7 +2,7 @@
   <view class="title">新增收货地址</view>
   <view class="inputbox">
     <view class="textline" style="margin-top">联系人</view>
-    <input class="inputline" placeholder="请填写收货人姓名" name="name"></input>
+    <input class="inputline" placeholder="请填写收货人姓名" name="user"></input>
   </view>
   <view class="inputbox">
     <view class="textline">称呼</view>
@@ -15,7 +15,7 @@
   </view>
   <view class="inputbox">
     <view class="textline">手机号</view>
-    <input class="inputline" placeholder="请填写收货人手机号" name="phone"></input>
+    <input class="inputline" placeholder="请填写收货人手机号" name="tele"></input>
   </view>
   <view class="inputbox">
     <view class="textline">收货地址</view>

@@ -4,6 +4,7 @@ import api from "../../utils/util.js"
 const app = getApp()
 Page({
   data: {
+    currentIntake:[],
     toView: [], //用于锚点跳转
     getinfo: false, //是否测量过身体数据
     setfood: false, //是否定制过套餐
@@ -67,5 +68,10 @@ Page({
       })
     }catch{
     }
+    let currentIntake = await api.currentIntake()
+    that.setData({
+      currentIntake:currentIntake
+    })
+    console.log(currentIntake)
   },
 })

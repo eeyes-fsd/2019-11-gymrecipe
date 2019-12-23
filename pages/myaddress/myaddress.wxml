@@ -14,7 +14,7 @@
       <view class="addressinfotext">{{item.details}}</view>
     </view>
     <view class="addressinfobox">
-      <image class="addressinfoicon" src="/images/address.png"></image>
+      <image class="addressinfoicon" src="/images/phone.png"></image>
       <view class="addressinfotext">{{item.phone}}</view>
     </view>
   </view>
