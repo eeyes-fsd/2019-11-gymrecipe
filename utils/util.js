@@ -148,6 +148,13 @@ const changeHealth = async(data) => {
   let response = await requestPromise("PUT", `/health`, data, token)
   return response
 }
+//获取能量摄入
+const currentIntake = async() => {
+  let token = await getToken()
+  let response = await requestPromise("GET", `/health/intake`, '', token)
+  return response
+}
+
 //获取上新推荐
 const newRecipes = async(count, page) => {
   let data = {
@@ -187,6 +194,19 @@ const todayRecipes = async(id) => {
 const pay = async(idList) => {
   let token = await getToken()
   let response = await requestPromise("POST", `/orders`, idList, token)
+  wx.requestPayment({
+    timeStamp: response.data.timeStamp,
+    nonceStr: response.data.timeStamp,
+    package: response.data.package,
+    signType: response.data.signType,
+    paySign: response.data.paySign,
+    success: () => {
+      wx.showToast({
+        title: '支付成功',
+        duration: 2000
+      })
+    }
+  })
   return response
 }
 //获取订单列表
@@ -199,13 +219,6 @@ const orders = async() => {
 const orderDetail = async(id) => {
   let token = await getToken()
   let response = await requestPromise("GET", `/orders/${id}`, '', token)
-  return response
-}
-
-//获取当前健康数据
-const currentIntake = async() => {
-  let token = await getToken()
-  let response = await requestPromise("GET", "/health/intake", "", token)
   return response
 }
 
@@ -223,6 +236,7 @@ module.exports = {
   getHealth,
   sendHealth,
   changeHealth,
+  currentIntake,
   // recipes
   todayRecipes,
   allRecipes,
