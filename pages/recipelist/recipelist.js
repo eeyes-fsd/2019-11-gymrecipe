@@ -7,9 +7,9 @@ Page({
    */
   data: {
     //test
-    detailcurrentdata:[],//用于切换早午晚餐详情的
-    currentimage:[],
-    currentdata:[],//当前显示的食谱详情
+    detailcurrentdata: [], //用于切换早午晚餐详情的
+    currentimage: [],
+    currentdata: [], //当前显示的食谱详情
     testx: 100,
     showStyle: [], //显示动画
     windowWidth: [], //屏幕数据
@@ -23,7 +23,7 @@ Page({
     //recipelist
     fooddetail: false, //是否显示图片详情
     methodid: 1, //配餐定制方式
-    showwindow: false,//是否显示配置订餐窗口
+    showwindow: false, //是否显示配置订餐窗口
     perchased: 1,
     //全部套餐
     recipelist: [],
@@ -34,22 +34,22 @@ Page({
   //早餐午餐晚餐切换
   navbar: function(e) {
     var that = this
-    switch( e.currentTarget.dataset.id){
+    switch (e.currentTarget.dataset.id) {
       case 'breakfast':
-      that.setData({
-        detailcurrentdata:that.data.currentdata.breakfast
-      })
-      break;
+        that.setData({
+          detailcurrentdata: that.data.currentdata.breakfast
+        })
+        break;
       case 'lunch':
         that.setData({
           detailcurrentdata: that.data.currentdata.lunch
         })
-      break;
+        break;
       case 'dinner':
         that.setData({
           detailcurrentdata: that.data.currentdata.dinner
         })
-      break;
+        break;
     }
     that.setData({
       currenttab: e.currentTarget.dataset.id,
@@ -57,7 +57,7 @@ Page({
   },
 
   //recepelist
-  getposition: function(e) {//获取当前sroll滚动位置
+  getposition: function(e) { //获取当前sroll滚动位置
     var that = this
     that.setData({
       testx: (e.detail.scrollLeft) * that.data.trans
@@ -109,7 +109,7 @@ Page({
         showStyle: ''
       })
     }, 1000)
-    setTimeout(function () {
+    setTimeout(function() {
       that.setData({
         fooddetail: true
       })
@@ -150,6 +150,10 @@ Page({
       }
     }
   },
+  //支付
+  pay: async function() {
+    await api.pay([detailcurrentdata])
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -160,13 +164,13 @@ Page({
     that.setData({
       recipelist: response.data.data
     })
-    try{
+    try {
       response = await api.boughtRecipes()
-    this.data.myrecipelist = response.data.data || []
-    }catch{
-      
+      this.data.myrecipelist = response.data.data || []
+    } catch {
+
     }
-    
+
     try {
       var toViewid = "r" + wx.getStorageSync("recipeid") //食谱id锚点
       that.setData({
