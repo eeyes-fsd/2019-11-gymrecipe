@@ -6,11 +6,13 @@ Page({
    * 页面的初始数据
    */
   data: {
+    BMI:[],//体脂率
+    Base:[],//基础代谢
     edit: false, //用户是否编辑过页面而且没有提交，用于存储页面显示
     toView: [], //锚点跳转
     windowHeight: [],
     windowWidth: [],
-    flag: false, //之前是否填入过数据
+    flag: false, //之前是否提交过数据
     // cacheinfo:[],//存储用户离开页面未提交时已选择的数据
     info: {
       gender: "男",
@@ -21,8 +23,8 @@ Page({
       purpose: "减肥"
     },
     gender: ["男", "女"],
-    exe: ["经常运动", "偶尔运动", "几乎不运动"],
-    purpose: ["减肥", "增肌", "减脂"],
+    exe: [],
+    purpose: [],
     weight: [],
     height: [],
     //是否选择了数据
@@ -90,6 +92,19 @@ Page({
             fexe: true,
             dexe: that.data.exe[parseInt(e.detail.value)]
           })
+          switch (parseInt(e.detail.value)){
+            case 0:
+            wx.showToast({
+              title: '非运动人群',
+            })
+            break;
+            case 1:
+            case 2:
+              wx.showToast({
+                title: '建议填写体脂率',
+              })
+            break;
+          }
           break;
         }
       case 6:
@@ -100,6 +115,21 @@ Page({
           })
           break;
         }
+    }
+    var dweight = that.data.dweight
+    var dheight = that.data.dheight
+    var dbirthdate = that.data.dbirthdate
+    var dgender = that.data.dgender
+    if (that.data.fweight&&that.data.fheight){
+      that.setData({
+        BMI:dweight/dheight/dheight*10000,
+        
+      })
+    }
+    if(that.data.fweight&&that.data.fheight&&that.data.fbirthdate&&that.data.fgender){
+      that.setData({
+        Base: 13.88 * dweight + 4.16 * dheight - 3.43 *dbirthdate-112.4*dgender+54.34
+      })
     }
   },
   formsubmit: async function(e) {
@@ -144,6 +174,7 @@ Page({
         duration: 2000
       })
     } else {
+      
       let data = {
         "gender": (parseInt(e.detail.value.gender)===0)?'m':'f',
         "birthday": e.detail.value.date,
@@ -176,6 +207,12 @@ Page({
    */
   onLoad: async function(options) {
     var that = this
+    let exelist = await api.exercisesList()
+    let purposelist = await api.purposesList()
+    that.setData({
+      exe: exelist.data.map((item) => item.content),
+      purpose: purposelist.data.map((item) => item.content)
+    })
     //that.data.height.push(2)
     var height = new Array()
     for (var i = 100; i < 231; i++) {

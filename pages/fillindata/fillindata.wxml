@@ -66,8 +66,8 @@
       <view class='title' bindtap="gymnearby">选填项</view>
       <view>完整填写获得更准确测量结果</view>
       <view class='items'>
-        <view>体脂率</view>
-        <view>nan</view>
+        <view>体脂率%</view>
+        <input name="fatrate"></input>
       </view>
       <view class='items'>
         <view>骨盐量</view>

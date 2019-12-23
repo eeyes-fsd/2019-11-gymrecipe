@@ -4,7 +4,6 @@ import api from "../../utils/util.js"
 const app = getApp()
 Page({
   data: {
-    showtoday:false,
     currentIntake:[],
     toView: [], //用于锚点跳转
     getinfo: false, //是否测量过身体数据
@@ -48,22 +47,27 @@ Page({
       foodlist: newRecipes.data.data,
     })
     let response = await api.todayRecipes()
-    if(response.data.data!=""){
+    if(response.data.data==""){
       that.setData({
-        showtoday:true,
-        todaylist: response.data.data
+        setfood: false,
+        todaylist: ""
       })
     }else{
       that.setData({
-        showtoday: false,
-        todaylist: ""
+        setfood: true,
+        todaylist: response.data.data
       })
     }
     //let r = await api.recipesDetails(response.data.data[0].id)
     
     let Response = await api.currentIntake()
     let currentIntake = Response.data
-    if(currentIntake!=""){
+    if(currentIntake==""){
+      that.setData({
+        currentIntake: "",
+        getinfo: false
+      })
+    }else{
       let radioarray = currentIntake.ratio.split(":")
       let radiosum = radioarray[0] + radioarray[1] + radioarray[2]
       let Intakedata = {
@@ -74,12 +78,7 @@ Page({
       }
       that.setData({
         currentIntake: Intakedata,
-        getinfo:true
-      })
-    }else{
-      that.setData({
-        currentIntake:"",
-        getinfo:false
+        getinfo: true
       })
     }
     

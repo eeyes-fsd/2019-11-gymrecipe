@@ -223,7 +223,15 @@ const orderDetail = async(id) => {
   let response = await requestPromise("GET", `/orders/${id}`, '', token)
   return response
 }
+const exercisesList = async () => {
+  let response = await requestPromise("GET", `/exercises`)
+  return response
+}
 
+const purposesList = async () => {
+  let response = await requestPromise("GET", `/purposes`)
+  return response
+}
 module.exports = {
   login,
   getToken,
@@ -250,5 +258,7 @@ module.exports = {
   //pay
   pay,
   orders,
-  orderDetail
+  orderDetail,
+  exercisesList,
+  purposesList
 }

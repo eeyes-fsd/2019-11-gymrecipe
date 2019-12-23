@@ -48,10 +48,10 @@
     <view class="jumpto_1text">立即免费测量</view>
     <image class="jumpto_1icon" src="/images/falling.png"></image>
   </view>
-  <view class="titlebox_3" wx:if="{{showtoday}}">
+  <view class="titlebox_3" wx:if="{{setfood}}">
     今日秤食食谱
   </view>
-  <view wx:if="{{showtoday}}">
+  <view wx:if="{{setfood}}">
     <view class="nametitle">{{todaylist.name}}</view>
     <scroll-view scroll-x="true" style="height:275rpx;width:100%;margin-top:26rpx;">
       <view class="comlistcontainer" style="width:{{todaylist.length*296}}rpx">
