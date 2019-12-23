@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    addressid:[],//地址id
+    addressid: [], //地址id
     user: '',
     tele: '',
     address: '',
@@ -14,7 +14,7 @@ Page({
     array: ['先生', '女士'],
     gender: 0
   },
-  formsubmit: async function(e){
+  formsubmit: async function(e) {
     var that = this
     if (!e.detail.value.user || !e.detail.value.tele || !e.detail.value.address || !e.detail.value.detailaddress) {
       wx.showToast({
@@ -37,10 +37,11 @@ Page({
       "name": e.detail.value.user,
       "phone": e.detail.value.tele,
       "gender": (this.index === 0) ? 'm' : 'f',
-      "details": `${e.detail.value.address}${e.detail.value.detailaddress}`
+      "street": e.detail.value.address,
+      "details": e.detail.value.detailaddress
     }
     console.log(data)
-    await api.modifyAddress(this.data.addressid,data)
+    await api.modifyAddress(this.data.addressid, data)
     wx.showToast({
       title: '修改地址成功',
       duration: 2000
@@ -54,7 +55,7 @@ Page({
     console.log(options.id)
     let response = await api.detailAddress(options.id)
     that.setData({
-      addressid:options.id
+      addressid: options.id
     })
     console.log(response)
     this.setData({

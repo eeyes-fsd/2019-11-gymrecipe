@@ -36,7 +36,8 @@ Page({
       "name": e.detail.value.user,
       "phone": e.detail.value.tele,
       "gender": (this.index === 0) ? 'm' : 'f',
-      "details": `${e.detail.value.address}${e.detail.value.detailaddress}`
+      "street": e.detail.value.address,
+      "details": e.detail.value.detailaddress
     }
     console.log(data)
     await api.plusAddress(data)
