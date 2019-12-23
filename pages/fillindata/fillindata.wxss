@@ -1,5 +1,9 @@
 /* pages/fillindata/fillindata.wxss */
 
+button::after {
+  border: none;
+}
+
 .body {
   margin: 0 55rpx;
   font-size: 28rpx;
@@ -52,4 +56,54 @@
   color: #fff;
   background-color: #f83a51;
   border-radius: 0;
+}
+
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.content-container {
+  position: fixed;
+  top: 484rpx;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 640rpx;
+  height: 510rpx;
+  border-radius: 40rpx;
+  background-color: white;
+}
+
+.content-content {
+  text-align: center;
+  margin-top: 164rpx;
+  height: 46rpx;
+  width: 100%;
+  font-size: 60rpx;
+  line-height: 46rpx;
+  color: #4a4e63;
+}
+
+.btnbox {
+  border-top: 1rpx solid #d7d7d7;
+  height: 144rpx;
+  width: 100%;
+}
+
+.btn {
+  height: 144rpx;
+  width: 50%;
+  font-size: 32rpx;
+  line-height: 144rpx;
+  text-align: center;
+  color: #f83a51;
+  background-color: white;
 }

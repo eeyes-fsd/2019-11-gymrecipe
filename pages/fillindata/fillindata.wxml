@@ -36,7 +36,7 @@
       <view id="i4" class='items'>
         <view>体重</view>
         <picker name="weight" range="{{weight}}" value="300" bindchange="bindPickerChange" data-hi="4">
-          <view wx:if="{{fweight}}">{{dweight}}</view>
+          <view wx:if="{{fweight}}">{{dweight}}kg</view>
           <view wx:else>
             <view wx:if="{{flag}}">{{info.weight}}kg</view>
             <view wx:else style="color:grey">请选择您的体重</view>
@@ -46,7 +46,7 @@
       <view wx:if="{{BMI!=''}}" class='items' style="height:30rpx;">
         <view>BMI值为{{BMI}}</view>
       </view>
-       <view wx:if="{{Base!=''}}" class='items' style="height:30rpx;">
+      <view wx:if="{{Base!=''}}" class='items' style="height:30rpx;">
         <view>基础代谢值为{{Base}}</view>
       </view>
       <view id="i5" class='items'>
@@ -90,20 +90,29 @@
       <view>完整填写获得更准确测量结果</view>
       <view class='items'>
         <view>体脂率%</view>
-        <input name="fatrate"></input>
+        <picker value="20" range="{{fatrate}}" name="fatrate" bindchange="bindPickerChange" data-hi="8">
+            <view wx:if="{{ffatrate}}">{{dfatrate}}</view>
+            <view wx:else style="color:grey">请选择您的体脂率</view>
+        </picker>
       </view>
       <view class='items'>
         <view>饮食习惯</view>
-        <picker value="0" range="{{customlist}}" name="custom" bindchange="bindPickerChange" data-hi="1">
-          <view wx:if="{{fgender}}">{{dcustom}}</view>
-          <view wx:else>
-            <view wx:if="{{flag}}">{{info.custom}}</view>
+        <picker range="{{customlist}}" name="custom" bindchange="bindPickerChange" data-hi="7">
+            <view wx:if="{{fcustom}}">{{dcustom}}</view>
             <view wx:else style="color:grey">请选择您的饮食习惯</view>
-          </view>
         </picker>
       </view>
-      <view class='tips' bindtap="gymnearby">不会填？免费到附近健身房测量</view>
+      <view class='tips' bindtap="gymnearby">体脂率不会填？免费到附近健身房测量</view>
       <button class='button' form-type="submit">确定</button>
     </view>
   </scroll-view>
 </form>
+<view class="mask" wx:if="{{alertShow}}" bindtap='close' catchtouchmove='maskTouchMove'></view>
+<view class="content-container" catchtouchmove='touchMove' wx-if="{{alertShow}}">
+  <view class="content-content">
+    {{alertContent}}
+  </view>
+  <view class="btnbox">
+    <button class="btn" bindtap='close'>确定</button>
+  </view>
+</view>

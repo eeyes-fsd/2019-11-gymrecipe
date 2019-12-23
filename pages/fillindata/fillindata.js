@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    fatrate:[],
     customlist: ["三餐", "三+一餐", "三+二餐","三+三餐"],
     crazy:false,//是否经常运动
     crazypurpose:["减脂","增肌","增强体质"],
@@ -39,6 +40,8 @@ Page({
     fweight: false,
     fexe: false,
     fpurpose: false,
+    fcustom:false,
+    ffatrate:false,
     //已选择的数据，用于picker显示
     dgender: [],
     dbirthdate: [],
@@ -46,6 +49,24 @@ Page({
     dweight: [],
     dexe: [],
     dpurpose: [],
+    dcustom:[],
+    dfatrate:[],
+    alertShow: false,
+    alertContent: "123"
+  },
+  //关闭窗口
+  close: function() {
+    this.setData({
+      alertShow: false
+    })
+  },
+  // 显示窗口
+  AlertShow: function(content) {
+    console.log("asdsa")
+    this.setData({
+      alertShow: true,
+      alertContent: content
+    })
   },
   gymnearby: function() {
     var that = this
@@ -99,21 +120,21 @@ Page({
           })
           switch (parseInt(e.detail.value)) {
             case 0:
-              wx.showToast({
-                title: '非运动人群',
-              })
+              var message = "非运动人群"
               that.setData({
-                crazy:false
+                crazy:false,
+                fpurpose:false
               })
+              that.AlertShow(message)
               break;
             case 1:
             case 2:
-              wx.showToast({
-                title: '建议填写体脂率',
-              })
               that.setData({
-                crazy: true
+                crazy:true,
+                fpurpose: false
               })
+              var message = "建议填写体脂率"
+              that.AlertShow(message)
               break;
           }
           break;
@@ -126,12 +147,34 @@ Page({
               dpurpose: that.data.crazypurpose[parseInt(e.detail.value)]
             })
           }else{
-            that.setData({
-              fpurpose: true,
-              dpurpose: that.data.purpose[parseInt(e.detail.value)]
-            })
+            if(that.data.low24){
+              that.setData({
+                fpurpose: true,
+                dpurpose: that.data.lowpurpose[parseInt(e.detail.value)]
+              })
+            }else{
+              that.setData({
+                fpurpose: true,
+                dpurpose: that.data.purpose[parseInt(e.detail.value)]
+              })
+            }
           }
           break;
+        }
+        case 7:
+        {
+          that.setData({
+            fcustom: true,
+            dcustom: that.data.customlist[parseInt(e.detail.value)]
+          })
+          break;
+        }
+        case 8:{
+        that.setData({
+          ffatrate: true,
+          dfatrate: parseInt(e.detail.value)
+        })
+        break;
         }
     }
     var dweight = that.data.dweight
@@ -155,7 +198,7 @@ Page({
     if (that.data.fweight && that.data.fheight && that.data.fbirthdate && that.data.fgender) {
       var dbirthdate = new Date().getFullYear() - that.data.dbirthdate.split('-')[0] + ((that.data.dbirthdate.split('-')[1] < new Date().getMonth()) ? 0 : -1)
       that.setData({
-        Base: (13.88 * dweight + 4.16 * dheight - 3.43 * dbirthdate - (dgender==="男"?0:112.4) + 54.34).toFixed(2)
+        Base: (13.88 * dweight + 4.16 * dheight - 3.43 * dbirthdate - (dgender === "男" ? 0 : 112.4) + 54.34).toFixed(2)
       })
     }
   },
@@ -202,32 +245,35 @@ Page({
       })
     } else {
       //判断问题
-      if (parseInt(e.detail.value.exe) == 0 && (parseInt(e.detail.value.purpose) == 1) ) { //低非运动人群不可快速降脂
-        wx.showToast({
-          title: '非运动人不可快',
-        })
+      if (parseInt(e.detail.value.exe) == 0 && (parseInt(e.detail.value.purpose)) == 1) { //低非运动人群不可快速降脂
+        var message = "低非运动人群不可快速降脂"
+        that.AlertShow(message)
       }else{
-        let data = {
-          "gender": (parseInt(e.detail.value.gender) === 0) ? 'm' : 'f',
-          "birthday": e.detail.value.date,
-          "height": that.data.height[parseInt(e.detail.value.height)],
-          "weight": that.data.weight[parseInt(e.detail.value.weight)],
-          "exercise": parseInt(e.detail.value.exe) + 1,
-          "purpose": parseInt(e.detail.value.purpose) + 1,
-          "fat":e.detail.value.fatrate
+        if (parseInt(e.detail.value.fatrate) < 0 || parseInt(e.detail.value.fatrate) >100){
+          var message = "体脂率填写不合法"
+          that.AlertShow(message)
+        }else{
+          let data = {
+            "gender": (parseInt(e.detail.value.gender) === 0) ? 'm' : 'f',
+            "birthday": e.detail.value.date,
+            "height": that.data.height[parseInt(e.detail.value.height)],
+            "weight": that.data.weight[parseInt(e.detail.value.weight)],
+            "exercise": parseInt(e.detail.value.exe) + 1,
+            "purpose": parseInt(e.detail.value.purpose) + 1,
+          }
+          console.log(data)
+          //表单提交后返回的新摄入数据，存入缓存
+          let currentIntake = await api.sendHealth(data)
+          wx.setStorageSync('currentIntake', currentIntake)
+          that.setData({ //恢复表单未编辑状态
+            edit: false
+          })
+          let cacheinfo = {
+            "edit": false
+          }
         }
-        console.log(data)
-        //表单提交后返回的新摄入数据，存入缓存
-        let currentIntake = await api.sendHealth(data)
-        wx.setStorageSync('currentIntake', currentIntake)
-        that.setData({ //恢复表单未编辑状态
-          edit: false
-        })
-        let cacheinfo = {
-          "edit": false
-        }
-        wx.setStorageSync('cacheinfo', cacheinfo)
       }
+      
     }
   },
   gymnearby: function() {
@@ -249,6 +295,13 @@ Page({
     })
     //that.data.height.push(2)
     var height = new Array()
+    var fatrate = new Array()
+    for(var j=0;j<100;j++){
+      fatrate.push(j)
+    }
+    that.setData({
+      fatrate:fatrate
+    })
     for (var i = 100; i < 231; i++) {
       height.push(i)
     }
