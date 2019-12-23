@@ -6,6 +6,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    customlist: ["三餐", "三+一餐", "三+二餐","三+三餐"],
+    crazy:false,//是否经常运动
+    crazypurpose:["减脂","增肌","增强体质"],
+    lowpurpose:["减重","增重","保持体重"],
+    low24:false,//BMI是否低于24
     BMI: [], //体脂率
     Base: [], //基础代谢
     edit: false, //用户是否编辑过页面而且没有提交，用于存储页面显示
@@ -24,7 +29,7 @@ Page({
     },
     gender: ["男", "女"],
     exe: [],
-    purpose: [],
+    purpose: ["减重","急速减重", "增重", "保持体重"],
     weight: [],
     height: [],
     //是否选择了数据
@@ -97,11 +102,17 @@ Page({
               wx.showToast({
                 title: '非运动人群',
               })
+              that.setData({
+                crazy:false
+              })
               break;
             case 1:
             case 2:
               wx.showToast({
                 title: '建议填写体脂率',
+              })
+              that.setData({
+                crazy: true
               })
               break;
           }
@@ -109,10 +120,17 @@ Page({
         }
       case 6:
         {
-          that.setData({
-            fpurpose: true,
-            dpurpose: that.data.purpose[parseInt(e.detail.value)]
-          })
+          if(that.data.crazy){
+            that.setData({
+              fpurpose: true,
+              dpurpose: that.data.crazypurpose[parseInt(e.detail.value)]
+            })
+          }else{
+            that.setData({
+              fpurpose: true,
+              dpurpose: that.data.purpose[parseInt(e.detail.value)]
+            })
+          }
           break;
         }
     }
@@ -123,8 +141,16 @@ Page({
     if (that.data.fweight && that.data.fheight) {
       that.setData({
         BMI: (dweight / dheight / dheight * 10000).toFixed(2),
-
       })
+      if(that.data.BMI<24){
+        that.setData({
+          low24:true
+        })
+      }else{
+        that.setData({
+          low24: false
+        })
+      }
     }
     if (that.data.fweight && that.data.fheight && that.data.fbirthdate && that.data.fgender) {
       var dbirthdate = new Date().getFullYear() - that.data.dbirthdate.split('-')[0] + ((that.data.dbirthdate.split('-')[1] < new Date().getMonth()) ? 0 : -1)
@@ -176,28 +202,32 @@ Page({
       })
     } else {
       //判断问题
-      if (parseInt(e.detail.value.exe) == 0 && (parseInt(e.detail.value.purpose)) == 1) { //低非运动人群不可快速降脂
-
+      if (parseInt(e.detail.value.exe) == 0 && (parseInt(e.detail.value.purpose) == 1) ) { //低非运动人群不可快速降脂
+        wx.showToast({
+          title: '非运动人不可快',
+        })
+      }else{
+        let data = {
+          "gender": (parseInt(e.detail.value.gender) === 0) ? 'm' : 'f',
+          "birthday": e.detail.value.date,
+          "height": that.data.height[parseInt(e.detail.value.height)],
+          "weight": that.data.weight[parseInt(e.detail.value.weight)],
+          "exercise": parseInt(e.detail.value.exe) + 1,
+          "purpose": parseInt(e.detail.value.purpose) + 1,
+          "fat":e.detail.value.fatrate
+        }
+        console.log(data)
+        //表单提交后返回的新摄入数据，存入缓存
+        let currentIntake = await api.sendHealth(data)
+        wx.setStorageSync('currentIntake', currentIntake)
+        that.setData({ //恢复表单未编辑状态
+          edit: false
+        })
+        let cacheinfo = {
+          "edit": false
+        }
+        wx.setStorageSync('cacheinfo', cacheinfo)
       }
-      let data = {
-        "gender": (parseInt(e.detail.value.gender) === 0) ? 'm' : 'f',
-        "birthday": e.detail.value.date,
-        "height": that.data.height[parseInt(e.detail.value.height)],
-        "weight": that.data.weight[parseInt(e.detail.value.weight)],
-        "exercise": parseInt(e.detail.value.exe) + 1,
-        "purpose": parseInt(e.detail.value.purpose) + 1,
-      }
-      console.log(data)
-      //表单提交后返回的新摄入数据，存入缓存
-      let currentIntake = await api.sendHealth(data)
-      wx.setStorageSync('currentIntake', currentIntake)
-      that.setData({ //恢复表单未编辑状态
-        edit: false
-      })
-      let cacheinfo = {
-        "edit": false
-      }
-      wx.setStorageSync('cacheinfo', cacheinfo)
     }
   },
   gymnearby: function() {
@@ -215,7 +245,7 @@ Page({
     let purposelist = await api.purposesList()
     that.setData({
       exe: exelist.data.map((item) => item.content),
-      purpose: purposelist.data.map((item) => item.content)
+      //purpose: purposelist.data.map((item) => item.content)
     })
     //that.data.height.push(2)
     var height = new Array()
