@@ -43,6 +43,12 @@
           </view>
         </picker>
       </view>
+      <view wx:if="{{BMI!=''}}" class='items' style="height:30rpx;">
+        <view>BMI值为{{BMI}}</view>
+      </view>
+       <view wx:if="{{Base!=''}}" class='items' style="height:30rpx;">
+        <view>基础代谢值为{{Base}}</view>
+      </view>
       <view id="i5" class='items'>
         <view>运动量</view>
         <picker range="{{exe}}" name="exe" value="index" bindchange="bindPickerChange" data-hi="5">

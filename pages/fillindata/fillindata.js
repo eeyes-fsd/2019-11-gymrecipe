@@ -6,8 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    BMI:[],//体脂率
-    Base:[],//基础代谢
+    BMI: [], //体脂率
+    Base: [], //基础代谢
     edit: false, //用户是否编辑过页面而且没有提交，用于存储页面显示
     toView: [], //锚点跳转
     windowHeight: [],
@@ -92,18 +92,18 @@ Page({
             fexe: true,
             dexe: that.data.exe[parseInt(e.detail.value)]
           })
-          switch (parseInt(e.detail.value)){
+          switch (parseInt(e.detail.value)) {
             case 0:
-            wx.showToast({
-              title: '非运动人群',
-            })
-            break;
+              wx.showToast({
+                title: '非运动人群',
+              })
+              break;
             case 1:
             case 2:
               wx.showToast({
                 title: '建议填写体脂率',
               })
-            break;
+              break;
           }
           break;
         }
@@ -118,17 +118,18 @@ Page({
     }
     var dweight = that.data.dweight
     var dheight = that.data.dheight
-    var dbirthdate = that.data.dbirthdate
+    //返回年龄
     var dgender = that.data.dgender
-    if (that.data.fweight&&that.data.fheight){
+    if (that.data.fweight && that.data.fheight) {
       that.setData({
-        BMI:dweight/dheight/dheight*10000,
-        
+        BMI: (dweight / dheight / dheight * 10000).toFixed(2),
+
       })
     }
-    if(that.data.fweight&&that.data.fheight&&that.data.fbirthdate&&that.data.fgender){
+    if (that.data.fweight && that.data.fheight && that.data.fbirthdate && that.data.fgender) {
+      var dbirthdate = new Date().getFullYear() - that.data.dbirthdate.split('-')[0] + ((that.data.dbirthdate.split('-')[1] < new Date().getMonth()) ? 0 : -1)
       that.setData({
-        Base: 13.88 * dweight + 4.16 * dheight - 3.43 *dbirthdate-112.4*dgender+54.34
+        Base: (13.88 * dweight + 4.16 * dheight - 3.43 * dbirthdate - (dgender==="男"?0:112.4) + 54.34).toFixed(2)
       })
     }
   },
@@ -174,14 +175,17 @@ Page({
         duration: 2000
       })
     } else {
-      
+      //判断问题
+      if (parseInt(e.detail.value.exe) == 0 && (parseInt(e.detail.value.purpose)) == 1) { //低非运动人群不可快速降脂
+
+      }
       let data = {
-        "gender": (parseInt(e.detail.value.gender)===0)?'m':'f',
+        "gender": (parseInt(e.detail.value.gender) === 0) ? 'm' : 'f',
         "birthday": e.detail.value.date,
         "height": that.data.height[parseInt(e.detail.value.height)],
         "weight": that.data.weight[parseInt(e.detail.value.weight)],
-        "exercise": parseInt(e.detail.value.exe)+1,
-        "purpose": parseInt(e.detail.value.purpose)+1,
+        "exercise": parseInt(e.detail.value.exe) + 1,
+        "purpose": parseInt(e.detail.value.purpose) + 1,
       }
       console.log(data)
       //表单提交后返回的新摄入数据，存入缓存
