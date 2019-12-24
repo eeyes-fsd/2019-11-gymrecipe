@@ -2,7 +2,7 @@
 const host = 'http://gym.eeyes.xyz/api'
 
 // 封装requests
-const requestPromise = (method, url, data = "", token = "") => {
+const requestPromise = (method, url, data, token) => {
   if (token === "") {
     return new Promise((resolve, reject) => {
       wx.request({
@@ -40,26 +40,63 @@ const login = async(codes, iv, encrypted_data) => {
     "iv": iv, //加密初始向量
     "encrypted_data": encrypted_data //加密数据
   }
-  let response = await requestPromise("POST", "/authorizations/weapp", data)
-  return response;
+  let res = await requestPromise("POST", "/authorizations/weapp", data, "")
+  // 测试
+  let expires_in = res.data.expires_in * 1000 + new Date().getTime()
+  let token = res.data.access_token
+  console.log(res.data.expires_in * 1000 + new Date().getTime())
+  wx.setStorageSync("access_token", res.data.access_token)
+  wx.setStorageSync("expires_in", res.data.expires_in * 1000 + new Date().getTime())
+  return res;
 }
 
 // 刷新token
 const refreshToken = async() => {
+  console.log("refreshToken")
+  let access_token;
   let token = wx.getStorageSync("access_token")
-  let response = await requestPromise("PUT", "/authorizations/current", '', token)
-  wx.setStorageSync("access_token", response.data.access_token)
-  wx.setStorageSync("expires_in", new Date().getTime() + response.data.expires_in * 1000)
-  return response.data.access_token
+  console.log(token)
+  // 尝试更换token
+  await requestPromise("PUT", "/authorizations/current", '', token).then((res) => {
+    wx.setStorageSync("access_token", res.data.access_token)
+    wx.setStorageSync("expires_in", new Date().getTime() + res.data.expires_in * 1000)
+    access_token = res.data.access_token
+  }).catch((err) => {
+    console.log(err)
+    access_token = false
+  })
+  return access_token
 }
 
 //获取token
 const getToken = async() => {
+  console.log("getToekn")
   let access_token = wx.getStorageSync("access_token")
   let expires_in = wx.getStorageSync("expires_in")
   if (new Date().getTime() > expires_in) {
     access_token = await refreshToken()
     console.log("reset token")
+    if (access_token === false) {
+      let code;
+      wx.login({
+        success: (res) => {
+          code = res.code
+          wx.setStorageSync("code", res.code)
+        }
+      })
+      let iv = wx.getStorageSync("iv")
+      let encryptedData = wx.getStorageSync("encryptedData")
+      let response = await login(code, iv, encryptedData)
+      wx.setStorageSync({
+        key: 'access_token',
+        data: response.data.access_token
+      })
+      wx.setStorageSync({
+        key: 'expires_in',
+        data: response.data.expires_in
+      })
+      access_token = response.data.access_token
+    }
   }
   return access_token
 }
@@ -175,7 +212,7 @@ const recipesDetails = async(id) => {
 //获取已购套餐
 const boughtRecipes = async() => {
   let token = await getToken()
-  let response = await requestPromise("GET", `/recipes/bought`,'' ,token)
+  let response = await requestPromise("GET", `/recipes/bought`, '', token)
   return response
 }
 //获取全部套餐
@@ -223,12 +260,12 @@ const orderDetail = async(id) => {
   let response = await requestPromise("GET", `/orders/${id}`, '', token)
   return response
 }
-const exercisesList = async () => {
+const exercisesList = async() => {
   let response = await requestPromise("GET", `/exercises`)
   return response
 }
 
-const purposesList = async () => {
+const purposesList = async() => {
   let response = await requestPromise("GET", `/purposes`)
   return response
 }

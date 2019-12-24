@@ -16,24 +16,19 @@ Page({
     })
   },
   getPhoneNumber: async function(e) {
-    let response = await api.login(this.data.code, e.detail.iv, e.detail.encryptedData)
+    wx.setStorageSync("iv", e.detail.iv)
+    wx.setStorageSync("encryptedData", e.detail.encryptedData)
+    await api.login(this.data.code, e.detail.iv, e.detail.encryptedData)
     console.log("成功获取手机号")
     let userInfo = await api.getUser()
+    console.log(userInfo)
     this.setData({
       phone: userInfo.data.data.phone
     })
     this.setData({
       share_id: userInfo.data.data.share_id
     })
-    // 测试
-    wx.setStorageSync({
-      key: 'access_token',
-      data: response.data.access_token
-    })
-    wx.setStorageSync({
-      key: 'expires_in',
-      data: response.data.expires_in
-    })
+
   },
   //关闭联系我们窗口
   closecontact: function() {
@@ -70,6 +65,7 @@ Page({
           that.setData({
             code: res.code
           })
+          wx.setStorageSync("code", res.code)
         }
       })
     } else {
@@ -99,6 +95,7 @@ Page({
                   that.setData({
                     code: res.code
                   })
+                  wx.setStorageSync("code", res.code)
                   console.log("用户的code:" + res.code);
                 }
               });
