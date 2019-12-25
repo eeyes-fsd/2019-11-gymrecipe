@@ -20,14 +20,7 @@ Page({
     windowWidth: [],
     flag: false, //之前是否提交过数据
     // cacheinfo:[],//存储用户离开页面未提交时已选择的数据
-    info: {
-      gender: "男",
-      birthdate: "1900/10/10",
-      height: "230",
-      weight: "30",
-      exe: "几乎不运动",
-      purpose: "减肥"
-    },
+    info: [],
     gender: ["男", "女"],
     exe: [],
     purpose: ["减重","急速减重", "增重", "保持体重"],
@@ -62,7 +55,6 @@ Page({
   },
   // 显示窗口
   AlertShow: function(content) {
-    console.log("asdsa")
     this.setData({
       alertShow: true,
       alertContent: content
@@ -204,7 +196,7 @@ Page({
   },
   formsubmit: async function(e) {
     var that = this
-    if (that.data.flag == false && !(that.data.fgender && that.data.fbirthdate && that.data.fheight && that.data.fweight && that.data.fexe && that.data.purpose)) {
+    if (that.data.flag == false && !(that.data.fgender && that.data.fbirthdate && that.data.fheight && that.data.fweight && that.data.fexe && that.data.fpurpose)) {//之前没提交过数据，而且第一次提交表单没填写完整
       if (!that.data.fgender) {
         that.setData({
           toView: 'i1'
@@ -244,36 +236,94 @@ Page({
         duration: 2000
       })
     } else {
-      //判断问题
-      if (parseInt(e.detail.value.exe) == 0 && (parseInt(e.detail.value.purpose)) == 1) { //低非运动人群不可快速降脂
-        var message = "低非运动人群不可快速降脂"
-        that.AlertShow(message)
-      }else{
-        if (parseInt(e.detail.value.fatrate) < 0 || parseInt(e.detail.value.fatrate) >100){
-          var message = "体脂率填写不合法"
-          that.AlertShow(message)
-        }else{
-          let data = {
-            "gender": (parseInt(e.detail.value.gender) === 0) ? 'm' : 'f',
-            "birthday": e.detail.value.date,
-            "height": that.data.height[parseInt(e.detail.value.height)],
-            "weight": that.data.weight[parseInt(e.detail.value.weight)],
-            "exercise": parseInt(e.detail.value.exe) + 1,
-            "purpose": parseInt(e.detail.value.purpose) + 1,
+      if(!that.data.flag){//之前未提交过
+        var gender;
+        var exe;
+        var purpose;
+        for (var p in that.data.gender) {
+          if (that.data.dgender == that.data.gender[p]) gender = that.data.gender[p]
+        }
+        for (var p in that.data.exe) {
+          if (that.data.dexe == that.data.exe[p]) exe = p
+        }
+        if (that.data.crazy) {//是运动狂
+          for (var p in that.data.crazypurpose) {
+            if (that.data.dpurpose == that.data.crazypurpose[p]) purpose = p
           }
-          console.log(data)
-          //表单提交后返回的新摄入数据，存入缓存
-          let currentIntake = await api.sendHealth(data)
-          wx.setStorageSync('currentIntake', currentIntake)
-          that.setData({ //恢复表单未编辑状态
-            edit: false
-          })
-          let cacheinfo = {
-            "edit": false
+        } else {
+          if (that.data.low24) {//BMI低于24
+            for (var p in that.data.crazypurpose) {
+              if (that.data.dpurpose == that.data.lowpurpose[p]) purpose = p
+            }
+          } else {//正常情况
+            for (var p in that.data.purpose) {
+              if (that.data.dpurpose == that.data.purpose[p]) purpose = p
+            }
           }
         }
+        let data = {
+          "gender": (gender === "男" ? "m" : "f"),
+          "birthday": that.data.dbirthdate,
+          "height": that.data.dheight,
+          "weight": that.data.dweight,
+          "exercise": parseInt(exe) + 1,
+          "purpose": parseInt(purpose) + 1,
+        }
+        console.log(data)
+        //表单提交后返回的新摄入数据，存入缓存
+        let currentIntake = await api.sendHealth(data)
+        wx.setStorageSync('currentIntake', currentIntake)
+        that.setData({ //恢复表单未编辑状态
+          edit: false
+        })
+        let cacheinfo = { "edit": false }
+        wx.setStorageSync("cacheinfo", cacheinfo)
+      }else{//之前已提交过
+        var gender;
+        var exe;
+        var purpose;
+        for (var p in that.data.gender) {
+          if (that.data.dgender == that.data.gender[p]) gender = that.data.gender[p]
+        }
+        for (var p in that.data.exe) {
+          if (that.data.dexe == that.data.exe[p]) exe = p
+        }
+        if(that.data.crazy){//是运动狂
+          for (var p in that.data.crazypurpose) {
+            if (that.data.dpurpose == that.data.crazypurpose[p]) purpose = p
+          }
+        }else{
+          if(that.data.low24){//BMI低于24
+            for (var p in that.data.crazypurpose) {
+              if (that.data.dpurpose == that.data.lowpurpose[p]) purpose = p
+            }
+          }else{//正常情况
+            for (var p in that.data.purpose) {
+              if (that.data.dpurpose == that.data.purpose[p]) purpose = p
+            }
+          }
+        }
+        
+        let data = {
+          "gender": (gender === "男" ? "m" : "f"),
+          "birthday": that.data.dbirthdate,
+          "height": that.data.dheight,
+          "weight": that.data.dweight,
+          "exercise": parseInt(exe)+1,
+          "purpose": parseInt(purpose)+1,
+        }
+        console.log(data)
+        //表单提交后返回的新摄入数据，存入缓存
+        let currentIntake = await api.changeHealth(data)
+        wx.setStorageSync('currentIntake', currentIntake)
+        that.setData({ //恢复表单未编辑状态
+          edit: false
+        })
+        let cacheinfo = { "edit": false }
+        wx.setStorageSync("cacheinfo", cacheinfo)
       }
-      
+      wx.navigateBack({
+      })
     }
   },
   gymnearby: function() {
@@ -316,48 +366,88 @@ Page({
     that.setData({
       weight: weight
     })
-    try {
-      var cacheinfo = wx.getStorageSync('cacheinfo')
-      //若之前存在修改的数据未提交
-      if (cacheinfo.edit) {
-        if (cacheinfo.gender != 'null') {
-          that.setData({
-            fgender: true,
-            dgender: cacheinfo.gender
-          })
-        }
-        if (cacheinfo.birthdate != 'null') {
-          that.setData({
-            fbirthdate: true,
-            dbirthdate: cacheinfo.birthdate
-          })
-        }
-        if (cacheinfo.height != 'null') {
-          that.setData({
-            fheight: true,
-            dheight: cacheinfo.height
-          })
-        }
-        if (cacheinfo.weight != 'null') {
-          that.setData({
-            fweight: true,
-            dweight: cacheinfo.weight
-          })
-        }
-        if (cacheinfo.exe != 'null') {
-          that.setData({
-            fexe: true,
-            dexe: cacheinfo.exe
-          })
-        }
-        if (cacheinfo.purpose != 'null') {
-          that.setData({
-            fpurpose: true,
-            dpurpose: cacheinfo.purpose
-          })
-        }
+
+    //是否给表单设置初值
+    var cacheinfo = wx.getStorageSync('cacheinfo')
+    console.log("cacheinfo",cacheinfo)
+    //若之前存在修改的数据未提交
+    if (cacheinfo.edit) {
+      console.log("cacheinfo",cacheinfo.edit)
+      if (cacheinfo.gender != 'null') {
+        that.setData({
+          fgender: true,
+          dgender: cacheinfo.gender
+        })
       }
-    } catch {}
+      if (cacheinfo.birthdate != 'null') {
+        that.setData({
+          fbirthdate: true,
+          dbirthdate: cacheinfo.birthdate
+        })
+      }
+      if (cacheinfo.height != 'null') {
+        that.setData({
+          fheight: true,
+          dheight: cacheinfo.height
+        })
+      }
+      if (cacheinfo.weight != 'null') {
+        that.setData({
+          fweight: true,
+          dweight: cacheinfo.weight
+        })
+      }
+      if (cacheinfo.exe != 'null') {
+        that.setData({
+          fexe: true,
+          dexe: cacheinfo.exe
+        })
+      }
+      if (cacheinfo.purpose != 'null') {
+        that.setData({
+          fpurpose: true,
+          dpurpose: cacheinfo.purpose
+        })
+      }
+    }else{//否则再判断该用户之前是否提交过数据
+      var info = await api.getHealth()
+      console.log("info",info)
+      if (info.statusCode == 200) {
+        var info = info.data.data
+        that.setData({
+          info: info
+        })
+        //将info的值分别赋给各个模块，并将是否有值设为true
+        that.setData({
+          flag:true,
+          fgender:true,
+          fbirthdate:true,
+          fheight:true,
+          fweight:true,
+          fexe:true,
+          fpurpose:true,
+          dgender: info.gender,
+          dbirthdate: info.birthday,
+          dheight: info.height,
+          dweight: info.weight,
+          dexe: info.exercise,
+          dpurpose: info.purpose
+        })
+        if(info.fat_rate!=null){//体脂率,因为可填可不填，单独拉出来判断
+          that.setData({
+            ffatrate:true,
+            dfatrate:info.fat_rate
+          })
+        }
+        if (info.work_time != "-") {//作息时间
+          that.setData({
+            fcustom: true,
+            dcustom: info.work_time
+          })
+        }
+        console.log(info)
+      }
+    }
 
     wx.getSystemInfo({
       success: function(res) {
@@ -368,8 +458,9 @@ Page({
       },
     })
 
-    var info = await api.getHealth()
-    console.log(info)
+    
+    
+   
   },
   //页面卸载时
   onUnload: function() {

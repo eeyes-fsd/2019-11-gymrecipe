@@ -17,21 +17,21 @@
     <view class="needinfolist">
       <view class="needlinebox" style="margin-top:34rpx;">
         <view class="needicontextbox">
-          <image class="needicon" src="/images/gradient1.png"></image>
+          <image class="needicon" src="/images/gradient3.png"></image>
           <view class="needtitle">碳水化合物</view>
         </view>
         <view class="neednum">{{getinfo?currentIntake.carbohydrate:"?"}}克</view>
       </view>
       <view class="needlinebox" style="margin-top:16rpx;">
         <view class="needicontextbox">
-          <image class="needicon" src="/images/gradient2.png"></image>
+          <image class="needicon" src="/images/gradient1.png"></image>
           <view class="needtitle">蛋白质</view>
         </view>
         <view class="neednum">{{getinfo?currentIntake.protein:"?"}}克</view>
       </view>
       <view class="needlinebox" style="margin-top:16rpx;">
         <view class="needicontextbox">
-          <image class="needicon" src="/images/gradient3.png"></image>
+          <image class="needicon" src="/images/gradient2.png"></image>
           <view class="needtitle">脂肪</view>
         </view>
         <view class="neednum">{{getinfo?currentIntake.fat:"?"}}克</view>
@@ -61,11 +61,11 @@
     </scroll-view>
   </view>
   <view class="jumpto_2box" wx:if="{{setfood}}" bindtap="recipelist">
-    <view class="jumpto_2text">吃腻了？获取更多食谱</view>
+    <view class="jumpto_2text" style="width:270rpx;">吃腻了？获取更多食谱</view>
     <image class="jumpto_2icon" src="/images/falling.png"></image>
   </view>
   <view class="jumpto_2box" wx:else bindtap="recipelist">
-    <view class="jumpto_2text">定制私人配餐</view>
+    <view class="jumpto_2text" style="width:170rpx;">定制私人配餐</view>
     <image class="jumpto_2icon" src="/images/falling.png"></image>
   </view>
 </view>

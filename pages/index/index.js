@@ -59,15 +59,14 @@ Page({
       })
     }
     //let r = await api.recipesDetails(response.data.data[0].id)
-    
     let Response = await api.currentIntake()
     let currentIntake = Response.data
-    if(currentIntake==""){
+    if (currentIntake == "") {
       that.setData({
         currentIntake: "",
         getinfo: false
       })
-    }else{
+    } else {
       let radioarray = currentIntake.ratio.split(":")
       let radiosum = radioarray[0] + radioarray[1] + radioarray[2]
       let Intakedata = {
@@ -81,6 +80,28 @@ Page({
         getinfo: true
       })
     }
-    
   },
+  onShow:async function(){
+    let Response = await api.currentIntake()
+    let currentIntake = Response.data
+    if (currentIntake == "") {
+      that.setData({
+        currentIntake: "",
+        getinfo: false
+      })
+    } else {
+      let radioarray = currentIntake.ratio.split(":")
+      let radiosum = radioarray[0] + radioarray[1] + radioarray[2]
+      let Intakedata = {
+        'date': currentIntake.updated_at,
+        'carbohydrate': (currentIntake.energy * radioarray[0] / radiosum).toFixed(2),
+        'protein': (currentIntake.energy * radioarray[1] / radiosum).toFixed(2),
+        'fat': (currentIntake.energy * radioarray[2] / radiosum).toFixed(2)
+      }
+      that.setData({
+        currentIntake: Intakedata,
+        getinfo: true
+      })
+    }
+  }
 })

@@ -7,40 +7,28 @@
         <view>性别</view>
         <picker value="0" range="{{gender}}" name="gender" bindchange="bindPickerChange" data-hi="1">
           <view wx:if="{{fgender}}">{{dgender}}</view>
-          <view wx:else>
-            <view wx:if="{{flag}}">{{info.gender}}</view>
-            <view wx:else style="color:grey">请选择您的性别</view>
-          </view>
+          <view style="color:grey" wx:else>请选择您的性别</view>
         </picker>
       </view>
       <view id="i2" class='items'>
         <view>出生日期</view>
         <picker mode="date" start="1900-1-1" name="date" value="1995-1-1" bindchange="bindPickerChange" data-hi="2">
           <view wx:if="{{fbirthdate}}">{{dbirthdate}}</view>
-          <view wx:else>
-            <view wx:if="{{flag}}">{{info.birthdate}}</view>
-            <view wx:else style="color:grey">请选择您的出生日期</view>
-          </view>
+          <view wx:else style="color:grey">请选择您的出生日期</view>
         </picker>
       </view>
       <view id="i3" class='items'>
         <view>身高</view>
         <picker name="height" range="{{height}}" value="70" bindchange="bindPickerChange" data-hi="3">
           <view wx:if="{{fheight}}">{{dheight}}cm</view>
-          <view wx:else>
-            <view wx:if="{{flag}}">{{info.height}}cm</view>
-            <view wx:else style="color:grey">请选择您的身高</view>
-          </view>
+          <view wx:else style="color:grey">请选择您的身高</view>
         </picker>
       </view>
       <view id="i4" class='items'>
         <view>体重</view>
         <picker name="weight" range="{{weight}}" value="300" bindchange="bindPickerChange" data-hi="4">
           <view wx:if="{{fweight}}">{{dweight}}kg</view>
-          <view wx:else>
-            <view wx:if="{{flag}}">{{info.weight}}kg</view>
-            <view wx:else style="color:grey">请选择您的体重</view>
-          </view>
+          <view wx:else style="color:grey">请选择您的体重</view>
         </picker>
       </view>
       <view wx:if="{{BMI!=''}}" class='items' style="height:30rpx;">
@@ -53,37 +41,25 @@
         <view>运动量</view>
         <picker range="{{exe}}" name="exe" value="index" bindchange="bindPickerChange" data-hi="5">
           <view wx:if="{{fexe}}">{{dexe}}</view>
-          <view wx:else>
-            <view wx:if="{{flag}}">{{info.exe}}</view>
-            <view wx:else style="color:grey">请选择您的运动量</view>
-          </view>
+          <view wx:else style="color:grey">请选择您的运动量</view>
         </picker>
       </view>
       <view id="i6" class='items' wx:if="{{!crazy}}">
         <view>饮食控制目的</view>
         <picker range="{{purpose}}" name="purpose" value="index" bindchange="bindPickerChange" data-hi="6" wx:if="{{!low24}}">
           <view wx:if="{{fpurpose}}">{{dpurpose}}</view>
-          <view wx:else>
-            <view wx:if="{{flag}}">{{info.purpose}}</view>
-            <view wx:else style="color:grey">请选择您的饮食控制目的</view>
-          </view>
+          <view wx:else style="color:grey">请选择您的饮食控制目的</view>
         </picker>
         <picker range="{{lowpurpose}}" name="purpose" value="index" bindchange="bindPickerChange" data-hi="6" wx:else>
           <view wx:if="{{fpurpose}}">{{dpurpose}}</view>
-          <view wx:else>
-            <view wx:if="{{flag}}">{{info.purpose}}</view>
-            <view wx:else style="color:grey">请选择您的饮食控制目的</view>
-          </view>
+          <view wx:else style="color:grey">请选择您的饮食控制目的</view>
         </picker>
       </view>
       <view id="i6" class='items' wx:else>
         <view>饮食控制目的</view>
         <picker range="{{crazypurpose}}" name="purpose" value="index" bindchange="bindPickerChange" data-hi="6">
           <view wx:if="{{fpurpose}}">{{dpurpose}}</view>
-          <view wx:else>
-            <view wx:if="{{flag}}">{{info.purpose}}</view>
-            <view wx:else style="color:grey">请选择您的饮食控制目的</view>
-          </view>
+          <view wx:else style="color:grey">请选择您的饮食控制目的</view>
         </picker>
       </view>
       <view class='title' bindtap="gymnearby">选填项</view>
