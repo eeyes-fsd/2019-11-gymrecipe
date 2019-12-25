@@ -1,5 +1,11 @@
 // pages/mine/mine.js
-import api from '../../utils/util.js'
+import {
+  login
+} from '../../utils/Authorizations.js'
+import {
+  getUser
+} from '../../utils/User.js'
+
 Page({
   data: {
     showContact: false,
@@ -7,8 +13,6 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     userInfo: [],
     phone: "",
-    code: "",
-    share_id: ""
   },
   onTab: function() {
     this.setData({
@@ -16,19 +20,31 @@ Page({
     })
   },
   getPhoneNumber: async function(e) {
-    wx.setStorageSync("iv", e.detail.iv)
-    wx.setStorageSync("encryptedData", e.detail.encryptedData)
-    await api.login(this.data.code, e.detail.iv, e.detail.encryptedData)
-    console.log("成功获取手机号")
-    let userInfo = await api.getUser()
-    console.log(userInfo)
-    this.setData({
-      phone: userInfo.data.data.phone
-    })
-    this.setData({
-      share_id: userInfo.data.data.share_id
-    })
-
+    let that = this
+    wx.login({
+      success: async(res) => {
+        // 获取到用户的 code 之后：res.code
+        wx.setStorageSync("code", res.code)
+        wx.setStorageSync("iv", e.detail.iv)
+        wx.setStorageSync("encryptedData", e.detail.encryptedData)
+        console.log("用户的code:" + res.code);
+        await login(res.code, e.detail.iv, e.detail.encryptedData)
+        console.log("成功获取手机号")
+        let userInfo = await getUser()
+        that.setData({
+          phone: userInfo.data.data.phone || '',
+        })
+        wx.setStorageSync("share_id", userInfo.data.data.share_id)
+      },
+      fail: (err) => {
+        console.log(err)
+        wx.showToast({
+          title: '登录失败',
+          icon: "none",
+          duration: 2000
+        })
+      }
+    });
   },
   //关闭联系我们窗口
   closecontact: function() {
@@ -44,13 +60,6 @@ Page({
       duration: 2000
     })
   },
-  touchMove: function() {},
-  maskTouchMove: function() {},
-  showmyaddress: function() {
-    wx.navigateTo({
-      url: '../myaddress/myaddress',
-    })
-  },
   // 获取个人数据
   async getUserInfo(e) {
     var that = this
@@ -60,14 +69,7 @@ Page({
         isShow: false,
         userInfo: e.detail.userInfo
       })
-      wx.login({
-        success: (res) => {
-          that.setData({
-            code: res.code
-          })
-          wx.setStorageSync("code", res.code)
-        }
-      })
+      console.log("获取用户个人信息")
     } else {
       wx.showModal({
         title: '警告',
@@ -88,17 +90,7 @@ Page({
               that.setData({
                 userInfo: res.userInfo
               })
-              console.log(res.userInfo)
-              wx.login({
-                success: res => {
-                  // 获取到用户的 code 之后：res.code
-                  that.setData({
-                    code: res.code
-                  })
-                  wx.setStorageSync("code", res.code)
-                  console.log("用户的code:" + res.code);
-                }
-              });
+              console.log("获取用户个人信息")
             }
           });
         } else {
@@ -108,6 +100,13 @@ Page({
           });
         }
       }
+    })
+  },
+  touchMove: function() {},
+  maskTouchMove: function() {},
+  showmyaddress: function() {
+    wx.navigateTo({
+      url: '../myaddress/myaddress',
     })
   },
 

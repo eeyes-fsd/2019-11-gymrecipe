@@ -1,5 +1,7 @@
 // pages/recipelist/recipelist.js
-import api from "../../utils/util.js"
+import api from "../../utils/Recipe.js"
+import payment from "../../utils/Order.js"
+
 Page({
 
   /**
@@ -152,7 +154,7 @@ Page({
   },
   //支付
   pay: async function() {
-    await api.pay([detailcurrentdata])
+    await payment.pay([detailcurrentdata])
   },
   /**
    * 生命周期函数--监听页面加载

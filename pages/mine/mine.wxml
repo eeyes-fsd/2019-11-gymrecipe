@@ -47,7 +47,7 @@
   <view wx:if="{{canIUse}}">
     <view class="content-title">微信授权</view>
     <view class="content-content">微信授权</view>
-    <view class="content-content">授权绑定你的手机号</view>
+    <view class="content-content">授权绑定你的微信信息</view>
 
     <view class="btnbox">
       <button class="btn" bindtap='close'>拒绝</button>
