@@ -38,7 +38,7 @@ const todayRecipes = async(id) => {
   return response
 }
 
-export {
+module.exports = {
   todayRecipes,
   allRecipes,
   boughtRecipes,

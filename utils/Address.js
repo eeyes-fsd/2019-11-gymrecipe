@@ -37,7 +37,7 @@ const detailAddress = async(id) => {
   return response
 }
 
-export default {
+module.exports = {
   getAddress,
   modifyAddress,
   plusAddress,

@@ -38,7 +38,7 @@ const orderDetail = async(id) => {
   return response
 }
 
-export default {
+module.exports = {
   pay,
   orders,
   orderDetail,
