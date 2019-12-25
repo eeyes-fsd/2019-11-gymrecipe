@@ -1,10 +1,15 @@
 //index.js
 //获取应用实例
-import api from "../../utils/util.js"
+// import api from "../../utils/util.js"
+import api from "../../utils/Recipe.js"
+import {
+  currentIntake
+} from "../../utils/Health.js"
+
 const app = getApp()
 Page({
   data: {
-    currentIntake:[],
+    currentIntake: [],
     toView: [], //用于锚点跳转
     getinfo: false, //是否测量过身体数据
     setfood: false, //是否定制过套餐
@@ -42,24 +47,24 @@ Page({
     })
     // 测试
     // 新品推荐需要修改
-    let newRecipes = await api.newRecipes(20,1)
+    let newRecipes = await api.newRecipes(20, 1)
     this.setData({
       foodlist: newRecipes.data.data,
     })
     let response = await api.todayRecipes()
-    if(response.data.data==""){
+    if (response.data.data == "") {
       that.setData({
         setfood: false,
         todaylist: ""
       })
-    }else{
+    } else {
       that.setData({
         setfood: true,
         todaylist: response.data.data
       })
     }
     //let r = await api.recipesDetails(response.data.data[0].id)
-    let Response = await api.currentIntake()
+    let Response = await currentIntake()
     let currentIntake = Response.data
     if (currentIntake == "") {
       that.setData({
@@ -81,8 +86,8 @@ Page({
       })
     }
   },
-  onShow:async function(){
-    let Response = await api.currentIntake()
+  onShow: async function() {
+    let Response = await currentIntake()
     let currentIntake = Response.data
     if (currentIntake == "") {
       that.setData({

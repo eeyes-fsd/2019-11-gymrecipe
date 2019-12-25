@@ -1,38 +1,6 @@
-// 地址
-const host = 'http://gym.eeyes.xyz/api'
-
-// 封装requests
-const requestPromise = (method, url, data, token) => {
-  if (token === "") {
-    return new Promise((resolve, reject) => {
-      wx.request({
-        method: method,
-        url: `${host}${url}`,
-        data: data,
-        header: {
-          'content-type': 'application/x-www-form-urlencoded',
-        },
-        success: res => resolve(res),
-        fail: (res) => reject(res)
-      })
-    })
-  } else {
-    return new Promise((resolve, reject) => {
-      wx.request({
-        method: method,
-        url: `${host}${url}`,
-        data: data,
-        header: {
-          'content-type': 'application/x-www-form-urlencoded',
-          'Authorization': `Bearer ${token}`
-        },
-        success: res => resolve(res),
-        fail: (res) => reject(res)
-      })
-    })
-  }
-}
-
+import {
+  requestPromise
+} from './requests.js'
 // 登录
 const login = async(codes, iv, encrypted_data) => {
   let data = {
@@ -41,10 +9,7 @@ const login = async(codes, iv, encrypted_data) => {
     "encrypted_data": encrypted_data //加密数据
   }
   let res = await requestPromise("POST", "/authorizations/weapp", data, "")
-  // 测试
-  let expires_in = res.data.expires_in * 1000 + new Date().getTime()
-  let token = res.data.access_token
-  console.log(res.data.expires_in * 1000 + new Date().getTime())
+  console.log("login储存token和expires_in")
   wx.setStorageSync("access_token", res.data.access_token)
   wx.setStorageSync("expires_in", res.data.expires_in * 1000 + new Date().getTime())
   return res;
@@ -70,32 +35,24 @@ const refreshToken = async() => {
 
 //获取token
 const getToken = async() => {
-  console.log("getToekn")
+  console.log("getToken")
   let access_token = wx.getStorageSync("access_token")
   let expires_in = wx.getStorageSync("expires_in")
   if (new Date().getTime() > expires_in) {
     access_token = await refreshToken()
     console.log("reset token")
     if (access_token === false) {
-      let code;
       wx.login({
-        success: (res) => {
-          code = res.code
+        success: async(res) => {
           wx.setStorageSync("code", res.code)
+          let iv = wx.getStorageSync("iv")
+          let encryptedData = wx.getStorageSync("encryptedData")
+          let response = await login(res.code, iv, encryptedData)
+          wx.setStorageSync("access_token", res.data.access_token)
+          wx.setStorageSync("expires_in", new Date().getTime() + res.data.expires_in * 1000)
+          access_token = response.data.access_token
         }
       })
-      let iv = wx.getStorageSync("iv")
-      let encryptedData = wx.getStorageSync("encryptedData")
-      let response = await login(code, iv, encryptedData)
-      wx.setStorageSync({
-        key: 'access_token',
-        data: response.data.access_token
-      })
-      wx.setStorageSync({
-        key: 'expires_in',
-        data: response.data.expires_in
-      })
-      access_token = response.data.access_token
     }
   }
   return access_token
