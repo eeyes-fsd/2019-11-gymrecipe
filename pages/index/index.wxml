@@ -46,6 +46,10 @@
     <view class="jumpto_1text">立即免费测量</view>
     <image class="jumpto_1icon" src="/images/falling.png"></image>
   </view>
+  <view class="jumpto_2box" bindtap="recipelist" wx:if="{{getinfo}}">
+    <view class="jumpto_2text" style="width:270rpx;">您的每餐配比戳这里</view>
+    <image class="jumpto_2icon" src="/images/falling.png"></image>
+  </view>
   <view class="titlebox_3" wx:if="{{setfood}}">
     今日秤食食谱
   </view>
