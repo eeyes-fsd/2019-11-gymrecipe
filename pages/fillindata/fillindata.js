@@ -45,7 +45,7 @@ Page({
     dcustom: [],
     dfatrate: [],
     alertShow: false,
-    alertContent: "123"
+    alertContent:[]
   },
   //关闭窗口
   close: function() {
@@ -536,7 +536,7 @@ Page({
         "exe": that.data.fexe ? that.data.dexe : 'null',
         "purpose": that.data.fpurpose ? that.data.dpurpose : 'null',
         "fatrate": that.data.ffatrate ? that.data.dfatrate : 'null',
-        "work_time":that.data.fcustom?that.data.dcustom:'null'
+        "custom":that.data.fcustom?that.data.dcustom:'null'
       }
       wx.setStorageSync('cacheinfo', data)
     }
