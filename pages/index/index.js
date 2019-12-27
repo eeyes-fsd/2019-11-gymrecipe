@@ -52,15 +52,16 @@ Page({
       foodlist: newRecipe.data.data,
     })
     let response = await api.todayRecipes()
-    if (response.data.data == "") {
-      that.setData({
-        setfood: false,
-        todaylist: ""
-      })
-    } else {
+    console.log(response)
+    if (response.status==200) {
       that.setData({
         setfood: true,
         todaylist: response.data.data
+      })
+    } else {
+      that.setData({
+        setfood: false,
+        todaylist: ""
       })
     }
     //let r = await api.recipesDetails(response.data.data[0].id)
