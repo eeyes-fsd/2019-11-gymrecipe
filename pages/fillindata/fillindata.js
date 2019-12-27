@@ -7,7 +7,7 @@ Page({
    */
   data: {
     fatrate: [],
-    customlist: ["三餐", "三+一餐", "三+二餐", "三+三餐"],
+    customlist: [],
     crazy: false, //是否经常运动
     crazypurpose: ["减脂", "增肌", "增强体质"],
     lowpurpose: ["减重", "增重", "保持体重"],
@@ -251,6 +251,12 @@ Page({
       var gender;
       var exe;
       var purpose;
+      var habit;
+      if(that.data.fcustom){
+        for(var p in customlist){
+          if(customlist[p]==that.data.dcustom)  habit = p
+        }
+      }
       for (var p in that.data.gender) {
         if (that.data.dgender == that.data.gender[p]) gender = that.data.gender[p]
       }
@@ -273,6 +279,7 @@ Page({
           }
         }
       }
+
       var data
       //根据有作息时间和有无体脂率要分4种情况考虑
       if (that.data.ffatrate) {
@@ -285,7 +292,7 @@ Page({
             "exercise": parseInt(exe) + 1,
             "purpose": parseInt(purpose) + 1,
             "fat": parseFloat(that.data.dfatrate),
-            "work_time": that.data.dcustom
+            "habit": habit
           }
         }else{
           data = {
@@ -308,7 +315,7 @@ Page({
             "weight": that.data.dweight,
             "exercise": parseInt(exe) + 1,
             "purpose": parseInt(purpose) + 1,
-            "work_time": that.data.dcustom
+            "habit": habit
           }
         }else{
           data = {
@@ -361,7 +368,9 @@ Page({
     var that = this
     let exelist = await api.exercisesList()
     let purposelist = await api.purposesList()
+    let habitsList = await api.habitsList()
     that.setData({
+      customlist: habitsList.data.map((item) => item.content),
       exe: exelist.data.map((item) => item.content),
       //purpose: purposelist.data.map((item) => item.content)
     })
@@ -473,10 +482,10 @@ Page({
             dfatrate: info.fat_rate
           })
         }
-        if (info.work_time != "-") { //作息时间
+        if (info.habit != null) { //作息时间
           that.setData({
             fcustom: true,
-            dcustom: info.work_time
+            dcustom: info.habit
           })
         }
         for (var p in that.data.exe) {

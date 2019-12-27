@@ -39,11 +39,16 @@ const purposesList = async() => {
   let response = await requestPromise("GET", `/purposes`)
   return response
 }
+const habitsList = async () => {
+  let response = await requestPromise("GET", `/habits`)
+  return response
+}
 module.exports = {
   getHealth,
   sendHealth,
   changeHealth,
   currentIntake,
   exercisesList,
-  purposesList
+  purposesList,
+  habitsList
 }
