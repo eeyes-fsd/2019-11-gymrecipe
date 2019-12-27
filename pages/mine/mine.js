@@ -24,17 +24,19 @@ Page({
     wx.login({
       success: async(res) => {
         // 获取到用户的 code 之后：res.code
-        wx.setStorageSync("code", res.code)
-        wx.setStorageSync("iv", e.detail.iv)
-        wx.setStorageSync("encryptedData", e.detail.encryptedData)
-        console.log("用户的code:" + res.code);
-        await login(res.code, e.detail.iv, e.detail.encryptedData)
-        console.log("成功获取手机号")
-        let userInfo = await getUser()
-        that.setData({
-          phone: userInfo.data.data.phone || '',
-        })
-        wx.setStorageSync("share_id", userInfo.data.data.share_id)
+        setTimeout(async() => {
+          wx.setStorageSync("code", res.code)
+          wx.setStorageSync("iv", e.detail.iv)
+          wx.setStorageSync("encryptedData", e.detail.encryptedData)
+          console.log("用户的code:" + res.code);
+          await login(res.code, e.detail.iv, e.detail.encryptedData)
+          console.log("成功获取手机号")
+          let userInfo = await getUser()
+          that.setData({
+            phone: userInfo.data.data.phone || '',
+          })
+          wx.setStorageSync("share_id", userInfo.data.data.share_id)
+        }, 900)
       },
       fail: (err) => {
         console.log(err)

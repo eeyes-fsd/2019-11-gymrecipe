@@ -39,7 +39,7 @@ const purposesList = async() => {
   let response = await requestPromise("GET", `/purposes`)
   return response
 }
-export default {
+module.exports = {
   getHealth,
   sendHealth,
   changeHealth,

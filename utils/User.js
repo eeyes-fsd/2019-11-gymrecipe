@@ -35,7 +35,7 @@ export {
   delUser,
   upDateUser
 }
-export default {
+module.exports = {
   getUser,
   delUser,
   upDateUser

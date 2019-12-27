@@ -13,6 +13,6 @@ const verifyPhone = async(number) => {
   let response = await requestPromise("GET", `/phone_verify`, data, token)
   return response
 }
-export default {
+module.exports = {
   verifyPhone
 }

@@ -6,12 +6,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    fatrate:[],
-    customlist: ["三餐", "三+一餐", "三+二餐","三+三餐"],
-    crazy:false,//是否经常运动
-    crazypurpose:["减脂","增肌","增强体质"],
-    lowpurpose:["减重","增重","保持体重"],
-    low24:false,//BMI是否低于24
+    fatrate: [],
+    customlist: ["三餐", "三+一餐", "三+二餐", "三+三餐"],
+    crazy: false, //是否经常运动
+    crazypurpose: ["减脂", "增肌", "增强体质"],
+    lowpurpose: ["减重", "增重", "保持体重"],
+    low24: false, //BMI是否低于24
     BMI: [], //体脂率
     Base: [], //基础代谢
     edit: false, //用户是否编辑过页面而且没有提交，用于存储页面显示
@@ -23,7 +23,7 @@ Page({
     info: [],
     gender: ["男", "女"],
     exe: [],
-    purpose: ["减重","急速减重", "增重", "保持体重"],
+    purpose: ["减重", "急速减重", "增重", "保持体重"],
     weight: [],
     height: [],
     //是否选择了数据
@@ -33,8 +33,8 @@ Page({
     fweight: false,
     fexe: false,
     fpurpose: false,
-    fcustom:false,
-    ffatrate:false,
+    fcustom: false,
+    ffatrate: false,
     //已选择的数据，用于picker显示
     dgender: [],
     dbirthdate: [],
@@ -42,8 +42,8 @@ Page({
     dweight: [],
     dexe: [],
     dpurpose: [],
-    dcustom:[],
-    dfatrate:[],
+    dcustom: [],
+    dfatrate: [],
     alertShow: false,
     alertContent: "123"
   },
@@ -114,15 +114,15 @@ Page({
             case 0:
               var message = "非运动人群"
               that.setData({
-                crazy:false,
-                fpurpose:false
+                crazy: false,
+                fpurpose: false
               })
               that.AlertShow(message)
               break;
             case 1:
             case 2:
               that.setData({
-                crazy:true,
+                crazy: true,
                 fpurpose: false
               })
               var message = "建议填写体脂率"
@@ -133,18 +133,18 @@ Page({
         }
       case 6:
         {
-          if(that.data.crazy){
+          if (that.data.crazy) {
             that.setData({
               fpurpose: true,
               dpurpose: that.data.crazypurpose[parseInt(e.detail.value)]
             })
-          }else{
-            if(that.data.low24){
+          } else {
+            if (that.data.low24) {
               that.setData({
                 fpurpose: true,
                 dpurpose: that.data.lowpurpose[parseInt(e.detail.value)]
               })
-            }else{
+            } else {
               that.setData({
                 fpurpose: true,
                 dpurpose: that.data.purpose[parseInt(e.detail.value)]
@@ -153,7 +153,7 @@ Page({
           }
           break;
         }
-        case 7:
+      case 7:
         {
           that.setData({
             fcustom: true,
@@ -161,12 +161,13 @@ Page({
           })
           break;
         }
-        case 8:{
-        that.setData({
-          ffatrate: true,
-          dfatrate: parseInt(e.detail.value)
-        })
-        break;
+      case 8:
+        {
+          that.setData({
+            ffatrate: true,
+            dfatrate: parseInt(e.detail.value)
+          })
+          break;
         }
     }
     var dweight = that.data.dweight
@@ -177,11 +178,11 @@ Page({
       that.setData({
         BMI: (dweight / dheight / dheight * 10000).toFixed(2),
       })
-      if(that.data.BMI<24){
+      if (that.data.BMI < 24) {
         that.setData({
-          low24:true
+          low24: true
         })
-      }else{
+      } else {
         that.setData({
           low24: false
         })
@@ -196,7 +197,7 @@ Page({
   },
   formsubmit: async function(e) {
     var that = this
-    if (that.data.flag == false && !(that.data.fgender && that.data.fbirthdate && that.data.fheight && that.data.fweight && that.data.fexe && that.data.fpurpose)) {//之前没提交过数据，而且第一次提交表单没填写完整
+    if (that.data.flag == false && !(that.data.fgender && that.data.fbirthdate && that.data.fheight && that.data.fweight && that.data.fexe && that.data.fpurpose)) { //之前没提交过数据，而且第一次提交表单没填写完整
       if (!that.data.fgender) {
         that.setData({
           toView: 'i1'
@@ -236,7 +237,7 @@ Page({
         duration: 2000
       })
     } else {
-      if(!that.data.flag){//之前未提交过
+      if (!that.data.flag) { //之前未提交过
         var gender;
         var exe;
         var purpose;
@@ -246,16 +247,16 @@ Page({
         for (var p in that.data.exe) {
           if (that.data.dexe == that.data.exe[p]) exe = p
         }
-        if (that.data.crazy) {//是运动狂
+        if (that.data.crazy) { //是运动狂
           for (var p in that.data.crazypurpose) {
             if (that.data.dpurpose == that.data.crazypurpose[p]) purpose = p
           }
         } else {
-          if (that.data.low24) {//BMI低于24
+          if (that.data.low24) { //BMI低于24
             for (var p in that.data.crazypurpose) {
               if (that.data.dpurpose == that.data.lowpurpose[p]) purpose = p
             }
-          } else {//正常情况
+          } else { //正常情况
             for (var p in that.data.purpose) {
               if (that.data.dpurpose == that.data.purpose[p]) purpose = p
             }
@@ -276,9 +277,11 @@ Page({
         that.setData({ //恢复表单未编辑状态
           edit: false
         })
-        let cacheinfo = { "edit": false }
+        let cacheinfo = {
+          "edit": false
+        }
         wx.setStorageSync("cacheinfo", cacheinfo)
-      }else{//之前已提交过
+      } else { //之前已提交过
         var gender;
         var exe;
         var purpose;
@@ -288,29 +291,29 @@ Page({
         for (var p in that.data.exe) {
           if (that.data.dexe == that.data.exe[p]) exe = p
         }
-        if(that.data.crazy){//是运动狂
+        if (that.data.crazy) { //是运动狂
           for (var p in that.data.crazypurpose) {
             if (that.data.dpurpose == that.data.crazypurpose[p]) purpose = p
           }
-        }else{
-          if(that.data.low24){//BMI低于24
+        } else {
+          if (that.data.low24) { //BMI低于24
             for (var p in that.data.crazypurpose) {
               if (that.data.dpurpose == that.data.lowpurpose[p]) purpose = p
             }
-          }else{//正常情况
+          } else { //正常情况
             for (var p in that.data.purpose) {
               if (that.data.dpurpose == that.data.purpose[p]) purpose = p
             }
           }
         }
-        
+
         let data = {
           "gender": (gender === "男" ? "m" : "f"),
           "birthday": that.data.dbirthdate,
           "height": that.data.dheight,
           "weight": that.data.dweight,
-          "exercise": parseInt(exe)+1,
-          "purpose": parseInt(purpose)+1,
+          "exercise": parseInt(exe) + 1,
+          "purpose": parseInt(purpose) + 1,
         }
         console.log(data)
         //表单提交后返回的新摄入数据，存入缓存
@@ -319,11 +322,12 @@ Page({
         that.setData({ //恢复表单未编辑状态
           edit: false
         })
-        let cacheinfo = { "edit": false }
+        let cacheinfo = {
+          "edit": false
+        }
         wx.setStorageSync("cacheinfo", cacheinfo)
       }
-      wx.navigateBack({
-      })
+      wx.navigateBack({})
     }
   },
   gymnearby: function() {
@@ -346,11 +350,11 @@ Page({
     //that.data.height.push(2)
     var height = new Array()
     var fatrate = new Array()
-    for(var j=0;j<100;j++){
+    for (var j = 0; j < 100; j++) {
       fatrate.push(j)
     }
     that.setData({
-      fatrate:fatrate
+      fatrate: fatrate
     })
     for (var i = 100; i < 231; i++) {
       height.push(i)
@@ -369,10 +373,10 @@ Page({
 
     //是否给表单设置初值
     var cacheinfo = wx.getStorageSync('cacheinfo')
-    console.log("cacheinfo",cacheinfo)
+    console.log("cacheinfo", cacheinfo)
     //若之前存在修改的数据未提交
     if (cacheinfo.edit) {
-      console.log("cacheinfo",cacheinfo.edit)
+      console.log("cacheinfo", cacheinfo.edit)
       if (cacheinfo.gender != 'null') {
         that.setData({
           fgender: true,
@@ -409,9 +413,9 @@ Page({
           dpurpose: cacheinfo.purpose
         })
       }
-    }else{//否则再判断该用户之前是否提交过数据
+    } else { //否则再判断该用户之前是否提交过数据
       var info = await api.getHealth()
-      console.log("info",info)
+      console.log("info", info)
       if (info.statusCode == 200) {
         var info = info.data.data
         that.setData({
@@ -419,13 +423,13 @@ Page({
         })
         //将info的值分别赋给各个模块，并将是否有值设为true
         that.setData({
-          flag:true,
-          fgender:true,
-          fbirthdate:true,
-          fheight:true,
-          fweight:true,
-          fexe:true,
-          fpurpose:true,
+          flag: true,
+          fgender: true,
+          fbirthdate: true,
+          fheight: true,
+          fweight: true,
+          fexe: true,
+          fpurpose: true,
           dgender: info.gender,
           dbirthdate: info.birthday,
           dheight: info.height,
@@ -433,13 +437,13 @@ Page({
           dexe: info.exercise,
           dpurpose: info.purpose
         })
-        if(info.fat_rate!=null){//体脂率,因为可填可不填，单独拉出来判断
+        if (info.fat_rate != null) { //体脂率,因为可填可不填，单独拉出来判断
           that.setData({
-            ffatrate:true,
-            dfatrate:info.fat_rate
+            ffatrate: true,
+            dfatrate: info.fat_rate
           })
         }
-        if (info.work_time != "-") {//作息时间
+        if (info.work_time != "-") { //作息时间
           that.setData({
             fcustom: true,
             dcustom: info.work_time
@@ -448,7 +452,6 @@ Page({
         console.log(info)
       }
     }
-
     wx.getSystemInfo({
       success: function(res) {
         that.setData({
@@ -457,10 +460,6 @@ Page({
         })
       },
     })
-
-    
-    
-   
   },
   //页面卸载时
   onUnload: function() {

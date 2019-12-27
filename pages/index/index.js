@@ -2,9 +2,8 @@
 //获取应用实例
 // import api from "../../utils/util.js"
 import api from "../../utils/Recipe.js"
-import {
-  currentIntake
-} from "../../utils/Health.js"
+// import health from "../../utils/Health.js"
+var health = require('../../utils/Health.js');
 
 const app = getApp()
 Page({
@@ -36,6 +35,7 @@ Page({
     })
   },
   onLoad: async function() {
+    console.log(health)
     var that = this
     wx.getSystemInfo({
       success: function(res) {
@@ -47,9 +47,9 @@ Page({
     })
     // 测试
     // 新品推荐需要修改
-    let newRecipes = await api.newRecipes(20, 1)
+    let newRecipe = await api.newRecipes()
     this.setData({
-      foodlist: newRecipes.data.data,
+      foodlist: newRecipe.data.data,
     })
     let response = await api.todayRecipes()
     if (response.data.data == "") {
@@ -64,10 +64,32 @@ Page({
       })
     }
     //let r = await api.recipesDetails(response.data.data[0].id)
+    let Response = await health.currentIntake()
+    let currentIntake = Response.data
+    if (currentIntake == "") {
+      that.setData({
+        currentIntake: "",
+        getinfo: false
+      })
+    } else {
+      let radioarray = currentIntake.ratio.split(":")
+      let radiosum = radioarray[0] + radioarray[1] + radioarray[2]
+      let Intakedata = {
+        'date': currentIntake.updated_at,
+        'carbohydrate': (currentIntake.energy * radioarray[0] / radiosum).toFixed(2),
+        'protein': (currentIntake.energy * radioarray[1] / radiosum).toFixed(2),
+        'fat': (currentIntake.energy * radioarray[2] / radiosum).toFixed(2)
+      }
+      that.setData({
+        currentIntake: Intakedata,
+        getinfo: true
+      })
+    }
   },
   
   onShow: async function() {
-    let Response = await currentIntake()
+    let that = this
+    let Response = await health.currentIntake()
     let currentIntake = Response.data
     if (currentIntake == "") {
       that.setData({
