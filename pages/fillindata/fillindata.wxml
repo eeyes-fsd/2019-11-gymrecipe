@@ -66,7 +66,7 @@
       <view>完整填写获得更准确测量结果</view>
       <view class='items'>
         <view>体脂率%</view>
-        <picker value="20" range="{{fatrate}}" name="fatrate" bindchange="bindPickerChange" data-hi="8">
+        <picker value="200" range="{{fatrate}}" name="fatrate" bindchange="bindPickerChange" data-hi="8">
             <view wx:if="{{ffatrate}}">{{dfatrate}}</view>
             <view wx:else style="color:grey">请选择您的体脂率</view>
         </picker>

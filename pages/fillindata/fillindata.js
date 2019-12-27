@@ -174,20 +174,28 @@ Page({
     var dheight = that.data.dheight
     //返回年龄
     var dgender = that.data.dgender
-    if (that.data.fweight && that.data.fheight) {
-      that.setData({
-        BMI: (dweight / dheight / dheight * 10000).toFixed(2),
-      })
-      if (that.data.BMI < 24) {
-        that.setData({
-          low24: true
-        })
-      } else {
-        that.setData({
-          low24: false
-        })
-      }
+    //只有在填写了身高体重时才能改变BMI的值
+    switch (parseInt(e.currentTarget.dataset.hi)){
+      case 3:
+      case 4:
+        if (that.data.fweight && that.data.fheight) {
+          that.setData({
+            BMI: (dweight / dheight / dheight * 10000).toFixed(2),
+          })
+          if (that.data.BMI < 24) {
+            that.setData({
+              low24: true,
+              fpurpose: false
+            })
+          } else {
+            that.setData({
+              low24: false
+            })
+          }
+        }
+      break;
     }
+    
     if (that.data.fweight && that.data.fheight && that.data.fbirthdate && that.data.fgender) {
       var dbirthdate = new Date().getFullYear() - that.data.dbirthdate.split('-')[0] + ((that.data.dbirthdate.split('-')[1] < new Date().getMonth()) ? 0 : -1)
       that.setData({
@@ -358,8 +366,8 @@ Page({
     //that.data.height.push(2)
     var height = new Array()
     var fatrate = new Array()
-    for (var j = 0; j < 100; j++) {
-      fatrate.push(j)
+    for (var j = 0; j < 1000; j++) {
+      fatrate.push(j/10)
     }
     that.setData({
       fatrate: fatrate
@@ -457,8 +465,9 @@ Page({
             dcustom: info.work_time
           })
         }
-        for(var p in exe){
-          if(exe[p]==info.exe){
+        for(var p in that.data.exe){
+          console.log(that.data.exe[p])
+          if(that.data.exe[p]==info.exercise){
             if(p>0){
               that.setData({
                 crazy:true
