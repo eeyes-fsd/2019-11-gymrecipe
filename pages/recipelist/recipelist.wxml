@@ -5,13 +5,14 @@
     <view class="navbar2" bindtap="nav" data-id="0" style="color:{{perchased==0?'#484848':'#D7D7D7'}}">全部食谱</view>
   </view>
   <!-- 已购买 -->
-  <scroll-view bindscroll="myscrolling" scroll-x="true" style="height:1023rpx;width:100%;margin-top:50rpx;" bindscroll="getposition" wx:if="{{perchased==1}}" scroll-into-view="{{toView}}">
+  <view class="noperchased" wx:if="{{perchased==1&&!boolmyrecipelist}}">还未购买食谱</view>
+  <scroll-view bindscroll="myscrolling" scroll-x="true" style="height:1023rpx;width:100%;margin-top:50rpx;margin-bottom:300rpx;" bindscroll="getposition" wx:if="{{perchased==1&&boolmyrecipelist}}" scroll-into-view="{{toView}}">
     <view class="listbox" style="width:{{myrecipelist.length*556}}rpx;">
       <view id="r{{index+1}}" class="itembox" data-id="{{item.id}}" bindtap="fooddetail" wx:for="{{myrecipelist}}" wx:key>
         <image class="itemphoto" src="{{item.cover}}" lazy-load='{{true}}'></image>
         <view class="itemtitle">{{item.name}}</view>
-        <view class="itemdetail1">包含早/中/晚三餐搭配</view>
-        <view class="itemdetail2">主要食材：鸡胸肉、西兰花、牛油果</view>
+        <view class="itemdetail1">{{item.description}}</view>
+        <view class="itemdetail2">主要食材：<view wx:for="{{item.ingredients}}" wx:for-item="cell">{{cell}}</view></view>
         <view class="jumpbox">
           <view class="jumptext">立即解锁配餐</view>
           <view class="jumpicon"></view>
@@ -20,13 +21,13 @@
     </view>
   </scroll-view>
   <!-- 全部食谱 -->
-  <scroll-view bindscroll="scrolling" scroll-into-view="{{toView}}" scroll-x="true" style="height:1023rpx;width:100%;margin-top:50rpx;" wx:if="{{perchased==0}}">
+  <scroll-view bindscroll="scrolling" scroll-into-view="{{toView}}" scroll-x="true" style="height:1123rpx;width:100%;margin-top:50rpx;margin-bottom:300rpx;" wx:if="{{perchased==0}}">
     <view class="listbox" style="width:{{recipelist.length*556}}rpx">
       <view id="r{{index+1}}" class="itembox" data-id="{{item.id}}" bindtap="fooddetail" wx:for="{{recipelist}}" wx:key>
         <image class="itemphoto" src="{{item.cover}}" lazy-load='{{true}}'></image>
         <view class="itemtitle">{{item.name}}</view>
-        <view class="itemdetail1">包含早/中/晚三餐搭配</view>
-        <view class="itemdetail2">主要食材：鸡胸肉、西兰花、牛油果</view>
+        <view class="itemdetail1">{{item.description}}</view>
+        <view class="itemdetail2">主要食材：<view class="ingredients" wx:for="{{item.ingredients}}" wx:for-item="cell" wx:for-index="i">{{cell}}{{i==item.ingredients.length-1?"。":"，"}}</view></view>
         <view class="jumpbox">
           <view class="jumptext">立即解锁配餐</view>
           <image class="jumpicon" src="/images/falling.png"></image>

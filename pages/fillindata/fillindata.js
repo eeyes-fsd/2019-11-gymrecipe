@@ -253,8 +253,8 @@ Page({
       var purpose;
       var habit;
       if(that.data.fcustom){
-        for(var p in customlist){
-          if(customlist[p]==that.data.dcustom)  habit = p
+        for(var p in that.data.customlist){
+          if(that.data.customlist[p]==that.data.dcustom)  habit = p
         }
       }
       for (var p in that.data.gender) {

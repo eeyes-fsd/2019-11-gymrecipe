@@ -23,6 +23,7 @@ Page({
     currenttab: "breakfast", //早餐午餐晚餐切换
 
     //recipelist
+    boolmyrecipelist:false,//判断我的购买是否为空
     fooddetail: false, //是否显示图片详情
     methodid: 1, //配餐定制方式
     showwindow: false, //是否显示配置订餐窗口
@@ -162,13 +163,21 @@ Page({
   onLoad: async function(options) {
     var that = this
     let response = await api.allRecipes()
+    console.log(response)
     that.setData({
       recipelist: response.data.data
     })
     let response2 = await api.boughtRecipes()
-    that.setData({
-      myrecipelist: response2.data.data
-    })
+    if(response2.status==200){
+      that.setData({
+        myrecipelist: response2.data.data,
+        boolmyrecipelist:true
+      })
+    }else{
+      that.setData({
+        boolmyrecipelist:false
+      })
+    }
     try {
       var toViewid = "r" + wx.getStorageSync("recipeid") //食谱id锚点
       that.setData({
