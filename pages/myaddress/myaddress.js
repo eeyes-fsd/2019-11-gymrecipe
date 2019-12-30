@@ -22,7 +22,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: async function(options) {
+  onShow: async function(options) {
     let that = this
     let lists = await api.getAddress()
     if (lists.data) {
@@ -42,7 +42,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onLoad: function() {
 
   },
 

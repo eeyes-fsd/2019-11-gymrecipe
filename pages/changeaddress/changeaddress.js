@@ -9,14 +9,21 @@ Page({
     addressid: [], //地址id
     user: '',
     tele: '',
-    address: '',
+    region: [],
     detailaddress: '',
     array: ['先生', '女士'],
     gender: 0
   },
+  // 地址picker
+  bindRegionChange: function(e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      region: e.detail.value
+    })
+  },
   formsubmit: async function(e) {
     var that = this
-    if (!e.detail.value.user || !e.detail.value.tele || !e.detail.value.address || !e.detail.value.detailaddress) {
+    if (!e.detail.value.user || !e.detail.value.tele || !e.detail.value.detailaddress) {
       wx.showToast({
         title: '请完善信息',
         icon: "none",
@@ -32,12 +39,11 @@ Page({
       })
       return;
     }
-    console.log(e)
     let data = {
       "name": e.detail.value.user,
       "phone": e.detail.value.tele,
-      "gender": (this.index === 0) ? 'm' : 'f',
-      "street": e.detail.value.address,
+      "gender": (this.data.index === 0) ? 'm' : 'f',
+      "street": this.data.region.join('-'),
       "details": e.detail.value.detailaddress
     }
     console.log(data)
@@ -51,18 +57,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: async function(options) {
-    var that = this
+    console.log("获取地址")
     console.log(options.id)
     let response = await api.detailAddress(options.id)
-    that.setData({
-      addressid: options.id
-    })
-    console.log(response)
     this.setData({
+      addressid: options.id,
       user: response.data.data.name,
       gender: (response.data.data.gender === "先生") ? 0 : 1,
       tele: response.data.data.phone,
-      detailaddress: response.data.data.details
+      region: response.data.data.street.split('-'), //收货地址
+      detailaddress: response.data.data.details, //门牌号
     })
   },
 
