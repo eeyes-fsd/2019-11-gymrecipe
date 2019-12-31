@@ -320,6 +320,8 @@
   justify-content: flex-start;
   align-items: center;
   width:100%;
+  background:#FAFAFA;
+  box-sizing: border-box;
 }
 .todaytitle{
   margin-top:63rpx;

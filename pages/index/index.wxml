@@ -43,7 +43,7 @@
     <image class="jumpto_1icon" src="/images/falling.png"></image>
   </view>
   <view class="jumpto_1box" wx:else bindtap="fillindata">
-    <view class="jumpto_1text" style="width:400rpx;">填写数据获取每日营养素摄入标准</view>
+    <view class="jumpto_1text" style="width:420rpx;">填写数据获取每日营养素摄入标准</view>
     <image class="jumpto_1icon" src="/images/falling.png"></image>
   </view>
   <view class="jumpto_1box" bindtap="recipelist" wx:if="{{getinfo}}">

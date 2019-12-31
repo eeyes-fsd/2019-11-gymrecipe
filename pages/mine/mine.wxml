@@ -5,7 +5,7 @@
       <button class='phone' wx:if="{{phone===''}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">暂未绑定手机号</button>
       <view class='phone' wx:else>{{phone}}</view>
     </view>
-    <image class='head' src="{{userInfo.avatar}}"></image>
+    <image class='head' src="{{userInfo.avatarUrl}}"></image>
   </view>
   <view>
     <view bindtap="showmyaddress" class='items'>收货地址</view>

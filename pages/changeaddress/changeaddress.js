@@ -14,9 +14,15 @@ Page({
     array: ['先生', '女士'],
     gender: 0
   },
+  //性别PICKER
+  bindPickerChange:function(e){
+    var that = this
+    that.setData({
+      gender:parseInt(e.detail.value)
+    })
+  },
   // 地址picker
   bindRegionChange: function(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       region: e.detail.value
     })
@@ -42,7 +48,7 @@ Page({
     let data = {
       "name": e.detail.value.user,
       "phone": e.detail.value.tele,
-      "gender": (this.data.index === 0) ? 'm' : 'f',
+      "gender": (this.data.gender === 0) ? 'm' : 'f',
       "street": this.data.region.join('-'),
       "details": e.detail.value.detailaddress
     }
@@ -52,21 +58,22 @@ Page({
       title: '修改地址成功',
       duration: 2000
     })
+    wx.navigateBack({})
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: async function(options) {
-    console.log("获取地址")
     console.log(options.id)
     let response = await api.detailAddress(options.id)
+    var res = response.data.data
     this.setData({
       addressid: options.id,
-      user: response.data.data.name,
-      gender: (response.data.data.gender === "先生") ? 0 : 1,
-      tele: response.data.data.phone,
-      region: response.data.data.street.split('-'), //收货地址
-      detailaddress: response.data.data.details, //门牌号
+      user: res.name,
+      gender: (res.gender === "先生") ? 0 : 1,
+      tele: res.phone,
+      region: res.street.split('-'), //收货地址
+      detailaddress: res.details, //门牌号
     })
   },
 

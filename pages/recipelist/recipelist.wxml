@@ -29,20 +29,21 @@
         <view class="itemdetail1">{{item.description}}</view>
         <view class="itemdetail2">主要食材：<view class="ingredients" wx:for="{{item.ingredients}}" wx:for-item="cell" wx:for-index="i">{{cell}}{{i==item.ingredients.length-1?"。":"，"}}</view></view>
         <view class="jumpbox">
-          <view class="jumptext">立即解锁配餐</view>
+          <view class="jumptext" catchtap="showwindow">立即解锁配餐</view>
           <image class="jumpicon" src="/images/falling.png"></image>
         </view>
       </view>
     </view>
   </scroll-view>
-  <view class="bottom_line" bindtap="showwindow">
+  <!-- 评价模块 -->
+  <!-- <view class="bottom_line" bindtap="showwindow">
     <view class="photogroup">
       <view class="roundphoto" style="background-color:green;z-index:1"></view>
       <view class="roundphoto" style="background-color:red;z-index:2;margin-left:-9.92rpx;"></view>
       <view class="roundphoto" style="background-color:yellow;z-index:3;margin-left:-9.92rpx;"></view>
     </view>
     <view class="bottomtext">查看343条评价</view>
-  </view>
+  </view> -->
 </view>
 
 

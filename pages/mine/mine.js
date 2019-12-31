@@ -91,7 +91,7 @@ Page({
               that.setData({
                 userInfo: res.userInfo
               })
-              console.log("获取用户个人信息")
+              console.log("获取用户个人信息",res.userInfo)
             }
           });
           wx.login({

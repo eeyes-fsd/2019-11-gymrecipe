@@ -80,7 +80,9 @@
       </view>
       <view class='tips' bindtap="gymnearby">体脂率不会填？免费到附近健身房测量</view>
       <button class='button' form-type="submit">确定</button>
+      <view style="height:{{isIpx?'48rpx':'36rpx'}};"></view>
     </view>
+    
   </scroll-view>
 </form>
 <view class="mask" wx:if="{{alertShow}}" bindtap='close' catchtouchmove='maskTouchMove'></view>

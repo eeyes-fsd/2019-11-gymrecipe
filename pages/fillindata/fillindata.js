@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isIpx:[],//判断是否是iphonex手机
     fatrate: [],
     customlist: [],
     crazy: false, //是否经常运动
@@ -366,6 +367,16 @@ Page({
    */
   onLoad: async function(options) {
     var that = this
+    wx.getSystemInfo({//判断是否为IPHONEX
+      success: function(res) {
+        var name = 'iPhone X'
+        if(res.model.indexOf(name) > -1){
+          that.setData({
+            isIpx:true
+          })
+        }
+      }
+    })
     let exelist = await api.exercisesList()
     let purposelist = await api.purposesList()
     let habitsList = await api.habitsList()

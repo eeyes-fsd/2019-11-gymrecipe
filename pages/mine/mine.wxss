@@ -37,7 +37,6 @@ button {
   width: 88rpx;
   height: 88rpx;
   border-radius: 50%;
-  background-color: black;
 }
 
 .items {

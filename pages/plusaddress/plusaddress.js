@@ -25,7 +25,11 @@ Page({
   },
   formsubmit: async function(e) {
     // 请求预检验
-    if (!e.detail.value.user || !e.detail.value.tele || this.data.region || !e.detail.value.detailaddress) {
+    console.log(e.detail.value.user)
+    console.log(e.detail.value.tele)
+    console.log(this.data.region)
+    console.log(e.detail.value.detailaddress)
+    if (!e.detail.value.user || !e.detail.value.tele || !this.data.region || !e.detail.value.detailaddress) {
       wx.showToast({
         title: '请完善信息',
         icon: "none",
@@ -54,6 +58,7 @@ Page({
       duration: 2000
     })
     console.log("添加地址成功")
+    wx.navigateBack({})
   },
   /**
    * 生命周期函数--监听页面加载

@@ -97,6 +97,7 @@ Page({
   fooddetail: async function(e) {
     var that = this
     let recipedetail = await api.recipesDetails(parseInt(e.currentTarget.dataset.id))
+    console.log(recipedetail)
     that.setData({
       showanimation: true,
       testx: that.data.testx - (parseInt(e.currentTarget.dataset.id) - 1) * 556,
