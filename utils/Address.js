@@ -19,9 +19,9 @@ const plusAddress = async(data) => {
   return response
 }
 // 修改地址
-const modifyAddress = async(data) => {
+const modifyAddress = async(id, data) => {
   let token = await getToken()
-  let response = await requestPromise("PUT", "/addresses", data, token)
+  let response = await requestPromise("PUT", `/addresses/${id}`, data, token)
   return response
 }
 // 删除地址

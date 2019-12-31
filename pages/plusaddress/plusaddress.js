@@ -7,18 +7,28 @@ Page({
    */
   data: {
     array: ['先生', '女士'],
-    index: 0
+    index: 0,
+    region: []
   },
+  // 称呼选择
   bindPickerChange: function(e) {
     this.setData({
       index: e.detail.value
     })
   },
+  // 收货地址
+  bindRegionChange: function(e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      region: e.detail.value
+    })
+  },
   formsubmit: async function(e) {
-    if (!e.detail.value.user || !e.detail.value.tele || !e.detail.value.address || !e.detail.value.detailaddress) {
+    // 请求预检验
+    if (!e.detail.value.user || !e.detail.value.tele || this.data.region || !e.detail.value.detailaddress) {
       wx.showToast({
         title: '请完善信息',
-        icon: none,
+        icon: "none",
         duration: 2000
       })
       return
@@ -26,25 +36,24 @@ Page({
     if (!(/^1[3456789]\d{9}$/.test(e.detail.value.tele))) {
       wx.showToast({
         title: '手机号码有误，请重填',
-        icon: none,
+        icon: "none",
         duration: 2000
       })
       return;
     }
-    console.log(e)
     let data = {
       "name": e.detail.value.user,
       "phone": e.detail.value.tele,
-      "gender": (this.index === 0) ? 'm' : 'f',
-      "street": e.detail.value.address,
+      "gender": (this.data.index === 0) ? 'm' : 'f',
+      "street": this.data.region.join('-'),
       "details": e.detail.value.detailaddress
     }
-    console.log(data)
     await api.plusAddress(data)
     wx.showToast({
       title: '添加地址成功',
       duration: 2000
     })
+    console.log("添加地址成功")
   },
   /**
    * 生命周期函数--监听页面加载

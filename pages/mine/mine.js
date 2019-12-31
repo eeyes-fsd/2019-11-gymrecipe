@@ -21,32 +21,17 @@ Page({
   },
   getPhoneNumber: async function(e) {
     let that = this
-    wx.login({
-      success: async(res) => {
-        // 获取到用户的 code 之后：res.code
-        setTimeout(async() => {
-          wx.setStorageSync("code", res.code)
-          wx.setStorageSync("iv", e.detail.iv)
-          wx.setStorageSync("encryptedData", e.detail.encryptedData)
-          console.log("用户的code:" + res.code);
-          await login(res.code, e.detail.iv, e.detail.encryptedData)
-          console.log("成功获取手机号")
-          let userInfo = await getUser()
-          that.setData({
-            phone: userInfo.data.data.phone || '',
-          })
-          wx.setStorageSync("share_id", userInfo.data.data.share_id)
-        }, 900)
-      },
-      fail: (err) => {
-        console.log(err)
-        wx.showToast({
-          title: '登录失败',
-          icon: "none",
-          duration: 2000
-        })
-      }
-    });
+    let code = wx.getStorageSync("code")
+    wx.setStorageSync("iv", e.detail.iv)
+    wx.setStorageSync("encryptedData", e.detail.encryptedData)
+    await login(code, e.detail.iv, e.detail.encryptedData)
+    console.log("成功获取手机号")
+    let userInfo = await getUser()
+    that.setData({
+      phone: userInfo.data.data.phone || '',
+    })
+    wx.setStorageSync("share_id", userInfo.data.data.share_id)
+
   },
   //关闭联系我们窗口
   closecontact: function() {
@@ -70,6 +55,20 @@ Page({
       this.setData({
         isShow: false,
         userInfo: e.detail.userInfo
+      })
+      wx.login({
+        success: async(res) => {
+          console.log("用户的code:" + res.code);
+          wx.setStorageSync("code", res.code)
+        },
+        fail: (err) => {
+          console.log(err)
+          wx.showToast({
+            title: '登录失败',
+            icon: "none",
+            duration: 2000
+          })
+        }
       })
       console.log("获取用户个人信息")
     } else {
@@ -95,6 +94,20 @@ Page({
               console.log("获取用户个人信息")
             }
           });
+          wx.login({
+            success: async(res) => {
+              console.log("用户的code:" + res.code);
+              wx.setStorageSync("code", res.code)
+            },
+            fail: (err) => {
+              console.log(err)
+              wx.showToast({
+                title: '登录失败',
+                icon: "none",
+                duration: 2000
+              })
+            }
+          })
         } else {
           // 用户没有授权
           that.setData({
