@@ -77,9 +77,9 @@ Page({
       let radiosum = radioarray[0] + radioarray[1] + radioarray[2]
       let Intakedata = {
         'date': currentIntake.updated_at,
-        'carbohydrate': (currentIntake.energy * radioarray[0] / radiosum).toFixed(2),
-        'protein': (currentIntake.energy * radioarray[1] / radiosum).toFixed(2),
-        'fat': (currentIntake.energy * radioarray[2] / radiosum).toFixed(2)
+        'carbohydrate': (currentIntake.energy * radioarray[0] / radiosum/4).toFixed(2),
+        'protein': (currentIntake.energy * radioarray[1] / radiosum/4).toFixed(2),
+        'fat': (currentIntake.energy * radioarray[2] / radiosum/9).toFixed(2)
       }
       that.setData({
         currentIntake: Intakedata,
