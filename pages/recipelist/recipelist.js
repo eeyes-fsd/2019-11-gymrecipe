@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    payid:[],//所购食品id
     //test
     detailcurrentdata: [], //用于切换早午晚餐详情的
     currentimage: [],
@@ -66,12 +67,6 @@ Page({
       testx: (e.detail.scrollLeft) * that.data.trans
     })
   },
-  closewindow: function() { //关闭购买浮窗
-    var that = this
-    that.setData({
-      showwindow: false
-    })
-  },
   methodbar: function(e) { //餐品选择
     var that = this
     console.log(e)
@@ -80,10 +75,11 @@ Page({
     })
   },
   //显示半浮窗
-  showwindow: function() {
+  showwindow: function(e) {
     var that = this
     that.setData({
-      showwindow: true
+      showwindow: true,
+      payid:e.currentTarget.dataset.id
     })
   },
   //切换已购买和全部
@@ -156,7 +152,11 @@ Page({
   },
   //支付
   pay: async function() {
-    await payment.pay([detailcurrentdata])
+    var that = this
+    that.setData({
+      showwindow: false
+    })
+    await payment.pay(that.data.payid)
   },
   /**
    * 生命周期函数--监听页面加载

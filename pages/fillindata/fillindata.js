@@ -336,6 +336,8 @@ Page({
       wx.showToast({
         title: '提交成功',
       })
+      wx.navigateBack({
+      })
       //表单提交后返回的新摄入数据，存入缓存
       var currentIntake
       if (!that.data.flag) { //之前已提交过
@@ -343,6 +345,7 @@ Page({
         console.log(currentIntake)
       } else { //之前未提交过
         currentIntake = await api.changeHealth(data)
+        console.log(currentIntake)
       }
       wx.setStorageSync('currentIntake', currentIntake)
       that.setData({ //恢复表单未编辑状态
@@ -352,8 +355,6 @@ Page({
         "edit": false
       }
       wx.setStorageSync("cacheinfo", cacheinfo)
-      wx.navigateBack({
-      })
     }
   },
   gymnearby: function() {

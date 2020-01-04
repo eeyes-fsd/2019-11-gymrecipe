@@ -74,7 +74,7 @@ Page({
       })
     } else {
       let radioarray = currentIntake.ratio.split(":")
-      let radiosum = radioarray[0] + radioarray[1] + radioarray[2]
+      let radiosum = parseInt(radioarray[0]) + parseInt(radioarray[1]) +parseInt(radioarray[2])
       let Intakedata = {
         'date': currentIntake.updated_at,
         'carbohydrate': (currentIntake.energy * radioarray[0] / radiosum/4).toFixed(2),
@@ -98,8 +98,9 @@ Page({
         getinfo: false
       })
     } else {
+      console.log(currentIntake)
       let radioarray = currentIntake.ratio.split(":")
-      let radiosum = radioarray[0] + radioarray[1] + radioarray[2]
+      let radiosum = parseInt(radioarray[0]) + parseInt(radioarray[1]) +parseInt(radioarray[2])
       let Intakedata = {
         'date': currentIntake.updated_at,
         'carbohydrate': (currentIntake.energy * radioarray[0] / radiosum/4).toFixed(2),

@@ -29,7 +29,7 @@
         <view class="itemdetail1">{{item.description}}</view>
         <view class="itemdetail2">主要食材：<view class="ingredients" wx:for="{{item.ingredients}}" wx:for-item="cell" wx:for-index="i">{{cell}}{{i==item.ingredients.length-1?"。":"，"}}</view></view>
         <view class="jumpbox">
-          <view class="jumptext" catchtap="showwindow">立即解锁配餐</view>
+          <view class="jumptext" catchtap="showwindow" data-id="{{item.id}}">立即解锁配餐</view>
           <image class="jumpicon" src="/images/falling.png"></image>
         </view>
       </view>
@@ -82,7 +82,7 @@
     <view class="windowdetailname" style="height:{{methodid!=2?40:80}}rpx">秤食配餐-奥尔良鸡胸肉套餐</view>
     <view class="windowdetailcontent" style="height:{{methodid!=2?464:177}}rpx">这是一个食谱介绍这是一个食谱介绍这是一个食谱介绍这是一个食谱介绍这是一个食谱介绍这是一个食谱介绍这是一个食谱介绍这是一个食谱介绍这是一个食谱介绍</view>
   </view>
-  <button class="button" bindtap="closewindow">¥9.9立即购买</button>
+  <button class="button" bindtap="pay">¥9.9立即购买</button>
 </view>
 
 <!--食品详情!-->
