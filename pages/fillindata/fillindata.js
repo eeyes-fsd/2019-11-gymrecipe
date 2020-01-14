@@ -209,7 +209,7 @@ Page({
     wx.showLoading({
       title: '上传中',
     })
-    if (!(that.data.fgender && that.data.fbirthdate && that.data.fheight && that.data.fweight && that.data.fexe && that.data.fpurpose)) { //之前没提交过数据，而且第一次提交表单没填写完整
+    if (that.data.flag == false && !(that.data.fgender && that.data.fbirthdate && that.data.fheight && that.data.fweight && that.data.fexe && that.data.fpurpose)) { //之前没提交过数据，而且第一次提交表单没填写完整
       if (!that.data.fgender) {
         that.setData({
           toView: 'i1'
@@ -328,6 +328,7 @@ Page({
             "purpose": parseInt(purpose) + 1
           }
         }
+        
       }
 
       console.log(data)

@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/confirmorder/confirmorder",
     "pages/mine/mine",
     "pages/index/index",
     "pages/myaddress/myaddress",
