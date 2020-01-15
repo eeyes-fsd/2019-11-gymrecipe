@@ -42,4 +42,19 @@
     </view>
     <view class="totalprice">小计¥79</view>
   </view>
+  <view class="paymethod">
+    <view class="paymethodtitle">支付方式</view>
+    <view class="paymethodbox">
+      <image class="paymethodicon" src="/images/wechatpay.png"></image>
+      <view class="paymethodtextbox">
+         <view class="paymethodtype">微信支付</view>
+         <view class="paymethoddescribe">亿万用户的选择，更快更安全</view>
+      </view>
+      <image class="paymethodlittleicon" src="/images/confirmicon.png"></image>
+    </view>
+  </view>
+</view>
+<view class="bottombox">
+  <view class="waitpay">待支付¥79</view>
+  <view class="submit">提交订单</view>
 </view>
