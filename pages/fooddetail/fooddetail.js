@@ -5,6 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    //成餐外卖图片
+    mealphoto:[1,2],
     currenttab:1,
   },
   navbar:function(e){
