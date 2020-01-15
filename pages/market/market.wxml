@@ -35,8 +35,8 @@
 </view>
 
 <!-- 购物按钮 -->
-<view style="z-index:1" bindtap="showshopwindow">
-  <view class="shopcarbtn display-flex-column">
+<view style="z-index:1" bindtap="showshopwindow" class='shopcarbtn'>
+  <view class="display-flex-column">
     <image class="shopcarimage" src="/images/shopcar.png"></image>
   </view>
   <view class="shopcarnum" style="width:{{25+(messagenum.length-1)*10}}rpx">{{messagenum}}</view>
@@ -70,15 +70,15 @@
         <view class='box_increase' bindtap="increase" data-index="{{index}}" data-item="material" data-increase="1">+</view>
       </view>
     </view>
-    <view class='box_box' wx:if="{{item.recipes.amount!==0}}">
+    <view class='box_box' wx:if="{{item.material.amount!==0 || item.takeout.amount!==0}}">
       <view class='box_name'>
         <view>食谱</view>
         <view>￥{{item.recipes.price}}</view>
       </view>
       <view class='box_choose'>
-        <view class='box_decrease' bindtap="increase" data-index="{{index}}" data-item="recipes" data-increase="-1">-</view>
-        <view>{{item.recipes.amount}}</view>
-        <view class='box_decrease' bindtap="increase" data-index="{{index}}" data-item="recipes" data-increase="1">+</view>
+        <view class='box_decrease'>-</view>
+        <view>{{(item.material.amount!==0 || item.takeout.amount!==0)?1:0}}</view>
+        <view class='box_decrease'>+</view>
       </view>
     </view>
   </view>

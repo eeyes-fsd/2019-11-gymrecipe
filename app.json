@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/confirmorder/confirmorder",
     "pages/mine/mine",
+    "pages/confirmorder/confirmorder",
     "pages/index/index",
     "pages/myaddress/myaddress",
     "pages/market/market",

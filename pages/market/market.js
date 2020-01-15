@@ -78,7 +78,7 @@ Page({
         'price': 30
       },
       material: {
-        'amount': 0,
+        'amount': 3,
         'price': 20
       },
       recipes: {
@@ -129,10 +129,10 @@ Page({
     let item = e.currentTarget.dataset.item
     let num = e.currentTarget.dataset.increase
     let temp = `goods[${index}].${item}.amount`
+    // 修改对应的数量
     this.setData({
       [temp]: this.data.goods[index][item].amount + parseInt(num)
     })
-    console.log(e)
   },
   /**
    * 生命周期函数--监听页面加载

@@ -4,7 +4,7 @@
 
 .shopcarbtn {
   position: fixed;
-  top: 100vw;
+  bottom: 48rpx;
   right: 24rpx;
   height: 90rpx;
   width: 90rpx;
@@ -14,9 +14,9 @@
 }
 
 .shopcarnum {
-  position: fixed;
-  top: 101vw;
-  right: 24rpx;
+  position: absolute;
+  top: 6rpx;
+  right: -2rpx;
   height: 25rpx;
   background-color: red;
   line-height: 25rpx;
@@ -159,6 +159,12 @@
   text-align: left;
   padding-right: 19rpx;
   line-height: 37rpx;
+  /* 超过两行自动省略 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .item_infobox {
@@ -225,6 +231,7 @@
   z-index: 100;
   position: fixed;
   bottom: 0;
+  padding-top: 44rpx;
   height: 672rpx;
   width: 100%;
   background: #fff;
@@ -233,7 +240,7 @@
 }
 
 .shop_title {
-  margin: 44rpx 55rpx 0 55rpx;
+  margin: 0 55rpx;
   padding-bottom: 36rpx;
   font-size: 48rpx;
   letter-spacing: -1.86rpx;
