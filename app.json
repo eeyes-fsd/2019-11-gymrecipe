@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/fooddetail/fooddetail",
     "pages/confirmorder/confirmorder",
     "pages/mine/mine",
     "pages/index/index",
@@ -8,7 +9,6 @@
     "pages/logs/logs",
     "pages/plusaddress/plusaddress",
     "pages/changeaddress/changeaddress",
-    "pages/fooddetail/fooddetail",
     "pages/fillindata/fillindata",
     "pages/gymnearby/gymnearby",
     "pages/recipelist/recipelist"
