@@ -44,35 +44,42 @@
 
 <!-- 购物车页面 -->
 <view class="mask" style="z-index:2" wx:if="{{showshopwindow}}" bindtap="hideshopwindow"></view>
-<view class="shopwindow" style="z-index:3" wx:if="{{showshopwindow}}">
-  <view class='title'>所有商品</view>
-  <view wx:for="{{goods}}">
-    <view wx:if="{{item.takeout || item.material || item.recipes }}" class='choose_box'>
-      <view class='box_title'>{{item.name}}</view>
-      <view wx:if="{{item.takeout}}">
-        <view class='box_name'>成餐外卖</view>
-        <view class='box_choose'>
-          <view class='box_decrease'>-</view>
-          <view>{{item.takeout}}</view>
-          <view class='box_increase'>+</view>
-        </view>
+<scroll-view class="shopwindow" scroll-y="true" wx:if="{{showshopwindow}}">
+  <view class='shop_title'>所有商品</view>
+  <view wx:for="{{goods}}" wx:key="item.id" wx:if="{{item.takeout.amount || item.material.amount || item.recipes.amount }}" class='goods'>
+    <view class='box_title'>{{item.name}}</view>
+    <view class='box_box' wx:if="{{item.takeout.amount!==0}}">
+      <view class='box_name'>
+        <view>成餐外卖</view>
+        <view>￥{{item.takeout.price}}</view>
       </view>
-      <view wx:if="{{item.material}}">
-        <view class='box_title'>新鲜食材速递</view>
-        <view class='box_choose'>
-          <view>-</view>
-          <view>{{item.material}}</view>
-          <view>+</view>
-        </view>
+      <view class='box_choose'>
+        <view class='box_decrease' bindtap="increase" data-index="{{index}}" data-item="takeout" data-increase="-1">-</view>
+        <view>{{item.takeout.amount}}</view>
+        <view class='box_increase' bindtap="increase" data-index="{{index}}" data-item="takeout" data-increase="1">+</view>
       </view>
-      <view wx:if="{{item.recipes}}">
-        <view class='box_title'>食谱</view>
-        <view class='box_choose'>
-          <view>-</view>
-          <view>{{item.recipes}}</view>
-          <view>+</view>
-        </view>
+    </view>
+    <view class='box_box' wx:if="{{item.material.amount!==0}}">
+      <view class='box_name'>
+        <view>新鲜食材速递</view>
+        <view>￥{{item.material.price}}</view>
+      </view>
+      <view class='box_choose'>
+        <view class='box_decrease' bindtap="increase" data-index="{{index}}" data-item="material" data-increase="-1">-</view>
+        <view>{{item.material.amount}}</view>
+        <view class='box_increase' bindtap="increase" data-index="{{index}}" data-item="material" data-increase="1">+</view>
+      </view>
+    </view>
+    <view class='box_box' wx:if="{{item.recipes.amount!==0}}">
+      <view class='box_name'>
+        <view>食谱</view>
+        <view>￥{{item.recipes.price}}</view>
+      </view>
+      <view class='box_choose'>
+        <view class='box_decrease' bindtap="increase" data-index="{{index}}" data-item="recipes" data-increase="-1">-</view>
+        <view>{{item.recipes.amount}}</view>
+        <view class='box_decrease' bindtap="increase" data-index="{{index}}" data-item="recipes" data-increase="1">+</view>
       </view>
     </view>
   </view>
-</view>
+</scroll-view>

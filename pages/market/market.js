@@ -16,49 +16,94 @@ Page({
       price: '17-30',
       status: '食材-成餐',
       starnum: '133',
-      takeout: 1,
-      material: 0,
-      recipes: 0
+      takeout: {
+        'amount': 1,
+        'price': 30
+      },
+      material: {
+        'amount': 0,
+        'price': 20
+      },
+      recipes: {
+        'amount': 0,
+        'price': 10
+      }
     }, {
-      id: '1',
+      id: '2',
       imagesrc: 'rgb(221, 215, 255)',
       name: '奥尔良鸡胸肉套餐,买成餐送食谱优惠',
       price: '14-24',
       status: '食材-成餐',
       starnum: '133',
-      takeout: 0,
-      material: 3,
-      recipes: 0
+      takeout: {
+        'amount': 0,
+        'price': 30
+      },
+      material: {
+        'amount': 3,
+        'price': 20
+      },
+      recipes: {
+        'amount': 0,
+        'price': 10
+      }
     }, {
-      id: '1',
+      id: '3',
       imagesrc: 'rgb(228, 254, 255)',
       name: '奥尔良鸡胸肉套餐',
       price: '17-30',
       status: '食材-成餐',
       starnum: '133',
-      takeout: 0,
-      material: 0,
-      recipes: 0
+      takeout: {
+        'amount': 0,
+        'price': 30
+      },
+      material: {
+        'amount': 0,
+        'price': 20
+      },
+      recipes: {
+        'amount': 0,
+        'price': 10
+      }
     }, {
-      id: '1',
+      id: '4',
       imagesrc: 'rgb(245, 235, 207)',
       name: '奥尔良鸡胸肉套餐',
       price: '17-30',
       status: '食材-成餐',
       starnum: '133',
-      takeout: 0,
-      material: 0,
-      recipes: 0
+      takeout: {
+        'amount': 1,
+        'price': 30
+      },
+      material: {
+        'amount': 0,
+        'price': 20
+      },
+      recipes: {
+        'amount': 0,
+        'price': 10
+      }
     }, {
-      id: '1',
+      id: '5',
       imagesrc: 'rgb(245, 207, 220)',
       name: '奥尔良鸡胸肉套餐',
       price: '17-30',
       status: '食材-成餐',
       starnum: '133',
-      takeout: 0,
-      material: 0,
-      recipes: 0
+      takeout: {
+        'amount': 1,
+        'price': 30
+      },
+      material: {
+        'amount': 0,
+        'price': 20
+      },
+      recipes: {
+        'amount': 0,
+        'price': 10
+      }
     }]
   },
   showshopwindow: function(e) { //点击显示购物窗口
@@ -78,6 +123,16 @@ Page({
     that.setData({
       currenttab: e.currentTarget.dataset.id
     })
+  },
+  increase: function(e) {
+    let index = e.currentTarget.dataset.index // 获取数据的索引
+    let item = e.currentTarget.dataset.item
+    let num = e.currentTarget.dataset.increase
+    let temp = `goods[${index}].${item}.amount`
+    this.setData({
+      [temp]: this.data.goods[index][item].amount + parseInt(num)
+    })
+    console.log(e)
   },
   /**
    * 生命周期函数--监听页面加载

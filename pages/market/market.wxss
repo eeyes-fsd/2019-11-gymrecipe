@@ -222,17 +222,17 @@
 }
 
 .shopwindow {
+  z-index: 100;
   position: fixed;
   bottom: 0;
   height: 672rpx;
   width: 100%;
-  overflow: auto;
   background: #fff;
   box-shadow: 0px -4px 10px #0000001a;
   border-radius: 60rpx 60rpx 0px 0px;
 }
 
-.title {
+.shop_title {
   margin: 44rpx 55rpx 0 55rpx;
   padding-bottom: 36rpx;
   font-size: 48rpx;
@@ -240,14 +240,14 @@
   border-bottom: 2px solid #eaeaea;
 }
 
-.choose_box {
-  margin: 35rpx 55rpx;
-  border-bottom: 2px solid #eaeaea;
+.goods {
+  padding: 0 59rpx;
+  font-size: 28rpx;
 }
 
 .box_title {
   font-size: 32rpx;
-  margin-bottom: 24rpx;
+  margin-top: 36rpx;
   height: 46rpx;
 }
 
@@ -256,9 +256,22 @@
   flex-direction: row;
   justify-content: space-between;
   width: 123rpx;
+  margin-top: 26rpx;
 }
 
 .box_decrease, .box_increase {
   height: 30rpx;
   width: 30rpx;
+}
+
+.box_box {
+  height: 80rpx;
+  width: 636rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.box_name>view {
+  height: 40rpx;
 }
