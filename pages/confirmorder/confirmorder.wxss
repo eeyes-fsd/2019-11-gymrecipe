@@ -186,3 +186,93 @@
   font-size:28rpx;
   color:#484848;
 }
+
+/* 支付方式 */
+.paymethod{
+  width:100%;
+  box-sizing: border-box;
+  border-radius:40rpx;
+  margin-top:48rpx;
+  padding: 0 49rpx 0 32rpx;
+  background-color:#fff;
+  margin-bottom:200rpx;
+}
+.paymethodtitle{
+  margin-top:34rpx;
+  height:40rpx;
+  width:100%;
+  font-size:28rpx;
+  line-height:40rpx;
+}
+.paymethodbox{
+  display:flex;
+  flex-direction: row;
+  justify-content:flex-start;
+  align-items:center;
+  width:100%;
+  height:75rpx;
+  margin-top:36rpx;
+  margin-bottom:37.85rpx;
+}
+.paymethodicon{
+  height:48rpx;
+  width:48rpx;
+}
+.paymethodtextbox{
+  margin-left:24rpx;
+  height:75rpx;
+  width:400rpx;
+}
+.paymethodtype{
+  height:40rpx;
+  width:100%;
+  line-height: 40rpx;
+  color:#4A4E63;
+  font-size:28rpx;
+}
+.paymethoddescribe{
+  height:35rpx;
+  width:100%;
+  line-height:24rpx;
+  color:#D7D7D7;
+  font-size:24rpx;
+}
+.paymethodlittleicon{
+  margin-left:57rpx;
+  width:30rpx;
+  height:30rpx;
+  background-color:#F83A51;
+  border-radius: 30rpx;
+}
+
+/* 底部栏 */
+.bottombox{
+  position: fixed;
+  bottom:0;
+  width:100%;
+  height:120rpx;
+  display: flex;
+  flex-direction:row;
+  justify-content:space-between;
+  align-items: center;
+  background-color:#FFFFFF;
+  box-shadow: 0px -4px 10px #0000001A;
+  box-sizing: border-box;
+  padding:0 36rpx 0 55rpx;
+}
+.waitpay{
+  height:40rpx;
+  font-size: 28rpx;
+  line-height:40rpx;
+  color:#484848;
+}
+.submit{
+  height:77rpx;
+  width:192rpx;
+  font-size: 28rpx;
+  color:#FFFFFF;
+  text-align: center;
+  line-height: 77rpx;
+  border-radius: 8rpx;
+  background-color:#F83A51;
+}
