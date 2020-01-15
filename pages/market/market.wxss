@@ -230,7 +230,7 @@
 .shopwindow {
   z-index: 100;
   position: fixed;
-  bottom: 0;
+  bottom: 120rpx;
   padding-top: 44rpx;
   height: 672rpx;
   width: 100%;
@@ -281,4 +281,41 @@
 
 .box_name>view {
   height: 40rpx;
+}
+
+
+/* 下单栏 */
+.bottomline{
+  position: fixed;
+  bottom:0;
+  height:120rpx;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  background: #FFF;
+  box-shadow: 0px -4px 10px #0000001A;
+}
+.shopcaricon{
+  margin-left:55rpx;
+  height:42rpx;
+  width:42rpx;
+}
+.pricetotal{
+  height:40rpx;
+  font-size:28rpx;
+  color:#484848;
+  line-height:40rpx;
+  margin-left:44rpx;
+}
+.submit{
+  margin-left:284rpx;
+  height:77rpx;
+  width:192rpx;
+  font-size: 28rpx;
+  color:#FFFFFF;
+  text-align: center;
+  line-height: 77rpx;
+  border-radius: 8rpx;
+  background-color:#F83A51;
 }

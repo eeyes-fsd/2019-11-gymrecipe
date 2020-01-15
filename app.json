@@ -1,7 +1,5 @@
 {
   "pages": [
-    "pages/fooddetail/fooddetail",
-    "pages/confirmorder/confirmorder",
     "pages/mine/mine",
     "pages/index/index",
     "pages/myaddress/myaddress",
@@ -11,7 +9,9 @@
     "pages/changeaddress/changeaddress",
     "pages/fillindata/fillindata",
     "pages/gymnearby/gymnearby",
-    "pages/recipelist/recipelist"
+    "pages/recipelist/recipelist",
+    "pages/fooddetail/fooddetail",
+    "pages/confirmorder/confirmorder"
   ],
   "window": {
     "backgroundTextStyle": "light",

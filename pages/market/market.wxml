@@ -16,7 +16,7 @@
   </view>
   <view class="introduce t-m t-color-black">这是一段秤食堂的简介，减肥健身，掌控人生专业的在线体重管理平台强大的食品营养数据库，立即定制您的私人饮食</view>
   <view class="itemlist">
-    <view class="item display-flex-column" wx:for="{{goods}}" wx:key>
+    <view class="item display-flex-column" wx:for="{{goods}}" wx:key bindtap="fooddetail">
       <view class="item_image" style="background:{{item.imagesrc}}"></view>
       <view class="item_name t-vs t-color-black">{{item.name}}</view>
       <view class="item_infobox display-flex-row">
@@ -28,7 +28,7 @@
         <view class="item_starnum">{{item.starnum}}</view>
       </view>
       <view class="item_addbox display-flex-row">
-        <view class="item_add">+</view>
+        <image class="item_add" src="/images/add.png"></image>
       </view>
     </view>
   </view>
@@ -44,7 +44,7 @@
 
 <!-- 购物车页面 -->
 <view class="mask" style="z-index:2" wx:if="{{showshopwindow}}" bindtap="hideshopwindow"></view>
-<scroll-view class="shopwindow" scroll-y="true" wx:if="{{showshopwindow}}">
+<scroll-view class="shopwindow" scroll-y="true" wx:if="{{showshopwindow}}" style="z-index:3">
   <view class='shop_title'>所有商品</view>
   <view wx:for="{{goods}}" wx:key="item.id" wx:if="{{item.takeout.amount || item.material.amount || item.recipes.amount }}" class='goods'>
     <view class='box_title'>{{item.name}}</view>
@@ -54,9 +54,9 @@
         <view>￥{{item.takeout.price}}</view>
       </view>
       <view class='box_choose'>
-        <view class='box_decrease' bindtap="increase" data-index="{{index}}" data-item="takeout" data-increase="-1">-</view>
+        <image class='box_decrease' bindtap="increase" src="/images/minus.png" data-index="{{index}}" data-item="takeout" data-increase="-1"></image>
         <view>{{item.takeout.amount}}</view>
-        <view class='box_increase' bindtap="increase" data-index="{{index}}" data-item="takeout" data-increase="1">+</view>
+        <image class='box_increase' src="/images/add.png" bindtap="increase" data-index="{{index}}" data-item="takeout" data-increase="1"></image>
       </view>
     </view>
     <view class='box_box' wx:if="{{item.material.amount!==0}}">
@@ -65,9 +65,9 @@
         <view>￥{{item.material.price}}</view>
       </view>
       <view class='box_choose'>
-        <view class='box_decrease' bindtap="increase" data-index="{{index}}" data-item="material" data-increase="-1">-</view>
+        <image class='box_decrease' bindtap="increase" src="/images/minus.png" data-index="{{index}}" data-item="material" data-increase="-1"></image>
         <view>{{item.material.amount}}</view>
-        <view class='box_increase' bindtap="increase" data-index="{{index}}" data-item="material" data-increase="1">+</view>
+        <image class='box_increase' src="/images/add.png" bindtap="increase" data-index="{{index}}" data-item="material" data-increase="1"></image>
       </view>
     </view>
     <view class='box_box' wx:if="{{item.material.amount!==0 || item.takeout.amount!==0}}">
@@ -76,10 +76,16 @@
         <view>￥{{item.recipes.price}}</view>
       </view>
       <view class='box_choose'>
-        <view class='box_decrease'>-</view>
+        <image class='box_decrease' src="/images/minus.png"></image>
         <view>{{(item.material.amount!==0 || item.takeout.amount!==0)?1:0}}</view>
-        <view class='box_decrease'>+</view>
+        <image class='box_decrease' src="/images/add.png"></image>
       </view>
     </view>
   </view>
 </scroll-view>
+
+<view class="bottomline" wx:if="{{showshopwindow}}" style="z-index:200">
+  <image class="shopcaricon" src="/images/shopcar.png"></image>
+  <view class="pricetotal">总计¥0</view>
+  <view class="submit" bindtap="confirmorder">立即下单</view>
+</view>

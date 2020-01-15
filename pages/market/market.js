@@ -106,17 +106,31 @@ Page({
       }
     }]
   },
+  fooddetail:function(){//跳转到食品详情
+    var that = this
+    wx.navigateTo({
+      url: '../fooddetail/fooddetail',
+    }) 
+  },
+  confirmorder:function(){//跳转到确认订单页面
+    var that = this
+    wx.navigateTo({
+      url: '../confirmorder/confirmorder',
+    })
+  },
   showshopwindow: function(e) { //点击显示购物窗口
     var that = this
     that.setData({
       showshopwindow: true
     })
+    wx.hideTabBar({})
   },
   hideshopwindow: function(e) {
     var that = this
     that.setData({
       showshopwindow: false
     })
+    wx.showTabBar({})
   },
   nav: function(e) {
     var that = this
