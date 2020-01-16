@@ -6,14 +6,16 @@ Page({
    */
   data: {
     showshopwindow: false, //是否显示购物窗口
-    messagenum: '2', //小红点上显示的信息数量
+    productnum: '2', //小红点上显示的信息数量
     currenttab: 0, //秤食堂or秤商店
+    totalprice:0,//总价格
     //商品
     goods: [{
       id: '1',
       imagesrc: 'rgb(241, 216, 243)',
       name: '奥尔良鸡胸肉套餐',
-      price: '17-30',
+      price1: 17,
+      price2:30,
       status: '食材-成餐',
       starnum: '133',
       takeout: {
@@ -32,7 +34,8 @@ Page({
       id: '2',
       imagesrc: 'rgb(221, 215, 255)',
       name: '奥尔良鸡胸肉套餐,买成餐送食谱优惠',
-      price: '14-24',
+        price1: 14,
+        price2: 24,
       status: '食材-成餐',
       starnum: '133',
       takeout: {
@@ -51,7 +54,8 @@ Page({
       id: '3',
       imagesrc: 'rgb(228, 254, 255)',
       name: '奥尔良鸡胸肉套餐',
-      price: '17-30',
+        price1: 17,
+        price2: 30,
       status: '食材-成餐',
       starnum: '133',
       takeout: {
@@ -70,7 +74,8 @@ Page({
       id: '4',
       imagesrc: 'rgb(245, 235, 207)',
       name: '奥尔良鸡胸肉套餐',
-      price: '17-30',
+        price1: 17,
+        price2: 30,
       status: '食材-成餐',
       starnum: '133',
       takeout: {
@@ -89,7 +94,8 @@ Page({
       id: '5',
       imagesrc: 'rgb(245, 207, 220)',
       name: '奥尔良鸡胸肉套餐',
-      price: '17-30',
+      price1: 17,
+      price2: 30,
       status: '食材-成餐',
       starnum: '133',
       takeout: {
@@ -104,7 +110,18 @@ Page({
         'amount': 0,
         'price': 10
       }
-    }]
+    }],
+    shopcar:[],//购物车
+  },
+  addrecipe:function(e){//添加食谱
+    var that = this
+    var id = parseInt(e.currentTarget.dataset.id)
+    for(var p in that.data.goods){
+      if(id==that.data.goods[p].id){
+        shopcar.push(that.data.goods[p])
+        break;
+      }
+    }
   },
   fooddetail:function(){//跳转到食品详情
     var that = this
@@ -125,14 +142,14 @@ Page({
     })
     wx.hideTabBar({})
   },
-  hideshopwindow: function(e) {
+  hideshopwindow: function(e) {//隐藏购物窗口
     var that = this
     that.setData({
       showshopwindow: false
     })
     wx.showTabBar({})
   },
-  nav: function(e) {
+  nav: function(e) {//秤食堂与秤商店的切换
     var that = this
     that.setData({
       currenttab: e.currentTarget.dataset.id

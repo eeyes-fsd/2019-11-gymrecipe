@@ -1,10 +1,13 @@
 // pages/fooddetail/fooddetail.js
+import api from '../../utils/Health.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    isfillindata:false,//是否测量过营养素
+    isbuyrecipe:false,//是否购买过改食谱
     //成餐外卖图片
     mealphoto:[1,2],
     currenttab:1,
@@ -24,8 +27,14 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: async function (options) {
+    var that = this
+    var info = await api.getHealth()
+    if(info.statusCode==200){
+      that.setData({
+        isfillindata:true
+      })
+    }
   },
 
   /**

@@ -2,8 +2,14 @@
 <view class="container">
   <view class="title">奥尔良鸡胸肉套餐</view>
   <view class="title2">秤食成餐外卖/新鲜食材速递</view>
-  <view class="jumptobox" bindtap="fillindata">
-    <view class="jumpto">已按照您的营养素定制，重新测算?</view>
+  <view class="jumptobox" bindtap="fillindata" wx:if="{{isfillindata}}">
+    <view class="jumpto" wx:if="{{isbuyrecipe}}">已按照您的营养素定制，重新测算?</view>
+    <view class="jumpto" wx:else>您还未购买食谱，购买套餐立即赠送</view>
+    <image class="jumptoicon" src="/images/falling.png"></image>
+  </view>
+   <view class="jumptobox" bindtap="fillindata" wx:if="{{!isfillindata}}">
+    <view class="jumpto" wx:if="{{isbuyrecipe}}">免费测算，获取定制食谱</view>
+    <view class="jumpto" wx:else>您还未购买食谱，购买套餐立即赠送</view>
     <image class="jumptoicon" src="/images/falling.png"></image>
   </view>
   <view class="mealbox">

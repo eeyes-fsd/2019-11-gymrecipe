@@ -20,14 +20,14 @@
       <view class="item_image" style="background:{{item.imagesrc}}"></view>
       <view class="item_name t-vs t-color-black">{{item.name}}</view>
       <view class="item_infobox display-flex-row">
-        <view class="item_price">¥{{item.price}}/</view>
+        <view class="item_price">¥{{item.price1}}-{{item.price2}}/</view>
         <view class="item_status">{{item.status}}</view>
       </view>
       <view class="item_starbox display-flex-row">
         <image class="item_star" src="/images/star.png"></image>
         <view class="item_starnum">{{item.starnum}}</view>
       </view>
-      <view class="item_addbox display-flex-row">
+      <view class="item_addbox display-flex-row" data-id="{{item.id}}" catchtap="addrecipe">
         <image class="item_add" src="/images/add.png"></image>
       </view>
     </view>
@@ -39,7 +39,7 @@
   <view class="display-flex-column">
     <image class="shopcarimage" src="/images/shopcar.png"></image>
   </view>
-  <view class="shopcarnum" style="width:{{25+(messagenum.length-1)*10}}rpx">{{messagenum}}</view>
+  <view class="shopcarnum" wx:if="{{productnum>0}}" style="width:{{25+(productnum.length-1)*10}}rpx">{{productnum}}</view>
 </view>
 
 <!-- 购物车页面 -->
@@ -86,6 +86,6 @@
 
 <view class="bottomline" wx:if="{{showshopwindow}}" style="z-index:200">
   <image class="shopcaricon" src="/images/shopcar.png"></image>
-  <view class="pricetotal">总计¥0</view>
+  <view class="pricetotal">总计¥{{totalprice}}</view>
   <view class="submit" bindtap="confirmorder">立即下单</view>
 </view>

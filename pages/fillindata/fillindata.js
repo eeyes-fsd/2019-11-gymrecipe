@@ -415,7 +415,6 @@ Page({
     console.log("cacheinfo", cacheinfo)
     //若之前存在修改的数据未提交
     if (cacheinfo.edit) {
-      console.log("cacheinfo", cacheinfo.edit)
       if (cacheinfo.gender != 'null') {
         that.setData({
           fgender: true,
