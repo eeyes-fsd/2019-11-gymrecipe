@@ -11,7 +11,8 @@
     "pages/gymnearby/gymnearby",
     "pages/recipelist/recipelist",
     "pages/fooddetail/fooddetail",
-    "pages/confirmorder/confirmorder"
+    "pages/confirmorder/confirmorder",
+    "pages/chooseaddress/chooseaddress"
   ],
   "window": {
     "backgroundTextStyle": "light",

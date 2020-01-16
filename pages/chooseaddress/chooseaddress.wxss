@@ -1,0 +1,120 @@
+/* pages/myaddress/myaddress.wxss */
+
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 55rpx;
+  height: 100%;
+  background-color: #FAFAFA;
+}
+
+.title {
+  margin-top: 10rpx;
+  height: 79rpx;
+  width: 100%;
+  font-size: 55rpx;
+  text-align: left;
+  line-height: 79rpx;
+  color: #4a4e63;
+}
+
+.addressbox {
+  box-sizing: border-box;
+  padding-bottom: 38rpx;
+  margin-top: 48rpx;
+  width: 100%;
+  border-radius: 40rpx;
+  background-color: #fff;
+}
+
+.addressnamebox {
+  height: 100rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: left;
+}
+
+.addressname {
+  margin-top: 34rpx;
+  height: 40rpx;
+  padding-left: 32rpx;
+  width: 100%;
+  font-size: 28rpx;
+  color: #4a4e63;
+  line-height: 40rpx;
+}
+
+.greyline {
+  width: 558rpx;
+  height: 25rpx;
+  margin-left: 32rpx;
+  border-bottom: 1px solid #498fe133;
+}
+
+.addressinfobox {
+  margin-top: 16rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.addressiconbox {
+  margin-left: 32rpx;
+  height: 100%;
+  width: 36rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.addressinfoicon1 {
+  height: 36rpx;
+  width: 36rpx;
+}
+
+.addressinfoicon {
+  margin-left: 32rpx;
+  height: 36rpx;
+  width: 36rpx;
+}
+
+.addressinfotext {
+  margin-left: 24rpx;
+  width: 75%;
+  font-size: 28rpx;
+  color: #4a4e63;
+  text-align: left;
+  line-height: 40rpx;
+  word-break: break-all;
+}
+
+.jumptobox {
+  margin-top: 64rpx;
+  height: 40rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.jumptext {
+  height: 40rpx;
+  width: 168rpx;
+  font-size: 28rpx;
+  color: #f83a51;
+  line-height: 40rpx;
+  text-align: left;
+}
+
+.jumpicon {
+  margin-left: 4rpx;
+  height: 24rpx;
+  width: 24rpx;
+}

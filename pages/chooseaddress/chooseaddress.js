@@ -1,31 +1,35 @@
-// pages/fooddetail/fooddetail.js
+import api from '../../utils/Address.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    //成餐外卖图片
-    mealphoto:[1,2],
-    currenttab:1,
+    addresslist: [],
   },
-  fillindata:function(e){
+  plusaddress: function () {
     var that = this
     wx.navigateTo({
-      url: '../fillindata/fillindata',
+      url: '../plusaddress/plusaddress',
     })
   },
-  navbar:function(e){
-    var that = this
-    that.setData({
-      currenttab:e.currentTarget.dataset.id
+  changeaddress: function (e) {
+    console.log(e)
+    wx.navigateTo({
+      url: `../changeaddress/changeaddress?id=${e.currentTarget.dataset.id}`,
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onShow: async function (options) {
+    let that = this
+    let lists = await api.getAddress()
+    if (lists.data) {
+      that.setData({
+        addresslist: lists.data.data
+      })
+    }
   },
 
   /**
@@ -38,7 +42,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onLoad: function () {
 
   },
 

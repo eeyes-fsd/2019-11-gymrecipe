@@ -2,7 +2,7 @@
 <view class="container">
   <view class="title">奥尔良鸡胸肉套餐</view>
   <view class="title2">秤食成餐外卖/新鲜食材速递</view>
-  <view class="jumptobox">
+  <view class="jumptobox" bindtap="fillindata">
     <view class="jumpto">已按照您的营养素定制，重新测算?</view>
     <image class="jumptoicon" src="/images/falling.png"></image>
   </view>

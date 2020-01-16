@@ -1,6 +1,6 @@
 <view class="container display-flex-column">
   <view class="title">确认订单</view>
-  <view class="addressbox">
+  <view class="addressbox" bindtap="chooseaddress">
     <view class="addressnamebox">
       <view class="addressname">张冠雄 先生</view>
       <view class="greyline"></view>
