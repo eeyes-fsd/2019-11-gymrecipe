@@ -20,7 +20,7 @@
       <view class="item_image" style="background:{{item.imagesrc}}"></view>
       <view class="item_name t-vs t-color-black">{{item.name}}</view>
       <view class="item_infobox display-flex-row">
-        <view class="item_price">¥{{item.price1}}-{{item.price2}}/</view>
+        <view class="item_price">¥{{item.material.price}}-{{item.takeout.price}}/</view>
         <view class="item_status">{{item.status}}</view>
       </view>
       <view class="item_starbox display-flex-row">
@@ -46,7 +46,7 @@
 <view class="mask" style="z-index:2" wx:if="{{showshopwindow}}" bindtap="hideshopwindow"></view>
 <scroll-view class="shopwindow" scroll-y="true" wx:if="{{showshopwindow}}" style="z-index:3">
   <view class='shop_title'>所有商品</view>
-  <view wx:for="{{goods}}" wx:key="item.id" wx:if="{{item.takeout.amount || item.material.amount || item.recipes.amount }}" class='goods'>
+  <view wx:for="{{shopcar}}" wx:key="{{item.id}}" wx:if="{{item.takeout.amount || item.material.amount}}" class='goods'>
     <view class='box_title'>{{item.name}}</view>
     <view class='box_box' wx:if="{{item.takeout.amount!==0}}">
       <view class='box_name'>
@@ -54,9 +54,9 @@
         <view>￥{{item.takeout.price}}</view>
       </view>
       <view class='box_choose'>
-        <image class='box_decrease' bindtap="increase" src="/images/minus.png" data-index="{{index}}" data-item="takeout" data-increase="-1"></image>
+        <image class='box_decrease' bindtap="increase" src="/images/minus.png" data-id="{{item.id}}" data-item="takeout" data-increase="-1"></image>
         <view>{{item.takeout.amount}}</view>
-        <image class='box_increase' src="/images/add.png" bindtap="increase" data-index="{{index}}" data-item="takeout" data-increase="1"></image>
+        <image class='box_increase' src="/images/add.png" bindtap="increase" data-id="{{item.id}}" data-item="takeout" data-increase="1"></image>
       </view>
     </view>
     <view class='box_box' wx:if="{{item.material.amount!==0}}">
@@ -65,9 +65,9 @@
         <view>￥{{item.material.price}}</view>
       </view>
       <view class='box_choose'>
-        <image class='box_decrease' bindtap="increase" src="/images/minus.png" data-index="{{index}}" data-item="material" data-increase="-1"></image>
+        <image class='box_decrease' bindtap="increase" src="/images/minus.png" data-id="{{item.id}}" data-item="material" data-increase="-1"></image>
         <view>{{item.material.amount}}</view>
-        <image class='box_increase' src="/images/add.png" bindtap="increase" data-index="{{index}}" data-item="material" data-increase="1"></image>
+        <image class='box_increase' src="/images/add.png" bindtap="increase" data-id="{{item.id}}" data-item="material" data-increase="1"></image>
       </view>
     </view>
     <view class='box_box' wx:if="{{item.material.amount!==0 || item.takeout.amount!==0}}">

@@ -6,16 +6,12 @@ Page({
    */
   data: {
     showshopwindow: false, //是否显示购物窗口
-    productnum: '2', //小红点上显示的信息数量
     currenttab: 0, //秤食堂or秤商店
-    totalprice:0,//总价格
-    //商品
+    //商品列表，食材成餐，食谱数量均默认为1，方便点击直接添加
     goods: [{
       id: '1',
       imagesrc: 'rgb(241, 216, 243)',
       name: '奥尔良鸡胸肉套餐',
-      price1: 17,
-      price2:30,
       status: '食材-成餐',
       starnum: '133',
       takeout: {
@@ -23,105 +19,136 @@ Page({
         'price': 30
       },
       material: {
-        'amount': 0,
-        'price': 20
-      },
-      recipes: {
-        'amount': 0,
-        'price': 10
-      }
-    }, {
-      id: '2',
-      imagesrc: 'rgb(221, 215, 255)',
-      name: '奥尔良鸡胸肉套餐,买成餐送食谱优惠',
-        price1: 14,
-        price2: 24,
-      status: '食材-成餐',
-      starnum: '133',
-      takeout: {
-        'amount': 0,
-        'price': 30
-      },
-      material: {
-        'amount': 3,
-        'price': 20
-      },
-      recipes: {
-        'amount': 0,
-        'price': 10
-      }
-    }, {
-      id: '3',
-      imagesrc: 'rgb(228, 254, 255)',
-      name: '奥尔良鸡胸肉套餐',
-        price1: 17,
-        price2: 30,
-      status: '食材-成餐',
-      starnum: '133',
-      takeout: {
-        'amount': 0,
-        'price': 30
-      },
-      material: {
-        'amount': 0,
-        'price': 20
-      },
-      recipes: {
-        'amount': 0,
-        'price': 10
-      }
-    }, {
-      id: '4',
-      imagesrc: 'rgb(245, 235, 207)',
-      name: '奥尔良鸡胸肉套餐',
-        price1: 17,
-        price2: 30,
-      status: '食材-成餐',
-      starnum: '133',
-      takeout: {
         'amount': 1,
-        'price': 30
-      },
-      material: {
-        'amount': 3,
         'price': 20
       },
       recipes: {
-        'amount': 0,
-        'price': 10
-      }
-    }, {
-      id: '5',
-      imagesrc: 'rgb(245, 207, 220)',
-      name: '奥尔良鸡胸肉套餐',
-      price1: 17,
-      price2: 30,
-      status: '食材-成餐',
-      starnum: '133',
-      takeout: {
         'amount': 1,
-        'price': 30
-      },
-      material: {
-        'amount': 0,
-        'price': 20
-      },
-      recipes: {
-        'amount': 0,
         'price': 10
       }
-    }],
+      }, {
+        id: '2',
+        imagesrc: 'rgb(221, 215, 255)',
+        name: '奥尔良鸡胸肉套餐,买成餐送食谱优惠',
+        status: '食材-成餐',
+        starnum: '133',
+        takeout: {
+          'amount': 1,
+          'price': 30
+        },
+        material: {
+          'amount': 1,
+          'price': 20
+        },
+        recipes: {
+          'amount': 1,
+          'price': 10
+        }
+      }, {
+        id: '3',
+        imagesrc: 'rgb(228, 254, 255)',
+        name: '奥尔良鸡胸肉套餐',
+        status: '食材-成餐',
+        starnum: '133',
+        takeout: {
+          'amount': 1,
+          'price': 30
+        },
+        material: {
+          'amount': 1,
+          'price': 20
+        },
+        recipes: {
+          'amount': 1,
+          'price': 10
+        }
+      }, {
+        id: '4',
+        imagesrc: 'rgb(245, 235, 207)',
+        name: '奥尔良鸡胸肉套餐',
+        status: '食材-成餐',
+        starnum: '133',
+        takeout: {
+          'amount': 1,
+          'price': 30
+        },
+        material: {
+          'amount': 1,
+          'price': 20
+        },
+        recipes: {
+          'amount': 1,
+          'price': 10
+        }
+      }, {
+        id: '5',
+        imagesrc: 'rgb(245, 207, 220)',
+        name: '奥尔良鸡胸肉套餐',
+        status: '食材-成餐',
+        starnum: '133',
+        takeout: {
+          'amount': 1,
+          'price': 30
+        },
+        material: {
+          'amount': 1,
+          'price': 20
+        },
+        recipes: {
+          'amount': 1,
+          'price': 10
+        }
+      }
+    ],
+
+    //一下三个变量需要在onshow里更新
     shopcar:[],//购物车
+    productnum: "0", //小红点上显示的信息数量
+    totalprice: 0,//总价格
   },
-  addrecipe:function(e){//添加食谱
+  addrecipe:function(e){//添加食谱进购物车（这里是在页面商品列表上的点击而非购物车上的点击）
     var that = this
     var id = parseInt(e.currentTarget.dataset.id)
-    for(var p in that.data.goods){
-      if(id==that.data.goods[p].id){
-        shopcar.push(that.data.goods[p])
+    //判断购物车列表里面是否已经有了该食谱，如果已经有了，则只增加数量（食谱不加）
+    var flag = 0;
+    for (var q in that.data.shopcar) {
+      if (id == that.data.shopcar[q].id) {
+        // 修改对应的数量
+        let takeout = `shopcar[${q}].takeout.amount`
+        let material = `shopcar[${q}].material.amount`
+        that.setData({
+          [takeout]: that.data.shopcar[q].takeout.amount + 1,
+          [material]: that.data.shopcar[q].material.amount + 1
+        })
+        that.setData({
+          totalprice:that.data.totalprice+that.data.shopcar[q].takeout.price+that.data.shopcar[q].material.price
+        })
+        that.setData({
+          productnum: (parseInt(that.data.productnum) + 2).toString()
+        })
+        flag = 1
         break;
       }
     }
+    //如果购物车中未有该食谱，根据点击的id来查找食谱列表里的食谱，并将食谱加入购物车
+    if(!flag){
+      for (var p in that.data.goods) {
+        if (id == that.data.goods[p].id) {
+          that.data.shopcar.push(that.data.goods[p])
+          that.setData({
+            totalprice: that.data.totalprice + that.data.goods[p].takeout.price + that.data.goods[p].material.price
+          })
+          that.setData({
+            productnum:(parseInt(that.data.productnum)+3).toString()
+          })
+          break;
+        }
+      }
+    }
+    //将改变结果存于缓存
+    wx.setStorageSync("shopcar", that.data.shopcar)
+    wx.setStorageSync("totalprice",that.data.totalprice)
+    wx.setStorageSync("productnum", that.data.productnum)
   },
   fooddetail:function(){//跳转到食品详情
     var that = this
@@ -156,14 +183,39 @@ Page({
     })
   },
   increase: function(e) {
-    let index = e.currentTarget.dataset.index // 获取数据的索引
+    var that = this
+    let id = e.currentTarget.dataset.id // 获取数据的索引
     let item = e.currentTarget.dataset.item
     let num = e.currentTarget.dataset.increase
-    let temp = `goods[${index}].${item}.amount`
-    // 修改对应的数量
-    this.setData({
-      [temp]: this.data.goods[index][item].amount + parseInt(num)
-    })
+    for(var p in that.data.shopcar){
+      if(id == that.data.shopcar[p].id){
+        //修改对应的数量
+        let temp = `shopcar[${p}].${item}.amount`
+        let price
+        if (item == "takeout") price = that.data.shopcar[p].takeout.price
+        else price = that.data.shopcar[p].material.price
+        that.setData({
+          [temp]:that.data.shopcar[p][item].amount+parseInt(num),
+          totalprice:that.data.totalprice+parseInt(num)*price,
+          productnum:(parseInt(that.data.productnum)+parseInt(num)).toString()
+        })
+        //判断修改项的成餐和食材是否都为零，若都为零则剔除这一项 
+        if(!that.data.shopcar[p].material.amount&&!that.data.shopcar[p].takeout.amount){
+          that.data.shopcar.splice(p,1)
+        }
+        break;
+      }
+    }
+    //如果整个购物车为空则收起栏目
+    if(that.data.shopcar==""){
+      that.setData({
+        showshopwindow:false
+      })
+    }
+    //修改完存缓存
+    wx.setStorageSync("shopcar",that.data.shopcar)
+    wx.setStorageSync("totalprice", that.data.totalprice)
+    wx.setStorageSync("productnum", that.data.productnum)
   },
   /**
    * 生命周期函数--监听页面加载
@@ -183,7 +235,35 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    var that = this
+    //获取shopcar的缓存以更新数据
+    if(wx.getStorageSync("shopcar")){
+      that.setData({
+        shopcar:wx.getStorageSync("shopcar")
+      })
+    }
+    //获取productnum缓存
+    if(wx.getStorageSync("productnum")){
+      that.setData({
+        productnum:wx.getStorageSync("productnum")
+      })
+    }else{
+      wx.setStorageSync("productnum", 0)
+      that.setData({
+        productnum:0
+      })
+    }
+    //获取总价格缓存
+    if(wx.getStorageSync("totalprice")){
+      that.setData({
+        totalprice:wx.getStorageSync("totalprice")
+      })
+    }else{
+      wx.setStorageSync("totalprice", 0)
+      that.setData({
+        totalprice: 0
+      })
+    }
   },
 
   /**
