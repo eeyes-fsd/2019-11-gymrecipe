@@ -2,7 +2,7 @@
 <view class="container">
   <view class="title">奥尔良鸡胸肉套餐</view>
   <view class="title2">秤食成餐外卖/新鲜食材速递</view>
-  <view class="jumptobox" bindtap="fillindata" wx:if="{{isfillindata}}">
+  <view class="jumptobox" wx:if="{{isfillindata}}">
     <view class="jumpto" wx:if="{{isbuyrecipe}}">已按照您的营养素定制，重新测算?</view>
     <view class="jumpto" wx:else>您还未购买食谱，购买套餐立即赠送</view>
     <image class="jumptoicon" src="/images/falling.png"></image>
@@ -27,7 +27,7 @@
     </view>
     <view class="mealprice">
       <view class="price">¥30</view>
-      <image class="priceicon" src="/images/add.png"></image>
+      <image class="priceicon" src="/images/add.png" data-item="takeout" data-increase="1"  bindtap="increase"></image>
     </view>
   </view>
   <view class="newbox">
@@ -53,7 +53,7 @@
     </view>
     <view class="mealprice">
       <view class="price">¥14</view>
-      <image class="priceicon" src="/images/add.png"></image>
+      <image class="priceicon" src="/images/add.png" data-item="material" data-increase="1" bindtap="increase"></image>
     </view>
   </view>
   <view class="detailbox">
@@ -61,8 +61,52 @@
     <image class="detailphoto"></image>
   </view>
 </view>
-<view class="bottomline">
+<view class="shopcarnum" wx:if="{{productnum>0}}" style="width:{{25+(productnum.length-1)*10}}rpx;z-index:5">{{productnum}}</view>
+<view class="bottomline" bindtap="showshopwindow" style="z-index:4">
   <image class="shopcaricon" src="/images/shopcar.png"></image>
-  <view class="pricetotal">总计¥0</view>
-  <view class="submit">立即下单</view>
+  <view class="pricetotal">总计¥{{totalprice}}</view>
+  <view class="submit" catchtap="confirmorder">立即下单</view>
 </view>
+
+
+<!-- 购物车页面 -->
+<view class="mask" style="z-index:2" wx:if="{{showshopwindow}}" bindtap="hideshopwindow"></view>
+<scroll-view class="shopwindow" scroll-y="true" wx:if="{{showshopwindow}}" style="z-index:3">
+  <view class='shop_title'>所有商品</view>
+  <view wx:for="{{shopcar}}" wx:key="{{item.id}}" wx:if="{{item.takeout.amount || item.material.amount}}" class='goods'>
+    <view class='box_title'>{{item.name}}</view>
+    <view class='box_box' wx:if="{{item.takeout.amount!==0}}">
+      <view class='box_name'>
+        <view>成餐外卖</view>
+        <view>￥{{item.takeout.price}}</view>
+      </view>
+      <view class='box_choose'>
+        <image class='box_decrease' bindtap="increase" src="/images/minus.png" data-id="{{item.id}}" data-item="takeout" data-increase="-1"></image>
+        <view>{{item.takeout.amount}}</view>
+        <image class='box_increase' src="/images/add.png" bindtap="increase" data-id="{{item.id}}" data-item="takeout" data-increase="1"></image>
+      </view>
+    </view>
+    <view class='box_box' wx:if="{{item.material.amount!==0}}">
+      <view class='box_name'>
+        <view>新鲜食材速递</view>
+        <view>￥{{item.material.price}}</view>
+      </view>
+      <view class='box_choose'>
+        <image class='box_decrease' bindtap="increase" src="/images/minus.png" data-id="{{item.id}}" data-item="material" data-increase="-1"></image>
+        <view>{{item.material.amount}}</view>
+        <image class='box_increase' src="/images/add.png" bindtap="increase" data-id="{{item.id}}" data-item="material" data-increase="1"></image>
+      </view>
+    </view>
+    <view class='box_box' wx:if="{{item.material.amount!==0 || item.takeout.amount!==0}}">
+      <view class='box_name'>
+        <view>食谱</view>
+        <view>￥{{item.recipes.price}}</view>
+      </view>
+      <view class='box_choose'>
+        <image class='box_decrease' src="/images/minus.png"></image>
+        <view>{{(item.material.amount!==0 || item.takeout.amount!==0)?1:0}}</view>
+        <image class='box_decrease' src="/images/addgrey.png"></image>
+      </view>
+    </view>
+  </view>
+</scroll-view>

@@ -147,6 +147,9 @@ Page({
     }
     //将改变结果存于缓存
     wx.setStorageSync("shopcar", that.data.shopcar)
+    that.setData({
+      shopcar:wx.getStorageSync("shopcar")
+    })
     wx.setStorageSync("totalprice",that.data.totalprice)
     wx.setStorageSync("productnum", that.data.productnum)
   },
@@ -158,16 +161,22 @@ Page({
   },
   confirmorder:function(){//跳转到确认订单页面
     var that = this
+    that.setData({
+      showshopwindow: false
+    })
+    wx.showTabBar({})
     wx.navigateTo({
       url: '../confirmorder/confirmorder',
     })
   },
   showshopwindow: function(e) { //点击显示购物窗口
     var that = this
-    that.setData({
-      showshopwindow: true
-    })
-    wx.hideTabBar({})
+    if(that.data.shopcar==""){}else{
+      that.setData({
+        showshopwindow: true
+      })
+      wx.hideTabBar({})
+    }
   },
   hideshopwindow: function(e) {//隐藏购物窗口
     var that = this
@@ -202,6 +211,9 @@ Page({
         //判断修改项的成餐和食材是否都为零，若都为零则剔除这一项 
         if(!that.data.shopcar[p].material.amount&&!that.data.shopcar[p].takeout.amount){
           that.data.shopcar.splice(p,1)
+          that.setData({
+            productnum:(parseInt(that.data.productnum)-1).toString()
+          })
         }
         break;
       }
@@ -211,6 +223,7 @@ Page({
       that.setData({
         showshopwindow:false
       })
+      wx.showTabBar({})
     }
     //修改完存缓存
     wx.setStorageSync("shopcar",that.data.shopcar)
@@ -248,9 +261,9 @@ Page({
         productnum:wx.getStorageSync("productnum")
       })
     }else{
-      wx.setStorageSync("productnum", 0)
+      wx.setStorageSync("productnum", "0")
       that.setData({
-        productnum:0
+        productnum:"0"
       })
     }
     //获取总价格缓存

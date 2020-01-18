@@ -78,7 +78,7 @@
       <view class='box_choose'>
         <image class='box_decrease' src="/images/minus.png"></image>
         <view>{{(item.material.amount!==0 || item.takeout.amount!==0)?1:0}}</view>
-        <image class='box_decrease' src="/images/add.png"></image>
+        <image class='box_decrease' src="/images/addgrey.png"></image>
       </view>
     </view>
   </view>

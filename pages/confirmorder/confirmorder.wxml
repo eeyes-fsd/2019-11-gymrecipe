@@ -19,13 +19,13 @@
   <view class="ordermessage display-flex-column">
     <view class="ordertitle">商品信息</view>
     <view class="orderdetail display-flex-column">
-      <view class="orderitem display-flex-row"  wx:for="{{2}}" wx:key>
+      <view class="orderitem display-flex-row"  wx:for="{{orderlist}}" wx:key>
         <view class="orderimage"></view>
         <view class="orderdetailinfo">
-          <view class="ordername">匈牙利鸡腿套餐</view>
+          <view class="ordername">{{item.name}}</view>
           <view class="orderbox">
-            <view class="ordertype">新鲜食材速递*1</view>
-            <view class="orderprice">¥14</view>
+            <view class="ordertype">新鲜食材速递*{{item.material.amount}}</view>
+            <view class="orderprice">¥{{item.material.amount*item.material.price+item.takeout.amount*item.takeout.price}}</view>
           </view>
         </view>
       </view>
@@ -33,14 +33,14 @@
     <view class="pricelist">
       <view class="priceitem" style="margin-top:36rpx">
         <view class="pricetitle">食谱</view>
-        <view class="pricenum">¥0</view>
+        <view class="pricenum">¥{{recipeprice}}</view>
       </view>
       <view class="priceitem"  style="margin-top:24rpx">
         <view class="pricetitle">配送费</view>
-        <view class="pricenum">¥5</view>
+        <view class="pricenum">¥{{transexpense}}</view>
       </view>
     </view>
-    <view class="totalprice">小计¥79</view>
+    <view class="totalprice">小计¥{{totalprice}}</view>
   </view>
   <view class="paymethod">
     <view class="paymethodtitle">支付方式</view>
@@ -55,6 +55,6 @@
   </view>
 </view>
 <view class="bottombox">
-  <view class="waitpay">待支付¥79</view>
-  <view class="submit">提交订单</view>
+  <view class="waitpay">待支付¥{{totalprice}}</view>
+  <view class="submit" bindtap="submit">提交订单</view>
 </view>
