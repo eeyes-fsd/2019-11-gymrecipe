@@ -1,25 +1,29 @@
 <view class="container display-flex-column">
   <view class="title">确认订单</view>
-  <view class="addressbox" bindtap="chooseaddress">
+  <view wx:if="{{address}}" class="addressbox" bindtap="chooseaddress">
     <view class="addressnamebox">
-      <view class="addressname">张冠雄 先生</view>
+      <view class="addressname">{{address.name}} {{address.gender}}</view>
       <view class="greyline"></view>
     </view>
     <view class="addressinfobox">
       <view class="addressiconbox">
         <image class="addressinfoicon1" src="/images/address.png"></image>
       </view>
-      <view class="addressinfotext">高新园高新balabala</view>
+      <view class="addressinfotext">{{address.details}}</view>
     </view>
     <view class="addressinfobox">
       <image class="addressinfoicon" src="/images/phone.png"></image>
-      <view class="addressinfotext">13600398472</view>
+      <view class="addressinfotext">{{address.phone}}</view>
     </view>
+  </view>
+  <view wx:else class="jumptobox" bindtap="plusaddress">
+    <view class="jumptext">新增收货地址</view>
+    <image class="jumpicon" src="/images/falling.png"></image>
   </view>
   <view class="ordermessage display-flex-column">
     <view class="ordertitle">商品信息</view>
     <view class="orderdetail display-flex-column">
-      <view class="orderitem display-flex-row"  wx:for="{{orderlist}}" wx:key>
+      <view class="orderitem display-flex-row" wx:for="{{orderlist}}" wx:key>
         <view class="orderimage"></view>
         <view class="orderdetailinfo">
           <view class="ordername">{{item.name}}</view>
@@ -35,7 +39,7 @@
         <view class="pricetitle">食谱</view>
         <view class="pricenum">¥{{recipeprice}}</view>
       </view>
-      <view class="priceitem"  style="margin-top:24rpx">
+      <view class="priceitem" style="margin-top:24rpx">
         <view class="pricetitle">配送费</view>
         <view class="pricenum">¥{{transexpense}}</view>
       </view>
@@ -47,8 +51,8 @@
     <view class="paymethodbox">
       <image class="paymethodicon" src="/images/wechatpay.png"></image>
       <view class="paymethodtextbox">
-         <view class="paymethodtype">微信支付</view>
-         <view class="paymethoddescribe">亿万用户的选择，更快更安全</view>
+        <view class="paymethodtype">微信支付</view>
+        <view class="paymethoddescribe">亿万用户的选择，更快更安全</view>
       </view>
       <image class="paymethodlittleicon" src="/images/confirmicon.png"></image>
     </view>

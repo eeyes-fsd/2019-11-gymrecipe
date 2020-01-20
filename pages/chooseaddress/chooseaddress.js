@@ -7,22 +7,34 @@ Page({
   data: {
     addresslist: [],
   },
-  plusaddress: function () {
+  plusaddress: function() {
     var that = this
     wx.navigateTo({
       url: '../plusaddress/plusaddress',
     })
   },
-  changeaddress: function (e) {
+  changeaddress: function(e) {
     console.log(e)
     wx.navigateTo({
       url: `../changeaddress/changeaddress?id=${e.currentTarget.dataset.id}`,
     })
   },
+  back: function(e) {
+    console.log(e)
+    var pages = getCurrentPages();
+    var prevPage = pages[pages.length - 2]; //上一个页面
+    //直接调用上一个页面的setData()方法，把数据存到上一个页面中去
+    prevPage.setData({
+      id: e.currentTarget.dataset.id
+    })
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onShow: async function (options) {
+  onShow: async function(options) {
     let that = this
     let lists = await api.getAddress()
     if (lists.data) {
@@ -35,49 +47,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onLoad: function () {
+  onLoad: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

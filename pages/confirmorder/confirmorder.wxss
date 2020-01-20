@@ -1,19 +1,21 @@
-.container{
-  width:100%;
+.container {
+  width: 100%;
   box-sizing: border-box;
-  background-color:#FAFAFA;
-  padding:0 55rpx;
-}
-/* 标题 */
-.title{
-  width:100%;
-  text-align:left;
-  color:#4A4E63;
-  font-size:55rpx;
+  background-color: #fafafa;
+  padding: 0 55rpx;
 }
 
+/* 标题 */
+
+.title {
+  width: 100%;
+  text-align: left;
+  color: #4a4e63;
+  font-size: 55rpx;
+}
 
 /* 地址 */
+
 .addressbox {
   box-sizing: border-box;
   padding-bottom: 38rpx;
@@ -89,190 +91,242 @@
 }
 
 /* 订单详情 */
-.ordermessage{
-  margin-top:48rpx;
+
+.ordermessage {
+  margin-top: 48rpx;
   box-sizing: border-box;
-  padding:0rpx 50rpx 0rpx 32rpx;
+  padding: 0rpx 50rpx 0rpx 32rpx;
   border-radius: 40rpx;
-  width:100%;
-  background:#fff;
+  width: 100%;
+  background: #fff;
 }
-.ordertitle{
-  width:100%;
-  margin-top:34rpx;
-  text-align:left;
-  color:#4A4E63;
-  font-size:28rpx;
+
+.ordertitle {
+  width: 100%;
+  margin-top: 34rpx;
+  text-align: left;
+  color: #4a4e63;
+  font-size: 28rpx;
   font-weight: bold;
 }
-.orderdetail{
-  margin-top:13rpx;
-  width:558rpx;
-  border-bottom: 1rpx solid #498FE133;
+
+.orderdetail {
+  margin-top: 13rpx;
+  width: 558rpx;
+  border-bottom: 1rpx solid #498fe133;
 }
-.orderitem{
-  margin-top:23rpx;
-  margin-bottom:23rpx;
-  width:100%;
-  height:130rpx;
+
+.orderitem {
+  margin-top: 23rpx;
+  margin-bottom: 23rpx;
+  width: 100%;
+  height: 130rpx;
 }
-.orderimage{
-  width:200rpx;
-  height:130rpx;
-  background-color:greenyellow;
+
+.orderimage {
+  width: 200rpx;
+  height: 130rpx;
+  background-color: greenyellow;
   border-radius: 4rpx;
 }
-.orderdetailinfo{
+
+.orderdetailinfo {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width:358rpx;
-  height:130rpx;
-}
-.ordername{
-  padding-left: 24rpx;
-  height:40rpx;
-  width:100%;
-  color:#484848;
-  font-size: 28rpx;
-  line-height:40rpx
-}
-.orderbox{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding-left: 24rpx;
-}
-.ordertype{
-  color:#484848;
-  font-size: 28rpx;
-  line-height:40rpx
-}
-.orderprice{
-  color:#484848;
-  font-size: 28rpx;
-  line-height:40rpx
+  width: 358rpx;
+  height: 130rpx;
 }
 
-.priceitem{
-  height:40rpx;
-  width:100%;
+.ordername {
+  padding-left: 24rpx;
+  height: 40rpx;
+  width: 100%;
+  color: #484848;
+  font-size: 28rpx;
+  line-height: 40rpx;
+}
+
+.orderbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 24rpx;
+}
+
+.ordertype {
+  color: #484848;
+  font-size: 28rpx;
+  line-height: 40rpx;
+}
+
+.orderprice {
+  color: #484848;
+  font-size: 28rpx;
+  line-height: 40rpx;
+}
+
+.priceitem {
+  height: 40rpx;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-.pricetitle{
-  height:40rpx;
-  color:#484848;
+
+.pricetitle {
+  height: 40rpx;
+  color: #484848;
   font-size: 28rpx;
-  line-height:40rpx
+  line-height: 40rpx;
 }
-.pricenum{
-  height:40rpx;
-  color:#484848;
+
+.pricenum {
+  height: 40rpx;
+  color: #484848;
   font-size: 28rpx;
-  line-height:40rpx
+  line-height: 40rpx;
 }
-.pricelist{
-  width:558rpx;
-  height:176rpx;
-  border-bottom:1rpx solid #498FE133;
+
+.pricelist {
+  width: 558rpx;
+  height: 176rpx;
+  border-bottom: 1rpx solid #498fe133;
 }
-.totalprice{
-  height:112rpx;
-  width:558rpx;
+
+.totalprice {
+  height: 112rpx;
+  width: 558rpx;
   text-align: right;
   line-height: 112rpx;
-  font-size:28rpx;
-  color:#484848;
+  font-size: 28rpx;
+  color: #484848;
 }
 
 /* 支付方式 */
-.paymethod{
-  width:100%;
+
+.paymethod {
+  width: 100%;
   box-sizing: border-box;
-  border-radius:40rpx;
-  margin-top:48rpx;
+  border-radius: 40rpx;
+  margin-top: 48rpx;
   padding: 0 49rpx 0 32rpx;
-  background-color:#fff;
-  margin-bottom:200rpx;
+  background-color: #fff;
+  margin-bottom: 200rpx;
 }
-.paymethodtitle{
-  margin-top:34rpx;
-  height:40rpx;
-  width:100%;
-  font-size:28rpx;
-  line-height:40rpx;
-}
-.paymethodbox{
-  display:flex;
-  flex-direction: row;
-  justify-content:flex-start;
-  align-items:center;
-  width:100%;
-  height:75rpx;
-  margin-top:36rpx;
-  margin-bottom:37.85rpx;
-}
-.paymethodicon{
-  height:48rpx;
-  width:48rpx;
-}
-.paymethodtextbox{
-  margin-left:24rpx;
-  height:75rpx;
-  width:400rpx;
-}
-.paymethodtype{
-  height:40rpx;
-  width:100%;
+
+.paymethodtitle {
+  margin-top: 34rpx;
+  height: 40rpx;
+  width: 100%;
+  font-size: 28rpx;
   line-height: 40rpx;
-  color:#4A4E63;
-  font-size:28rpx;
 }
-.paymethoddescribe{
-  height:35rpx;
-  width:100%;
-  line-height:24rpx;
-  color:#D7D7D7;
-  font-size:24rpx;
+
+.paymethodbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 75rpx;
+  margin-top: 36rpx;
+  margin-bottom: 37.85rpx;
 }
-.paymethodlittleicon{
-  margin-left:57rpx;
-  width:30rpx;
-  height:30rpx;
-  background-color:#F83A51;
+
+.paymethodicon {
+  height: 48rpx;
+  width: 48rpx;
+}
+
+.paymethodtextbox {
+  margin-left: 24rpx;
+  height: 75rpx;
+  width: 400rpx;
+}
+
+.paymethodtype {
+  height: 40rpx;
+  width: 100%;
+  line-height: 40rpx;
+  color: #4a4e63;
+  font-size: 28rpx;
+}
+
+.paymethoddescribe {
+  height: 35rpx;
+  width: 100%;
+  line-height: 24rpx;
+  color: #d7d7d7;
+  font-size: 24rpx;
+}
+
+.paymethodlittleicon {
+  margin-left: 57rpx;
+  width: 30rpx;
+  height: 30rpx;
+  background-color: #f83a51;
   border-radius: 30rpx;
 }
 
 /* 底部栏 */
-.bottombox{
+
+.bottombox {
   position: fixed;
-  bottom:0;
-  width:100%;
-  height:120rpx;
+  bottom: 0;
+  width: 100%;
+  height: 120rpx;
   display: flex;
-  flex-direction:row;
-  justify-content:space-between;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  background-color:#FFFFFF;
-  box-shadow: 0px -4px 10px #0000001A;
+  background-color: #fff;
+  box-shadow: 0px -4px 10px #0000001a;
   box-sizing: border-box;
-  padding:0 36rpx 0 55rpx;
+  padding: 0 36rpx 0 55rpx;
 }
-.waitpay{
-  height:40rpx;
+
+.waitpay {
+  height: 40rpx;
   font-size: 28rpx;
-  line-height:40rpx;
-  color:#484848;
+  line-height: 40rpx;
+  color: #484848;
 }
-.submit{
-  height:77rpx;
-  width:192rpx;
+
+.submit {
+  height: 77rpx;
+  width: 192rpx;
   font-size: 28rpx;
-  color:#FFFFFF;
+  color: #fff;
   text-align: center;
   line-height: 77rpx;
   border-radius: 8rpx;
-  background-color:#F83A51;
+  background-color: #f83a51;
+}
+
+/*  空地址时跳转样式 */
+
+.jumptobox {
+  margin-top: 64rpx;
+  height: 40rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.jumptext {
+  height: 40rpx;
+  width: 168rpx;
+  font-size: 28rpx;
+  color: #f83a51;
+  line-height: 40rpx;
+  text-align: left;
+}
+
+.jumpicon {
+  margin-left: 4rpx;
+  height: 24rpx;
+  width: 24rpx;
 }

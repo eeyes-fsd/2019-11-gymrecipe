@@ -2,7 +2,7 @@
 
 <view class="body">
   <view class="title">选择地址</view>
-  <view class="addressbox" wx:for="{{addresslist}}" wx:key="{{item.id}}" data-id="{{item.id}}"  bindtap="changeaddress">
+  <view class="addressbox" wx:for="{{addresslist}}" wx:key="{{item.id}}" data-id="{{item.id}}" bindtap="back">
     <view class="addressnamebox">
       <view class="addressname">{{item.name}} {{item.gender}}</view>
       <view class="greyline"></view>
@@ -18,7 +18,7 @@
       <view class="addressinfotext">{{item.phone}}</view>
     </view>
   </view>
-  <view class="jumptobox"  bindtap="plusaddress">
+  <view class="jumptobox" bindtap="plusaddress">
     <view class="jumptext">新增收货地址</view>
     <image class="jumpicon" src="/images/falling.png"></image>
   </view>
