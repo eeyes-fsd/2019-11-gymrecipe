@@ -12,7 +12,8 @@
     "pages/recipelist/recipelist",
     "pages/fooddetail/fooddetail",
     "pages/confirmorder/confirmorder",
-    "pages/chooseaddress/chooseaddress"
+    "pages/chooseaddress/chooseaddress",
+    "pages/order/order"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -14,6 +14,12 @@ Page({
     userInfo: [],
     phone: "",
   },
+  order:function(){
+    var that = this
+    wx.navigateTo({
+      url: '../order/order',
+    })
+  },
   onTab: function() {
     this.setData({
       showContact: true
