@@ -5,7 +5,7 @@
   </view>
   <scroll-view scroll-x="true" style="height:600rpx;width:100%;margin-top:26rpx;">
     <view class="listcontainer" style="width:{{foodlist.length*436}}rpx">
-      <image class="photobox" wx:for="{{foodlist}}" src="{{item.cover}}" wx:key data-id="{{item.id}}" data-perchased="0" bindtap="recipelist" lazy-load='{{true}}'>
+      <image class="photobox" wx:for="{{foodlist}}" src="{{item.cover}}"  wx:key="index" data-id="{{item.id}}" data-perchased="0" bindtap="recipelist" lazy-load='{{true}}'>
       </image>
     </view>
   </scroll-view>

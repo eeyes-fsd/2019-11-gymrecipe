@@ -8,11 +8,11 @@
   <view class="noperchased" wx:if="{{perchased==1&&!boolmyrecipelist}}">还未购买食谱</view>
   <scroll-view bindscroll="myscrolling" scroll-x="true" style="height:1023rpx;width:100%;margin-top:50rpx;margin-bottom:300rpx;" bindscroll="getposition" wx:if="{{perchased==1&&boolmyrecipelist}}" scroll-into-view="{{toView}}">
     <view class="listbox" style="width:{{myrecipelist.length*556}}rpx;">
-      <view id="r{{index+1}}" class="itembox" data-id="{{item.id}}" bindtap="fooddetail" wx:for="{{myrecipelist}}" wx:key>
+      <view id="r{{index+1}}" class="itembox" data-id="{{item.id}}" bindtap="fooddetail" wx:for="{{myrecipelist}}"  wx:key="index">
         <image class="itemphoto" src="{{item.cover}}" lazy-load='{{true}}'></image>
         <view class="itemtitle">{{item.name}}</view>
-        <view class="itemdetail1">{{item.description}}</view>
-        <view class="itemdetail2">主要食材：<view wx:for="{{item.ingredients}}" wx:for-item="cell">{{cell}}</view></view>
+        <view class="itemdetail1">包含早/中/晚三餐搭配</view>
+        <view class="itemdetail2">主要食材：<view wx:for="{{item.ingredients}}" wx:for-item="cell"  wx:key="index">{{cell}}</view></view>
         <view class="jumpbox">
           <view class="jumptext">立即解锁配餐</view>
           <view class="jumpicon"></view>
@@ -23,11 +23,11 @@
   <!-- 全部食谱 -->
   <scroll-view bindscroll="scrolling" scroll-into-view="{{toView}}" scroll-x="true" style="height:1123rpx;width:100%;margin-top:50rpx;margin-bottom:300rpx;" wx:if="{{perchased==0}}">
     <view class="listbox" style="width:{{recipelist.length*556}}rpx">
-      <view id="r{{index+1}}" class="itembox" data-id="{{item.id}}" bindtap="fooddetail" wx:for="{{recipelist}}" wx:key>
+      <view id="r{{index+1}}" class="itembox" data-id="{{item.id}}" bindtap="fooddetail" wx:for="{{recipelist}}"  wx:key="index">
         <image class="itemphoto" src="{{item.cover}}" lazy-load='{{true}}'></image>
         <view class="itemtitle">{{item.name}}</view>
         <view class="itemdetail1">{{item.description}}</view>
-        <view class="itemdetail2">主要食材：<view class="ingredients" wx:for="{{item.ingredients}}" wx:for-item="cell" wx:for-index="i">{{cell}}{{i==item.ingredients.length-1?"。":"，"}}</view></view>
+        <view class="itemdetail2">主要食材：<view class="ingredients" wx:for="{{item.ingredients}}" wx:for-item="cell" wx:for-index="i"  wx:key="index">{{cell}}{{i==item.ingredients.length-1?"。":"，"}}</view></view>
         <view class="jumpbox">
           <view class="jumptext" catchtap="showwindow" data-id="{{item.id}}">立即解锁配餐</view>
           <image class="jumpicon" src="/images/falling.png"></image>
@@ -55,34 +55,33 @@
     <view class="methodbox" style="border: 3rpx solid {{methodid==1?'#F83A51':'grey'}};" bindtap="methodbar" data-id="1">
       <view class="methodtitle">秤食</view>
       <view class="methodname">一日配餐</view>
-      <view class="methodprice">19.9</view>
+      <view class="methodprice">{{onedayprice}}</view>
     </view>
     <view class="methodbox" style="border: 3rpx solid {{methodid==2?'#F83A51':'grey'}};" bindtap="methodbar" data-id="2">
       <view class="methodtitle">秤食</view>
       <view class="methodname">三日配餐</view>
-      <view class="methodprice">19.9</view>
+      <view class="methodprice">{{threedayprice}}</view>
     </view>
     <view class="methodbox" style="border: 3rpx solid {{methodid==3?'#F83A51':'grey'}};" bindtap="methodbar" data-id="3">
       <view class="methodtitle">秤食</view>
       <view class="methodname">全部解锁</view>
-      <view class="methodprice">19.9</view>
+      <view class="methodprice">{{allprice}}</view>
     </view>
   </view>
   <view class="chooseradiobox" wx:if="{{methodid==2}}">
     <view class="choosetitle">套餐搭配选择(可再选择两项)</view>
     <view class="choosebox">
-      <view class="chooseitem" style="color:#F83A51;border-color:#F83A51">奥尔良鸡胸肉套餐</view>
-      <view class="chooseitem">匈牙利烤鸡腿套餐</view>
-      <view class="chooseitem">香烤培根套餐</view>
-      <view class="chooseitem" style="color:#F83A51;border-color:#F83A51">不知道怎么起名字的套餐</view>
+      <view class="chooseitem" style="{{item.choosing?'color:#F83A51;border-color:#F83A51':''}}" wx:for="{{copyrecipelist}}" wx:if="{{index<4}}" bindtap="buychoosing" data-id="{{item.id}}" wx:key="index">{{item.name}}</view>
     </view>
   </view>
   <view class="windowdetailbox" style="height:{{methodid!=2?558:311}}rpx;margin-top:{{methodid!=2?46.77:46}}rpx;">
     <view class="windowdetailtitle">购买详情</view>
-    <view class="windowdetailname" style="height:{{methodid!=2?40:80}}rpx">秤食配餐-奥尔良鸡胸肉套餐</view>
-    <view class="windowdetailcontent" style="height:{{methodid!=2?464:177}}rpx">这是一个食谱介绍这是一个食谱介绍这是一个食谱介绍这是一个食谱介绍这是一个食谱介绍这是一个食谱介绍这是一个食谱介绍这是一个食谱介绍这是一个食谱介绍</view>
+    <view class="windowdetailname" style="height:{{methodid!=2?40:80}}rpx">秤食配餐-{{choosingrecipe.name}}</view>
+    <view class="windowdetailcontent" style="height:{{methodid!=2?464:177}}rpx">{{choosingrecipe.description}}</view>
   </view>
-  <button class="button" bindtap="pay">¥9.9立即购买</button>
+  <button class="button" bindtap="pay" wx:if="{{methodid==1}}">¥{{onedayprice}}立即购买</button>
+  <button class="button" bindtap="pay" wx:if="{{methodid==2}}">¥{{threedayprice}}立即购买</button>
+  <button class="button" bindtap="pay" wx:if="{{methodid==3}}">¥{{allprice}}立即购买</button>
 </view>
 
 <!--食品详情!-->
@@ -124,7 +123,7 @@
   <view class="gradientbox">
     <view class="titlebox">食材</view>
     <view class="border_box"></view>
-    <view class="namebox" style="margin-top:18rpx" wx:for="{{detailcurrentdata.ingredients}}" wx:key>
+    <view class="namebox" style="margin-top:18rpx" wx:for="{{detailcurrentdata.ingredients}}"  wx:key="index">
       <view class="gradientname">{{item.name}}</view>
       <view class="gradientnum">{{item.amount}}克</view>
     </view>

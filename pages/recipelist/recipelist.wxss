@@ -223,7 +223,6 @@
 }
 .chooseradiobox{
   margin-top:46.77rpx;
-  height:201rpx;
   width:100%;
   display:flex;
   flex-direction: column;
@@ -242,7 +241,6 @@
   padding-left:40rpx;
   padding-right:102rpx;
   margin-top:29rpx;
-  height:132rpx;
   width:100%;
   display:flex;
   flex-direction: row;
@@ -254,6 +252,7 @@
   padding-left:28rpx;
   padding-right:28rpx;
   height:60rpx;
+  margin-top:10rpx;
   font-size:28rpx;
   line-height:60rpx;
   text-align:center;
