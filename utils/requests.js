@@ -23,7 +23,6 @@ const requestPromise = (method, url, data, token) => {
         url: `${host}${url}`,
         data: data,
         header: {
-          'content-type': 'application/x-www-form-urlencoded',
           'Authorization': `Bearer ${token}`
         },
         success: res => resolve(res),
