@@ -53,6 +53,11 @@ Page({
       "details": e.detail.value.detailaddress
     }
     await api.plusAddress(data)
+    let lists = await api.getAddress()
+    console.log(lists.data)
+    if (lists.data) {
+      wx.setStorageSync("normaladdress", lists.data.data[0])
+    }
     wx.showToast({
       title: '添加地址成功',
       duration: 2000

@@ -238,7 +238,7 @@ Page({
     }
     if (parseInt(that.data.methodid)===3) {idarray = 0;}
     var empty = new Array() 
-    let orderlist = {"recipes":idarray,"diets":empty,"ingredients":empty,"address_id":empty};
+    let orderlist = {"recipes":idarray,"diets":empty,"ingredients":empty,"address_id":0};
     await payment.pay(orderlist)
   },
   /**
