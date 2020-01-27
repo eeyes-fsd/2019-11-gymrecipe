@@ -11,7 +11,7 @@ Page({
     recipeprice: 0, //食谱价格
     transexpense: 5, //配送费
     totalprice: 0, //总计
-    address: 0 //地址
+    address: 0, //地址
   },
   chooseaddress: function() {
     wx.navigateTo({
@@ -24,7 +24,23 @@ Page({
     wx.showToast({
       title: "提交订单成功",
     })
+    //返回上一页面
     wx.navigateBack({})
+    //生成formdata
+    let copy = wx.getStorageSync("shopcar")
+    var recipes = new Array();
+    var diets = new Array();
+    var ingredients = new Array();
+    for(var p in copy){
+      recipes.push(copy[p].id)
+      var tempdiets = {"id":copy[p].id,"diets":copy[p].takeout.amount}
+      diets.push(tempdiets)
+      var tempingredients = {"id":copy[p].id,"ingredients":copy[p].material.amount}
+      ingredients.push(tempingredients)
+    }
+    var orderlist = {"recipes":recipes,"diets":diets,"ingredients":ingredients,"addressid":that.data.address.id}
+    //清空缓存数据
+    console.log(orderlist)
     wx.setStorageSync("shopcar", [])
     wx.setStorageSync("productnum", "0")
     wx.setStorageSync("totalprice", 0)
@@ -90,6 +106,8 @@ Page({
         address: temp.data.data
       })
     }
+
+    console.log(that.data.address)
   },
 
   /**
