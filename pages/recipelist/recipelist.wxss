@@ -353,9 +353,11 @@
   text-align:left;
 }
 .gradientbox{
+  box-sizing: border-box;
+  padding-bottom: 18rpx;
   margin-top:36rpx;
+  margin-bottom:30rpx;
   width:640rpx;
-  height:312rpx;
   display:flex;
   flex-direction:column;
   justify-content: flex-start;

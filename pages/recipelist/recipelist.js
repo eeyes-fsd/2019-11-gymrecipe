@@ -240,7 +240,6 @@ Page({
     var empty = new Array() 
     let orderlist = {"recipes":idarray,"diets":empty,"ingredients":empty,"address_id":empty};
     await payment.pay(orderlist)
-    console.log(idarray)
   },
   /**
    * 生命周期函数--监听页面加载
