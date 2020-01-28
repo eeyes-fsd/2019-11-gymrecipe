@@ -24,7 +24,7 @@
     <view class="ordertitle">商品信息</view>
     <view class="orderdetail display-flex-column">
       <view class="orderitem display-flex-row" wx:for="{{orderlist}}" wx:key>
-        <view class="orderimage"></view>
+        <image class="orderimage" src="{{item.imagesrc}}"></image>
         <view class="orderdetailinfo">
           <view class="ordername">{{item.name}}</view>
           <view class="orderbox">

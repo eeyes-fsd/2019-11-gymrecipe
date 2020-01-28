@@ -1,6 +1,6 @@
 // pages/confirmorder/confirmorder.js
 import api from '../../utils/Address.js'
-
+import payment from "../../utils/Order.js"
 Page({
 
   /**
@@ -18,7 +18,7 @@ Page({
       url: '../chooseaddress/chooseaddress',
     })
   },
-  submit: function() { //提交订单
+  submit: async function() { //提交订单
     var that = this
     //将缓存数据全部清空
     wx.showToast({
@@ -38,9 +38,9 @@ Page({
       var tempingredients = {"id":copy[p].id,"ingredients":copy[p].material.amount}
       ingredients.push(tempingredients)
     }
-    var orderlist = {"recipes":recipes,"diets":diets,"ingredients":ingredients,"addressid":that.data.address.id}
+    var orderlist = {"recipes":recipes,"diets":diets,"ingredients":ingredients,"addressid":that.data.address.id};
     //清空缓存数据
-    console.log(orderlist)
+    await payment.pay(orderlist)
     wx.setStorageSync("shopcar", [])
     wx.setStorageSync("productnum", "0")
     wx.setStorageSync("totalprice", 0)

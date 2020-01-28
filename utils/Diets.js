@@ -8,7 +8,7 @@ import {
 // 请求此接口获取配餐列表
 const getDiets = async() => {
   let token = await getToken()
-  let response = await requestPromise('POST', '/diets', '', token)
+  let response = await requestPromise('GET', '/diets', '', token)
   return response
 }
 

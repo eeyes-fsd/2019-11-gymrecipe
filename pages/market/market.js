@@ -1,4 +1,5 @@
 // pages/market/market.js
+var Diets = require('../../utils/Diets.js');
 Page({
 
   /**
@@ -8,98 +9,11 @@ Page({
     showshopwindow: false, //是否显示购物窗口
     currenttab: 0, //秤食堂or秤商店
     //商品列表，食材成餐，食谱数量均默认为1，方便点击直接添加
-    goods: [{
-      id: '1',
-      imagesrc: 'rgb(241, 216, 243)',
-      name: '奥尔良鸡胸肉套餐',
-      status: '食材-成餐',
-      starnum: '133',
-      takeout: {
-        'amount': 1,
-        'price': 30
-      },
-      material: {
-        'amount': 1,
-        'price': 20
-      },
-      recipes: {
-        'amount': 1,
-        'price': 10
-      }
-      }, {
-        id: '2',
-        imagesrc: 'rgb(221, 215, 255)',
-        name: '奥尔良鸡胸肉套餐,买成餐送食谱优惠',
-        status: '食材-成餐',
-        starnum: '133',
-        takeout: {
-          'amount': 1,
-          'price': 30
-        },
-        material: {
-          'amount': 1,
-          'price': 20
-        },
-        recipes: {
-          'amount': 1,
-          'price': 10
-        }
-      }, {
-        id: '3',
-        imagesrc: 'rgb(228, 254, 255)',
-        name: '奥尔良鸡胸肉套餐',
-        status: '食材-成餐',
-        starnum: '133',
-        takeout: {
-          'amount': 1,
-          'price': 30
-        },
-        material: {
-          'amount': 1,
-          'price': 20
-        },
-        recipes: {
-          'amount': 1,
-          'price': 10
-        }
-      }, {
-        id: '4',
-        imagesrc: 'rgb(245, 235, 207)',
-        name: '奥尔良鸡胸肉套餐',
-        status: '食材-成餐',
-        starnum: '133',
-        takeout: {
-          'amount': 1,
-          'price': 30
-        },
-        material: {
-          'amount': 1,
-          'price': 20
-        },
-        recipes: {
-          'amount': 1,
-          'price': 10
-        }
-      }, {
-        id: '5',
-        imagesrc: 'rgb(245, 207, 220)',
-        name: '奥尔良鸡胸肉套餐',
-        status: '食材-成餐',
-        starnum: '133',
-        takeout: {
-          'amount': 1,
-          'price': 30
-        },
-        material: {
-          'amount': 1,
-          'price': 20
-        },
-        recipes: {
-          'amount': 1,
-          'price': 10
-        }
-      }
-    ],
+    showgoods:[],//用于展示的列表
+    //用于数据处理的列表
+    goods: [],
+    //用于展示搜索结果的列表
+    searchgoods:[],
 
     //一下三个变量需要在onshow里更新
     shopcar:[],//购物车
@@ -233,8 +147,41 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: async function(options) {
     var that = this
+    //获取食谱列表
+    let showgoods = await Diets.getDiets();
+    if(showgoods.data){
+      var showgood = showgoods.data.data
+      that.setData({
+        showgoods:showgood
+      })
+      //将后端获得的数据转化为可处理的数据
+      var goods = new Array()
+      for(var i=0;i<showgood.length;i++){
+        var gooditem={
+          id:showgood[i].id,
+          imagesrc:showgood[i].cover,
+          name:showgood[i].name,
+          takeout:{
+            'amount':1,
+            'price':showgood[i].low_price
+          },
+          material:{
+            'amount':1,
+            'price': showgood[i].up_price
+          },
+          recipes:{
+            'amount':1,
+            'price': showgood[i].up_price
+          }
+        }
+        goods.push(gooditem)
+      }
+      that.setData({
+        goods:goods
+      })
+    }
   },
 
   /**

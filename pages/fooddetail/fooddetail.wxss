@@ -245,6 +245,7 @@
   width:42rpx;
 }
 .pricetotal{
+  width:200rpx;
   height:40rpx;
   font-size:28rpx;
   color:#484848;
@@ -252,7 +253,7 @@
   margin-left:44rpx;
 }
 .submit{
-  margin-left:284rpx;
+  margin-left: 170rpx;
   height:77rpx;
   width:192rpx;
   font-size: 28rpx;

@@ -147,7 +147,6 @@
 .item_image {
   height: 210rpx;
   width: 100%;
-  background: rgb(245, 207, 220);
   border: 1px solid #0000001a;
   border-radius: 4px;
 }
@@ -305,6 +304,7 @@
 }
 
 .pricetotal {
+  width:200rpx;
   height: 40rpx;
   font-size: 28rpx;
   color: #484848;
@@ -313,7 +313,7 @@
 }
 
 .submit {
-  margin-left: 284rpx;
+  margin-left: 170rpx;
   height: 77rpx;
   width: 192rpx;
   font-size: 28rpx;
