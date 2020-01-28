@@ -18,7 +18,7 @@
       <view class="addressinfotext">{{item.phone}}</view>
     </view>
   </view>
-  <view class="jumptobox"  bindtap="plusaddress">
+  <view class="jumptobox"  bindtap="plusaddress" style="margin-bottom:50rpx">
     <view class="jumptext">新增收货地址</view>
     <image class="jumpicon" src="/images/falling.png"></image>
   </view>

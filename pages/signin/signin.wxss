@@ -1,0 +1,92 @@
+/* pages/share/share.wxss */
+.container{
+  box-sizing:border-box;
+  padding:0 55rpx 0 55rpx;
+}
+.title{
+  height:79rpx;
+  width:100%;
+  line-height: 79rpx;
+  font-size:55rpx;
+  color:#4A4E63;
+}
+.title1{
+  margin-top:4rpx;
+  height:40rpx;
+  width:100%;
+  line-height:40rpx;
+  font-size:28rpx;
+  color:#4A4E63;
+}
+.textline {
+  height: 40rpx;
+  width: 100%;
+  color: #484848;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  text-align: left;
+}
+
+.textlinebox {
+  margin-top: 12rpx;
+  height:40rpx;
+  width:100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.text1{
+  height: 40rpx;
+  width: 70%;
+  color: #484848;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  text-align: left;
+}
+.text2{
+  height: 40rpx;
+  width: 30%;
+  color: #F83A51;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  text-align: right; 
+}
+.text3{
+  height: 40rpx;
+  width: 30%;
+  color: #d7d7d7;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  text-align: right; 
+}
+.inputline {
+  margin-top: 12rpx;
+  height: 40rpx;
+  width: 100%;
+  color: #484848;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  text-align: left;
+}
+
+.inputbox {
+  margin-top: 40rpx;
+  height: 136rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: left;
+  border-bottom: 1rpx solid #d7d7d7;
+}
+.button {
+  margin-top: 274rpx;
+  height: 94rpx;
+  width:640rpx;
+  margin-bottom: 48rpx;
+  background-color: #f83a51;
+  border-radius: 0;
+  line-height:94rpx;
+  font-size:28rpx;
+  color: #fff;
+}

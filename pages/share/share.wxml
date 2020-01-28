@@ -1,0 +1,29 @@
+<view class="container display-flex-column">
+  <view class="title">邀请好友</view>
+  <view class="title1">好友消费即获返现</view>
+  <image class="codephoto"></image>
+  <button class="save">保存图片并分享</button>
+  <view class="title2" style="margin-bottom:{{havefriend?'39rpx':'4rpx'}}">我的邀请</view>
+  <view class="title3" wx:if="{{!havefriend}}">暂时没有好友，快去邀请吧！</view>
+  <view class="invitebox">
+    <view class="infobox">
+      <image class="avatar"></image>
+      <view class="name">黄鸣晨</view>
+    </view>
+    <view class="num">累计收益￥12</view>
+  </view>
+  <view class="invitebox">
+    <view class="infobox">
+      <image class="avatar"></image>
+      <view class="name">黄鸣晨</view>
+    </view>
+    <view class="num">累计收益￥12</view>
+  </view>
+  <view class="invitebox">
+    <view class="infobox">
+      <image class="avatar"></image>
+      <view class="name">黄鸣晨</view>
+    </view>
+    <view class="num">累计收益￥12</view>
+  </view>
+</view>

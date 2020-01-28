@@ -1,0 +1,5 @@
+<view class="container display-flex-column">
+  <view class="title">注册成功</view>
+  <view class="title1">立即登录获得特殊折扣</view>
+  <image class="codephoto"></image>
+</view>

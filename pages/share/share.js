@@ -1,18 +1,13 @@
-// pages/order/order.js
+// pages/share/share.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    noorder:false,//订单列表为空
-    orderlist:[],//订单列表
+    havefriend:true,//是否拥有朋友
   },
-  orderdetail:function(e){//跳转到订单详情页面
-    wx.navigateTo({
-      url: '../orderdetail/orderdetail',
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */

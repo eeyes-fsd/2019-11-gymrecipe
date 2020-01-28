@@ -1,0 +1,87 @@
+/* pages/share/share.wxss */
+.container{
+  box-sizing:border-box;
+  padding:0 55rpx 0 55rpx;
+}
+.title{
+  height:79rpx;
+  width:100%;
+  line-height: 79rpx;
+  font-size:55rpx;
+  color:#4A4E63;
+}
+.title1{
+  margin-top:4rpx;
+  height:40rpx;
+  width:100%;
+  line-height:40rpx;
+  font-size:28rpx;
+  color:#4A4E63;
+}
+.codephoto{
+  margin-top:55rpx;
+  height:640rpx;
+  width:100%;
+  background:grey;
+}
+.save{
+  margin-top:20rpx;
+  height: 94rpx;
+  width:640rpx;
+  line-height:94rpx;
+  font-size:28rpx;
+  color:#4A4E63;
+}
+.title2{
+  margin-top:64rpx;
+  height:60rpx;
+  width:100%;
+  line-height: 60rpx;
+  font-size:42rpx;
+  color:#4A4E63;
+}
+.title3{
+  width:100%;
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 28rpx;
+  color:#4A4E63;
+}
+.invitebox{
+  margin-bottom:27rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height:64rpx;
+  width:100%;
+}
+.infobox{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width:60%;
+}
+.avatar{
+  height:64rpx;
+  width:64rpx;
+  border-radius: 64rpx;
+  background: greenyellow;
+}
+.name{
+  margin-left:28rpx;
+  height:60rpx;
+  width:120rpx;
+  line-height: 60rpx;
+  font-size:28rpx;
+  color:#4A4E63;
+}
+.num{
+  height:60rpx;
+  width:40%;
+  text-align:right;
+  line-height: 60rpx;
+  font-size:28rpx;
+  color:#4A4E63;
+}

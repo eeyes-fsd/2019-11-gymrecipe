@@ -1,24 +1,24 @@
 <view class="container display-flex-column">
-  <view class="title">我的订单</view>
-  <view class="littletitle" wx:if="{{noorder}}">暂时没有订单</view>
-  <view class="jumpto" wx:if="{{noorder}}">立即下单</view>
-  <view class="ordermessage display-flex-column" bindtap="orderdetail">
-    <view class="ordertitle">食谱+成餐+外卖</view>
+  <view class="title">订单详情</view>
+  <view class="ordermessage display-flex-column">
+    <view class="ordertitle">商品信息</view>
     <view class="orderdetail display-flex-column">
       <view class="orderitem display-flex-row">
-        <image class="orderimage"></image>
+        <image class="orderimage" src="{{item.imagesrc}}"></image>
         <view class="orderdetailinfo">
-          <view class="ordername">好吃的套餐</view>
+          <view class="ordername">{{item.name}}</view>
           <view class="orderbox">
             <view class="ordertype">新鲜食材速递*{{item.material.amount}}</view>
             <view class="orderprice">¥{{item.material.amount*item.material.price+item.takeout.amount*item.takeout.price}}</view>
           </view>
         </view>
       </view>
+    </view>
+    <view class="orderdetail display-flex-column">
       <view class="orderitem display-flex-row">
-        <image class="orderimage"></image>
+        <image class="orderimage" src="{{item.imagesrc}}"></image>
         <view class="orderdetailinfo">
-          <view class="ordername">好吃的套餐</view>
+          <view class="ordername">{{item.name}}</view>
           <view class="orderbox">
             <view class="ordertype">新鲜食材速递*{{item.material.amount}}</view>
             <view class="orderprice">¥{{item.material.amount*item.material.price+item.takeout.amount*item.takeout.price}}</view>
@@ -28,38 +28,30 @@
     </view>
     <view class="pricelist">
       <view class="priceitem" style="margin-top:36rpx">
-        <view class="pricetitle">下单时间</view>
+        <view class="pricetitle">食谱</view>
         <view class="pricenum">¥{{recipeprice}}</view>
       </view>
       <view class="priceitem" style="margin-top:24rpx">
-        <view class="pricetitle">总价</view>
+        <view class="pricetitle">配送费</view>
         <view class="pricenum">¥{{transexpense}}</view>
       </view>
     </view>
+    <view class="totalprice">小计¥{{totalprice}}</view>
   </view>
-
   <view class="ordermessage display-flex-column" style="margin-bottom:50rpx">
-    <view class="ordertitle">外卖</view>
-    <view class="orderdetail display-flex-column">
-      <view class="orderitem display-flex-row">
-        <image class="orderimage"></image>
-        <view class="orderdetailinfo">
-          <view class="ordername">好吃的套餐</view>
-          <view class="orderbox">
-            <view class="ordertype">新鲜食材速递*{{item.material.amount}}</view>
-            <view class="orderprice">¥{{item.material.amount*item.material.price+item.takeout.amount*item.takeout.price}}</view>
-          </view>
-        </view>
-      </view>
-    </view>
+    <view class="ordertitle">订单信息</view>
     <view class="pricelist">
       <view class="priceitem" style="margin-top:36rpx">
-        <view class="pricetitle">下单时间</view>
-        <view class="pricenum">¥{{recipeprice}}</view>
+        <view class="pricetitle">订单号码</view>
+        <view class="pricenum">12321341243</view>
       </view>
       <view class="priceitem" style="margin-top:24rpx">
-        <view class="pricetitle">总价</view>
-        <view class="pricenum">¥{{transexpense}}</view>
+        <view class="pricetitle">下单时间</view>
+        <view class="pricenum">12313123</view>
+      </view>
+      <view class="priceitem" style="margin-top:24rpx">
+        <view class="pricetitle">支付方式</view>
+        <view class="pricenum">微信支付</view>
       </view>
     </view>
   </view>

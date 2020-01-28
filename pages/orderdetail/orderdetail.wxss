@@ -1,0 +1,128 @@
+.container {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #fafafa;
+  padding: 0 55rpx;
+}
+
+/* 标题 */
+
+.title {
+  width: 100%;
+  text-align: left;
+  color: #4a4e63;
+  font-size: 55rpx;
+}
+
+/* 订单详情 */
+
+.ordermessage {
+  margin-top: 48rpx;
+  box-sizing: border-box;
+  padding: 0rpx 50rpx 0rpx 32rpx;
+  border-radius: 40rpx;
+  width: 100%;
+  background: #fff;
+}
+
+.ordertitle {
+  width: 100%;
+  margin-top: 34rpx;
+  text-align: left;
+  color: #4a4e63;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.orderdetail {
+  margin-top: 13rpx;
+  width: 558rpx;
+  border-bottom: 1rpx solid #498fe133;
+}
+
+.orderitem {
+  margin-top: 23rpx;
+  margin-bottom: 23rpx;
+  width: 100%;
+  height: 130rpx;
+}
+
+.orderimage {
+  width: 200rpx;
+  height: 130rpx;
+  background-color: greenyellow;
+  border-radius: 4rpx;
+}
+
+.orderdetailinfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 358rpx;
+  height: 130rpx;
+}
+
+.ordername {
+  padding-left: 24rpx;
+  height: 40rpx;
+  width: 100%;
+  color: #484848;
+  font-size: 28rpx;
+  line-height: 40rpx;
+}
+
+.orderbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 24rpx;
+}
+
+.ordertype {
+  color: #484848;
+  font-size: 28rpx;
+  line-height: 40rpx;
+}
+
+.orderprice {
+  color: #484848;
+  font-size: 28rpx;
+  line-height: 40rpx;
+}
+
+.priceitem {
+  height: 40rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.pricetitle {
+  height: 40rpx;
+  color: #484848;
+  font-size: 28rpx;
+  line-height: 40rpx;
+}
+
+.pricenum {
+  height: 40rpx;
+  color: #484848;
+  font-size: 28rpx;
+  line-height: 40rpx;
+}
+
+.pricelist {
+  width: 558rpx;
+  height: 242.85rpx;
+}
+
+.totalprice {
+  height: 112rpx;
+  width: 558rpx;
+  text-align: right;
+  line-height: 112rpx;
+  font-size: 28rpx;
+  color: #484848;
+}
+
