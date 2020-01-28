@@ -13,7 +13,11 @@
     "pages/fooddetail/fooddetail",
     "pages/confirmorder/confirmorder",
     "pages/chooseaddress/chooseaddress",
-    "pages/order/order"
+    "pages/order/order",
+    "pages/orderdetail/orderdetail",
+    "pages/share/share",
+    "pages/signinsuccess/signinsuccess",
+    "pages/signin/signin"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -42,6 +46,11 @@
         "selectedIconPath": "images/mine2.png"
       }
     ]
+  },
+  "permission":{
+    "scope.userLocation":{
+      "desc":"请点击确定"
+    }
   },
   "sitemapLocation": "sitemap.json",
   "functionalPages": {

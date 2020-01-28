@@ -14,6 +14,13 @@ Page({
     userInfo: [],
     phone: "",
   },
+  //跳转到二维码分享页面
+  share:function(){
+    wx.navigateTo({
+      url: '../share/share',
+    })
+  },
+  //跳转到订单页面
   order:function(){
     var that = this
     wx.navigateTo({

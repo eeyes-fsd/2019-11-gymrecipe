@@ -1,11 +1,14 @@
 // pages/plusaddress/plusaddress.js
 import api from '../../utils/Address.js'
+var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
+var qqmapsdk;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    key: 'KYTBZ-7N6C6-2JNSZ-EHI4Z-FNJJS-SMFBU',//调用地址api的key
     array: ['先生', '女士'],
     index: 0,
     region: []
@@ -69,21 +72,55 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    var that = this
+    qqmapsdk = new QQMapWX({
+      key: that.data.key
+    })
 
+    wx.getLocation({
+      type: 'wgs84',
+      success(res) {
+        console.log(res)
+        const latitude = res.latitude
+        const longitude = res.longitude
+        const speed = res.speed
+        const accuracy = res.accuracy
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
+    // wx.chooseLocation({
+    //   success: function(res) {
+    //     console.log(res)
+    //   },
+    // })
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    qqmapsdk.geocoder({
+      //获取表单传入地址
+      address: '安徽省合肥市肥东县撮镇镇义和家园', //地址参数，例：固定地址，address: 
+      success: function (res) {//成功后的回调
+        console.log(res);
+        var res = res.result;
+        var latitude = res.location.lat;
+        var longitude = res.location.lng;
+        //根据地址解析在地图上标记解析地址位置
+      },
+      fail: function (error) {
+        console.error(error);
+      },
+      complete: function (res) {
+        console.log(res);
+      }
+    })
   },
 
   /**
