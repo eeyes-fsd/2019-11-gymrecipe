@@ -6,7 +6,7 @@
   </view>
   <view class="searchbox display-flex-row">
     <image class="searchicon" src="/images/search.png"></image>
-    <input class="searchinput t-s" placeholder="输入食谱、食材或其他商品"></input>
+    <input class="searchinput t-s" placeholder="输入食谱、食材或其他商品" bindinput='bindinput'></input>
   </view>
   <view class="shopbody">
     <view class="navbarbox">
@@ -16,7 +16,7 @@
   </view>
   <view class="introduce t-m t-color-black">这是一段秤食堂的简介，减肥健身，掌控人生专业的在线体重管理平台强大的食品营养数据库，立即定制您的私人饮食</view>
   <view class="itemlist">
-    <view class="item display-flex-column" wx:for="{{showgoods}}" wx:key="index" bindtap="fooddetail">
+    <view class="item display-flex-column" wx:for="{{searchgoods}}" wx:key="index" bindtap="fooddetail">
       <image class="item_image" src="{{item.cover}}"></image>
       <view class="item_name t-vs t-color-black">{{item.name}}</view>
       <view class="item_infobox display-flex-row">

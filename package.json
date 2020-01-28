@@ -1,0 +1,22 @@
+{
+  "name": "2019-11-gymrecipe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eeyes-fsd/2019-11-gymrecipe.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eeyes-fsd/2019-11-gymrecipe/issues"
+  },
+  "homepage": "https://github.com/eeyes-fsd/2019-11-gymrecipe#readme",
+  "dependencies": {
+    "miniprogram-computed": "^2.1.1"
+  }
+}
