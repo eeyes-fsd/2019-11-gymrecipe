@@ -1,6 +1,7 @@
 // pages/plusaddress/plusaddress.js
 import api from '../../utils/Address.js'
 var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
+var amapFile = require('../../utils/amap-wx.js');
 var qqmapsdk;
 Page({
 
@@ -108,7 +109,6 @@ Page({
       //获取表单传入地址
       address: '安徽省合肥市肥东县撮镇镇义和家园', //地址参数，例：固定地址，address: 
       success: function (res) {//成功后的回调
-        console.log(res);
         var res = res.result;
         var latitude = res.location.lat;
         var longitude = res.location.lng;
@@ -119,6 +119,16 @@ Page({
       },
       complete: function (res) {
         console.log(res);
+      }
+    })
+    var myAmapFun = new amapFile.AMapWX({ key: '6a9b630c17f079e26856d5e56b9837cf' });
+    myAmapFun.getPoiAround({
+      success: function (data) {
+        //成功回调
+      },
+      fail: function (info) {
+        //失败回调
+        console.log(info)
       }
     })
   },
