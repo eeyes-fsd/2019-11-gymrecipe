@@ -203,6 +203,45 @@
   color: #484848;
 }
 
+/* 送货时间选择 */
+.timebox{
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 40rpx;
+  margin-top: 48rpx;
+  padding: 0 49rpx 0 32rpx;
+  background-color: #fff;
+  height:160rpx;
+}
+.timetitle{
+  margin-top: 34rpx;
+  height: 40rpx;
+  width: 100%;
+  font-size: 28rpx;
+  font-weight: bold;
+  line-height: 40rpx;
+}
+.pickerbox{
+  margin-top:20rpx;
+  height:40rpx;
+  width:100%;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.pickertext{
+  height:40rpx;
+  width:30%;
+  text-align: left;
+}
+.timepicker{
+  height:40rpx;
+  width:70%;
+  text-align: right;
+}
 /* 支付方式 */
 
 .paymethod {

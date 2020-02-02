@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/mine/mine",
+    "pages/confirmorder/confirmorder",
     "pages/plusaddress/plusaddress",
     "pages/mapchoose/mapchoose",
     "pages/index/index",
@@ -12,7 +13,6 @@
     "pages/gymnearby/gymnearby",
     "pages/recipelist/recipelist",
     "pages/fooddetail/fooddetail",
-    "pages/confirmorder/confirmorder",
     "pages/chooseaddress/chooseaddress",
     "pages/order/order",
     "pages/orderdetail/orderdetail",

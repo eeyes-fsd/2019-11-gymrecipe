@@ -46,6 +46,15 @@
     </view>
     <view class="totalprice">小计¥{{totalprice}}</view>
   </view>
+  <!-- 配送时间选择 -->
+  <view class="timebox">
+    <view class="timetitle">送货时间</view>
+    <view class="pickerbox">
+      <view class="pickertext" wx:if="{{isnow}}">立即送出</view>
+      <view class="pickertext" wx:else>指定时间</view>
+      <picker class="timepicker" range="{{timepicker}}" bindchange="pickerchange">{{gettime}}</picker>
+    </view>
+  </view>
   <view class="paymethod">
     <view class="paymethodtitle">支付方式</view>
     <view class="paymethodbox">
@@ -58,6 +67,9 @@
     </view>
   </view>
 </view>
+
+
+<!-- 支付方式 -->
 <view class="bottombox">
   <view class="waitpay">待支付¥{{totalprice}}</view>
   <view class="submit" bindtap="submit">提交订单</view>

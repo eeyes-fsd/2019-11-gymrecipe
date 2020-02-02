@@ -1,6 +1,7 @@
 // pages/fooddetail/fooddetail.js
 import api from '../../utils/Health.js'
 import Diets from '../../utils/Diets.js'
+import recipe from '../../utils/Recipe.js'
 Page({
 
   /**

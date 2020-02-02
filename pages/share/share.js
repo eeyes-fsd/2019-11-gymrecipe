@@ -21,7 +21,7 @@ Page({
   onReady: function () {
     var ACCESS_TOKEN = wx.getStorageSync("access_token")
     wx.request({
-      url: `https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=${ACCESS_TOKEN}`,//此处填写你后台请求地址
+      url: `https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=${ACCESS_TOKEN}`,
       method: 'POST',
       header: {
         "Content-Type": "application/x-www-form-urlencoded"

@@ -20,7 +20,7 @@
       <image class="item_image" src="{{item.cover}}"></image>
       <view class="item_name t-vs t-color-black">{{item.name}}</view>
       <view class="item_infobox display-flex-row">
-        <view class="item_price">¥{{item.price}}/</view>
+        <view class="item_price">¥{{item.up_price}}-{{item.low_price}}/</view>
         <view class="item_status">食材-成餐</view>
       </view>
       <view class="item_starbox display-flex-row">
