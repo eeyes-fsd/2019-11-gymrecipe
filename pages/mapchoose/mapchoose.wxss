@@ -1,0 +1,65 @@
+/* 高德地图 */
+.map-inputtips-input{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100rpx;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 30rpx;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  border-bottom:1px solid #ebebeb;
+}
+.confimbtn{
+  margin-right: 20rpx;
+  height:60rpx;
+  width:100rpx;
+  border-radius: 5rpx;
+  line-height: 60rpx;
+  font-size: 28rpx;
+  color:#ffffff;
+  text-align: center;
+  background-color:#4fdb17;
+}
+.mapinput{
+ width:90%;
+ background: rgb(238, 238, 238);
+ color:rgb(168, 168, 168);
+ border-radius: 5px;
+ height: 60rpx;
+ line-height: 60rpx;
+ box-sizing: border-box;
+ padding-left: 20rpx;
+}
+.map_container{
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.map_box{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height:120rpx;
+  border-bottom:1px solid #ebebeb;
+  width:90%;
+}
+.text_one{
+  height: 70rpx;
+  font-size: 32rpx;
+  line-height: 70rpx;
+  color:#4A4E63;
+}
+.text_two{
+  height:40rpx;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color:#c3c3c3;
+}

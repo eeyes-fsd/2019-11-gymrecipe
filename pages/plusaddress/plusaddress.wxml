@@ -1,4 +1,4 @@
-<form class="body" bindsubmit="formsubmit">
+<form class="body" bindsubmit="formsubmit" wx:if="{{!showmapchoose}}">
   <view class="title">新增收货地址</view>
   <view class="inputbox">
     <view class="textline" style="margin-top">联系人</view>
@@ -17,14 +17,11 @@
     <view class="textline">手机号</view>
     <input class="inputline" placeholder="请填写收货人手机号" name="tele"></input>
   </view>
-  <view class="inputbox">
+  <view class="inputbox" bindtap="showchooseaddress">
     <view class="textline">收货地址</view>
     <!-- <input class="inputline" placeholder="收货地址" name="address"></input> -->
-    <picker mode="region" bindchange="bindRegionChange" value="{{region}}">
-      <view class="picker" style='width:100%;height:50rpx'>
-        {{region[0]}} {{region[1]}} {{region[2]}}
-      </view>
-    </picker>
+    <view class="inputline" style="color:#999999;" name="address" wx:if="{{!ischoosed}}">请选择收货地址</view>
+    <view class="inputline" style="color:#484848;" name="address" wx:else>{{showaddress}}</view>
   </view>
   <view class="inputbox">
     <view class="textline">门牌号</view>

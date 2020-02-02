@@ -1,0 +1,13 @@
+<!-- 高德地图 -->
+<view class="map-inputtips-input">
+ <input class="mapinput" bindinput="bindInput" placeholder="搜索" focus="true" placeholder="请输入收货地址"/>
+</view>
+<view style="height:100rpx;"></view>
+<scroll-view scroll-y="true" style="width:100%;height:100%;">
+  <view class="map_container">
+    <view bindtap="bindSearch" wx:key="searchId" data-keywords="{{item.name}}" data-location="{{item.location}}" data-address="{{item.address}}" class="map_box" wx:for="{{tips}}">
+       <view class="text_one">{{item.name}}</view>
+       <view class="text_two">{{item.address}}</view>
+    </view>
+  </view>
+</scroll-view>
