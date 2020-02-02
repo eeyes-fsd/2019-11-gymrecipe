@@ -12,7 +12,7 @@
     <view class="jumpto" wx:else>您还未购买食谱，购买套餐立即赠送</view>
     <image class="jumptoicon" src="/images/falling.png"></image>
   </view>
-  <view class="mealbox">
+  <view class="mealbox" wx:if="{{boughtrecipe}}">
     <view class="mealtitle">成餐外卖</view>
     <scroll-view scroll-x="true" style="height:212rpx;width:100%;margin-top:36rpx;">
       <view class="imagebox" style="width:1000rpx;">
@@ -30,7 +30,7 @@
       <image class="priceicon" src="/images/add.png" data-item="takeout" data-increase="1" data-id="{{fooddetail.id}}" bindtap="increase"></image>
     </view>
   </view>
-  <view class="newbox">
+  <view class="newbox"  wx:if="{{boughtrecipe}}">
     <view class="newtitle">新鲜食材速递</view>
     <view class="newphoto">
       <image class="newphotoitem" style></image>
@@ -56,7 +56,7 @@
       <image class="priceicon" src="/images/add.png" data-item="material" data-increase="1" data-id="{{fooddetail.id}}" bindtap="increase"></image>
     </view>
   </view>
-  <view class="detailbox">
+  <view class="detailbox"  wx:if="{{boughtrecipe}}">
     <view class="detailtitle">详细介绍</view>
     <image class="detailphoto"></image>
   </view>

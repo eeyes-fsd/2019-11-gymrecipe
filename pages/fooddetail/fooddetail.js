@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    boughtrecipe:false,//是否购买了食谱
     fooddetail:{
       id:'2',
       name:'奥尔良鸡胸肉套餐',
@@ -148,6 +149,7 @@ Page({
    */
   onLoad: async function (options) {
     var that = this
+    //获取身体数据
     var info = await api.getHealth()
     if(info.statusCode==200){
       that.setData({
@@ -190,13 +192,13 @@ Page({
     }
     //获取当前食谱数据
     var id = wx.getStorageSync("currentrecipeid")
-    console.log(id)
-    let resrecipe = await Diets.getDietDetail(parseInt(id));
-    console.log("sji",resrecipe)
-    that.setData({
-      fooddetail:resrecipe.data.data
-    })
-    console.log(that.data.fooddetail)
+    let recipedetail = await recipe.recipesDetails(parseInt(id))
+    console.log(recipedetail)
+    if(recipedetail.statusCode==404){}else{
+      that.setData({
+        boughtrecipe:true
+      })
+    }
   },
 
   /**
