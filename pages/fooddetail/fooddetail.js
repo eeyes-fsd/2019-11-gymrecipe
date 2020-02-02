@@ -1,5 +1,6 @@
 // pages/fooddetail/fooddetail.js
 import api from '../../utils/Health.js'
+import Diets from '../../utils/Diets.js'
 Page({
 
   /**
@@ -21,97 +22,7 @@ Page({
       },
       describe:''
     },
-    goods: [{
-      id: '1',
-      imagesrc: 'rgb(241, 216, 243)',
-      name: '奥尔良鸡胸肉套餐',
-      status: '食材-成餐',
-      starnum: '133',
-      takeout: {
-        'amount': 1,
-        'price': 30
-      },
-      material: {
-        'amount': 1,
-        'price': 20
-      },
-      recipes: {
-        'amount': 1,
-        'price': 10
-      }
-    }, {
-        id: '2',
-        imagesrc: 'rgb(221, 215, 255)',
-        name: '奥尔良鸡胸肉套餐,买成餐送食谱优惠',
-        status: '食材-成餐',
-        starnum: '133',
-        takeout: {
-          'amount': 1,
-          'price': 30
-        },
-        material: {
-          'amount': 1,
-          'price': 20
-        },
-        recipes: {
-          'amount': 1,
-          'price': 10
-        }
-      }, {
-        id: '3',
-        imagesrc: 'rgb(228, 254, 255)',
-        name: '奥尔良鸡胸肉套餐',
-        status: '食材-成餐',
-        starnum: '133',
-        takeout: {
-          'amount': 1,
-          'price': 30
-        },
-        material: {
-          'amount': 1,
-          'price': 20
-        },
-        recipes: {
-          'amount': 1,
-          'price': 10
-        }
-      }, {
-        id: '4',
-        imagesrc: 'rgb(245, 235, 207)',
-        name: '奥尔良鸡胸肉套餐',
-        status: '食材-成餐',
-        starnum: '133',
-        takeout: {
-          'amount': 1,
-          'price': 30
-        },
-        material: {
-          'amount': 1,
-          'price': 20
-        },
-        recipes: {
-          'amount': 1,
-          'price': 10
-        }
-      }, {
-        id: '5',
-        imagesrc: 'rgb(245, 207, 220)',
-        name: '奥尔良鸡胸肉套餐',
-        status: '食材-成餐',
-        starnum: '133',
-        takeout: {
-          'amount': 1,
-          'price': 30
-        },
-        material: {
-          'amount': 1,
-          'price': 20
-        },
-        recipes: {
-          'amount': 1,
-          'price': 10
-        }
-      }],//商品列表
+    goods: [],//商品列表
     showshopwindow:false,//是否显示浮窗
     isfillindata:false,//是否测量过营养素
     isbuyrecipe:false,//是否购买过改食谱
@@ -124,7 +35,7 @@ Page({
   },
   increase: function (e) {
     var that = this
-    let id = that.data.fooddetail.id // 获取数据的索引
+    let id = e.currentTarget.dataset.id // 获取数据的索引
     let item = e.currentTarget.dataset.item
     let num = e.currentTarget.dataset.increase
     var flag = 0 
@@ -242,6 +153,49 @@ Page({
         isfillindata:true
       })
     }
+    //获取食谱列表
+    let showgoods = await Diets.getDiets();
+    if (showgoods.data) {
+      var showgood = showgoods.data.data
+      that.setData({
+        showgoods: showgood,
+        searchgoods: showgood
+      })
+      //将后端获得的数据转化为可处理的数据
+      var goods = new Array()
+      for (var i = 0; i < showgood.length; i++) {
+        var gooditem = {
+          id: showgood[i].id,
+          imagesrc: showgood[i].cover,
+          name: showgood[i].name,
+          takeout: {
+            'amount': 1,
+            'price': showgood[i].low_price
+          },
+          material: {
+            'amount': 1,
+            'price': showgood[i].up_price
+          },
+          recipes: {
+            'amount': 1,
+            'price': showgood[i].up_price
+          }
+        }
+        goods.push(gooditem)
+      }
+      that.setData({
+        goods: goods
+      })
+    }
+    //获取当前食谱数据
+    var id = wx.getStorageSync("currentrecipeid")
+    console.log(id)
+    let resrecipe = await Diets.getDietDetail(parseInt(id));
+    console.log("sji",resrecipe)
+    that.setData({
+      fooddetail:resrecipe.data.data
+    })
+    console.log(that.data.fooddetail)
   },
 
   /**

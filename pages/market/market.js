@@ -75,8 +75,10 @@ Page({
     wx.setStorageSync("totalprice", that.data.totalprice)
     wx.setStorageSync("productnum", that.data.productnum)
   },
-  fooddetail: function() { //跳转到食品详情
+  fooddetail: function(e) { //跳转到食品详情
     var that = this
+    console.log("e",e)
+    wx.setStorageSync("currentrecipeid",e.currentTarget.dataset.id)
     wx.navigateTo({
       url: '../fooddetail/fooddetail',
     })

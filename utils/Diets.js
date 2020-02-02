@@ -15,7 +15,7 @@ const getDiets = async() => {
 // 请求此接口获取配餐详情，提供Token以获取身体数据具体计算费用。
 const getDietDetail = async(id) => {
   let token = await getToken()
-  let response = await requestPromise('POST', `/diets${id}`, '', token)
+  let response = await requestPromise('GET', `/diets/${id}`, '', token)
   return response
 }
 

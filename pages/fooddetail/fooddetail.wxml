@@ -27,7 +27,7 @@
     </view>
     <view class="mealprice">
       <view class="price">¥30</view>
-      <image class="priceicon" src="/images/add.png" data-item="takeout" data-increase="1"  bindtap="increase"></image>
+      <image class="priceicon" src="/images/add.png" data-item="takeout" data-increase="1" data-id="{{fooddetail.id}}" bindtap="increase"></image>
     </view>
   </view>
   <view class="newbox">
@@ -53,7 +53,7 @@
     </view>
     <view class="mealprice">
       <view class="price">¥14</view>
-      <image class="priceicon" src="/images/add.png" data-item="material" data-increase="1" bindtap="increase"></image>
+      <image class="priceicon" src="/images/add.png" data-item="material" data-increase="1" data-id="{{fooddetail.id}}" bindtap="increase"></image>
     </view>
   </view>
   <view class="detailbox">
