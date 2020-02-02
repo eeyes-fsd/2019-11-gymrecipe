@@ -14,6 +14,13 @@ Page({
     userInfo: [],
     phone: "",
   },
+  //跳转到我的食谱页面
+  recipelist:function(){
+    wx.setStorageSync("perchased", 1) //是否跳转已购买
+    wx.navigateTo({
+      url: '../recipelist/recipelist',
+    })
+  },
   //跳转到二维码分享页面
   share:function(){
     wx.navigateTo({

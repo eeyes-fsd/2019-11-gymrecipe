@@ -8,11 +8,19 @@ Page({
   data: {
     addressid: [], //地址id
     user: '',
-    tele: '',
-    region: [],
-    detailaddress: '',
-    array: ['先生', '女士'],
-    gender: 0
+    tele: '',//电话
+    latitude:[],//经度
+    longitude:[],//纬度
+    region: [],//地址名字
+    detailaddress: '',//地址详细信息
+    array: ['先生', '女士'],//称呼
+    gender: 0//性别
+  },
+  //跳转地址选择页面
+  mapchoose:function(){
+    wx.navigateTo({
+      url: '../mapchoose/mapchoose',
+    })
   },
   //性别PICKER
   bindPickerChange:function(e){
@@ -49,7 +57,9 @@ Page({
       "name": e.detail.value.user,
       "phone": e.detail.value.tele,
       "gender": (this.data.gender === 0) ? 'm' : 'f',
-      "street": this.data.region.join('-'),
+      "street": this.data.region,
+      "latitude": that.data.latitude,//经度
+      "longitude": that.data.longitude,//纬度
       "details": e.detail.value.detailaddress
     }
     console.log(data)
@@ -66,13 +76,16 @@ Page({
   onLoad: async function(options) {
     console.log(options.id)
     let response = await api.detailAddress(options.id)
+    console.log(response)
     var res = response.data.data
     this.setData({
       addressid: options.id,
       user: res.name,
       gender: (res.gender === "先生") ? 0 : 1,
       tele: res.phone,
-      region: res.street.split('-'), //收货地址
+      region: res.street, //收货地址
+      latitude: res.latitude,//经度
+      longitude: res.longitude,//纬度
       detailaddress: res.details, //门牌号
     })
   },
@@ -88,7 +101,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    var that = this
+    //判断是否选择过了地址
+    if (!wx.getStorageSync("mapaddress")) {
+    } else {
+      var addressdata = wx.getStorageSync("mapaddress")
+      console.log(addressdata)
+      that.setData({
+        region: addressdata.locationname,
+        latitude: addressdata.latitude,
+        longitude: addressdata.longitude,
+      })
+    }
   },
 
   /**

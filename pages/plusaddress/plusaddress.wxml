@@ -21,7 +21,7 @@
     <view class="textline">收货地址</view>
     <!-- <input class="inputline" placeholder="收货地址" name="address"></input> -->
     <view class="inputline" style="color:#999999;" name="address" wx:if="{{!ischoosed}}">请选择收货地址</view>
-    <view class="inputline" style="color:#484848;" name="address" wx:else>{{showaddress}}</view>
+    <view class="inputline" style="color:#484848;" name="address" wx:else>{{addressdata.locationname}}</view>
   </view>
   <view class="inputbox">
     <view class="textline">门牌号</view>

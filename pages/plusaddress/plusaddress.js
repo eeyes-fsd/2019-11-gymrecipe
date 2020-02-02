@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showaddress:[],//在mapchoose页面选择得到的地址
+    addressdata:[],//在mapchoose页面选择得到的地址
     ischoosed:false,//是否选择了地址
     key: 'KYTBZ-7N6C6-2JNSZ-EHI4Z-FNJJS-SMFBU',//调用地址api的key
     array: ['先生', '女士'],
@@ -34,6 +34,7 @@ Page({
     })
   },
   formsubmit: async function(e) {
+    var that = this
     // 请求预检验
     console.log(e.detail.value.user)
     console.log(e.detail.value.tele)
@@ -59,7 +60,9 @@ Page({
       "name": e.detail.value.user,
       "phone": e.detail.value.tele,
       "gender": (this.data.index === 0) ? 'm' : 'f',
-      "street": this.data.region.join('-'),
+      "street": that.data.addressdata.address,
+      "latitude":that.data.addressdata.latitude,
+      "longitude":that.data.addressdata.longitude,
       "details": e.detail.value.detailaddress
     }
     await api.plusAddress(data)
@@ -98,7 +101,7 @@ Page({
     if (!wx.getStorageSync("mapaddress")){
     }else{
       that.setData({
-        showaddress: wx.getStorageSync("mapaddress").locationname,
+        addressdata: wx.getStorageSync("mapaddress"),
         ischoosed: true
       })
     }

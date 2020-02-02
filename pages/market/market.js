@@ -149,6 +149,9 @@ Page({
     }
     //修改完存缓存
     wx.setStorageSync("shopcar", that.data.shopcar)
+    that.setData({
+      shopcar:that.data.shopcar
+    })
     wx.setStorageSync("totalprice", that.data.totalprice)
     wx.setStorageSync("productnum", that.data.productnum)
   },
@@ -159,6 +162,7 @@ Page({
     var that = this
     //获取食谱列表
     let showgoods = await Diets.getDiets();
+    console.log(showgoods)
     if (showgoods.data) {
       var showgood = showgoods.data.data
       that.setData({
@@ -191,6 +195,7 @@ Page({
         goods: goods
       })
     }
+    console.log(that.data.goods)
   },
 
   /**

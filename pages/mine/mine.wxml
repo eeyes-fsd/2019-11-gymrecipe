@@ -9,7 +9,7 @@
   </view>
   <view>
     <view bindtap="showmyaddress" class='items'>收货地址</view>
-    <view class='items'>我的秤食配餐</view>
+    <view class='items' bindtap="recipelist">我的秤食配餐</view>
     <view class='items' bindtap="order">订单</view>
     <view bindtap="onTab" class='items'>联系我们</view>
   </view>
